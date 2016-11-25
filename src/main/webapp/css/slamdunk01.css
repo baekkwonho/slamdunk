@@ -1,6 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Play);
-body{
+*{
 	margin: 0;
+	padding:0;
 }
 li{
 	list-style: none;
@@ -35,15 +36,15 @@ img{
 	position: fixed;
 	top: 10px;
 	left:10px;
-	width:100px;
-	height: 100px;
+	width:120px;
+	height: 120px;
 	 border-radius: 100%;	
 }
 
 .gnb {
 	position:absolute;
 	top:80px;
-	left:64px;
+	left:118px;
 	transform: skewX(-40deg);
 }
 .gnb>li:first-child{
@@ -70,4 +71,139 @@ img{
 	padding-right: 25px;
 	padding-bottom: 5px;
 }
+
+.login_btn{
+	position: absolute;
+	top:0;
+	right:130px;
+	margin-top:20px;
+	background: none;
+	width:50px;
+	height:30px;
+	border:none;
+	
+}
+.login_btn a,.signup_btn a{
+	color: white;
+	font-size: 13px;
+	font-weight: bold;
+	border-bottom: 3px solid #ffa500;
+	border-top: 3px solid #ffa500;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	font-family:play;
+	
+}
+.signup_btn{
+	position: absolute;
+	top:0;
+	right:50px;
+	margin-top:20px;
+	background: none;
+	width:60px;
+	height:30px;
+	border:none;
+}
+
+.side {
+	width:600px;
+	height:100%;
+	position:fixed;
+	bottom:0px;
+	right:-600px;
+	background:#111;
+	opacity:0.5;
+	transform:skewX(-40deg);
+	transition:all 1s; 
+}
+
+.side:hover{
+	right:0px; 
+	opacity:0.5;
+}
+
+.side .con{
+	width:450px;
+	height:100%; 
+	position:absolute;
+	left:150px;
+	bottom:0px;
+	background:#000;
+	box-sizing:border-box;
+	padding:10px;
+	transition:all 1s;
+}
+.content_box1 h3{
+	position: fixed;
+	top:200px;
+	color: white;
+}
+.content_box1 p{
+	position: fixed;
+	top:250px;
+	left: 140px;
+	width:170px;
+	height: 80px;
+	border: 1px solid white;
+	transform:skewX(40deg);
+	display: inline-block;
+}
+.content_box2 h3{
+	position: fixed;
+	top:350px;
+	left: 140px;
+	color: white;
+}
+.content_box2 p{
+	position: fixed;
+	top:400px;
+	left: 200px;
+	width:170px;
+	height: 80px;
+	border: 1px solid white;
+	transform:skewX(40deg);
+	display: inline-block;
+}
+.content_box3 h3{
+	position: fixed;
+	top:500px;
+	left: 200px;
+	color: white;
+}
+.content_box3 p{
+	position: fixed;
+	top:550px;
+	left: 260px;
+	width:170px;
+	height: 80px;
+	border: 1px solid white;
+	transform:skewX(40deg);
+	display: inline-block;
+}
+
+
+
+.side:hover .con{
+	left:70px;
+}
+
+.btnContents i{
+	font-size:60px;
+	position:absolute;
+	bottom:0px;
+	right:0px;
+	color:#ffa500;
+}
+/*에니메이션*/
+.btnContents i:nth-child(1) {animation: ani linear 1.5s 0s infinite;}
+.btnContents i:nth-child(2) {animation: ani linear 1.5s 0.5s infinite;}
+.btnContents i:nth-child(3) {animation: ani linear 1.5s 1s infinite;}
+/*무한반복된다*/
+@keyframes ani {
+0%{right:0px; transform:scale(1);opacity:1;}
+100%{right:100px;transform:scale(0.5);opacity:0;}
+}
+
+
+
 
