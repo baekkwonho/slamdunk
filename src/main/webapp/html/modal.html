@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">  
+  
+  <title>Document</title>
+  
+  <style>
+    .modal-content {
+      position: relative;
+		  height: 600px;
+		  width: 405px;
+		  margin: auto;
+		  padding: 10px 10px; 
+		  /* background: url('../images/names.jpg') no-repeat center center; */
+		  background-color: #353535;
+		  background-size: cover;
+		  /* box-shadow: 0px 30px 60px -5px #000; */
+    }
+    
+    .active {
+			  border-bottom: 2px solid #ffa500;
+			}
+			.nonactive {
+			  color: rgba(255, 255, 255, 0.2); // 굳이 흐리게?
+			}
+			
+			h2 {
+			  font-size: 22px;
+			  padding-bottom: 5px;
+			  letter-spcaing: 2px;
+			  display: inline-block;
+			  margin-left: 20px;
+			  color: white;
+			}
+			
+			.text {
+			  border: none;
+			  width: 80%;
+			  padding: 10px 20px;
+			  display: block;
+			  height: 30px;
+			  border-radius: 20px;
+			  background: rgba(255, 255, 255, 0.1);
+			  border: 2px solid rgba(255, 255, 255, 0);
+			  overflow: hidden;
+			  margin-top: 15px;
+			  transition: all 0.5s ease-in-out;
+			  color: white;
+			}
+			
+			.text:focus {
+			  outline: 0;
+			  border: 2px solid #ffa500;
+			  border-radius: 20px;
+			  background: rgba(0, 0, 0, 0);
+			}
+			
+			input {
+			  display: inline-block;
+			  padding-top: 20px;
+			  font-size: 14px;
+			}
+			
+			#saveEmail {
+			  -webkit-appearance: none;
+			  background-color: rgba(255, 255, 255, 0.1);
+			  padding: 8px;
+			  border-radius: 2px;
+			  display: inline-block;
+			  position: relative;
+			  top: 6px;
+			  margin-left: 20px;
+			}
+			
+			#saveEmail:checked:after {
+			  content: '\2714';
+			  font-size: 10px;
+			  position: absolute;
+			  top: 1px;
+			  left: 4px;
+			  color: #fff;
+			}
+			#saveEmail:focus {
+			  outline-color: #ffa500;
+			}
+			
+			label {
+			  display: inline-block;
+			  padding-top: 10px;
+			  padding-left: 5px;
+			  color: white;
+			}
+			
+			#facebook_btn {
+			  background-color: blue;
+			  color: #FFF;
+			  width: 100%;
+			  padding: 10px 20px;
+			  display: block;
+			  height: 39px;
+			  border-radius: 20px;
+			  margin-top: 30px;
+			  transition: all 0.5s ease-in-out;
+			  border: none;
+			  font-size: 16px;
+			  letter-spcaing: 3px;
+			}
+			
+			.buttons {
+			  background-color: #ffa500;
+			  color: #FFF;
+			  width: 100%;
+			  padding: 10px 20px;
+			  display: block;
+			  height: 39px;
+			  border-radius: 20px;
+			  margin-top: 30px;
+			  transition: all 0.5s ease-in-out;
+			  border: none;
+			  font-size: 16px;
+			  letter-spcaing: 3px;
+			}
+			
+			
+			hr {
+			  border: 1px solid rgba(255, 255, 255, 0.1);
+			  top: 65px;
+			  position: relative;
+			}
+			
+			.forgot {
+			  text-align: center;
+			  display: block;
+			  top: 100px;
+			  position: relative;
+			  text-decoration: none;
+			  color: rgba(255, 255, 255, 0.2);
+			}
+			
+			.signup_form {
+				  display: none;
+				}
+				
+				.pointer {
+				  cursor: pointer;
+				}
+				
+  </style>
+  
+</head>
+<body>
+
+<button type="button" class="login_btn" data-toggle="modal" data-target="#myModal"><a href="#">LOG IN</a></button>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+         <div class="login_wrap">
+	         <h2 id="login_tap" class="active pointer"> LOGIN </h2>
+	         <h2 id="signup_tap" class="nonactive pointer"> SIGN UP</h2>
+	         <br><br><br>
+	         <form class="login_form">
+				     <input type="email" id="email" class="text" name="email" placeholder="email">
+				     <br>
+				     <input type="password" id="password" class="text" name="password" placeholder="password">
+				     <br>
+				     <input type="checkbox" id="saveEmail"/>
+				     <label for="saveEmail">Save Email</label>
+				     <button type="button" id="login_btn" class="buttons pointer">LOGIN</button>
+				     <button type="button" id="facebook_btn" class="pointer">FACEBOOK LOGIN</button>
+				     <hr>
+				     <a href="#" class="forgot">Forgot Password?</a>
+				   </form>
+				  
+				   <form class="signup_form">
+				     <input type="email" id="new_email" class="text" name="new_eamail" placeholder="email">
+				     <br>
+				     <input type="password" id="new_password" class="text" name="new_password" placeholder="password">
+				     <br>
+				     <input type="password" id="confirm_password" class="text" name="new_password" placeholder="confirm password">
+				     <br>
+				     <input type="text" id="new_nickname" class="text" name="new_nickname" placeholder="nickname">
+				     <br>
+				    
+				     <button type="button" id="signup_btn" class="buttons pointer">SIGN UP</button>
+				     <button type="button" id="cancel_btn" class="buttons pointer">CANCEL</button>
+				   </form>
+				  </div> 
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../js/login01.js"></script>
+</body>
+
+</html>
