@@ -7,7 +7,7 @@
     <id column="MNO" property="no"/> 
     <result column="EMAIL" property="email"/>
     <result column="PWD" property="password"/>
-    <result column="NICK" property="nickname"/>
+    <result column="MNAME" property="nickname"/>
     <result column="TNO" property="tno"/>
     <result column="GEN" property="gender"/>
     <result column="POSITION" property="position"/>

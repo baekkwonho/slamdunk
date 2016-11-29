@@ -63,7 +63,7 @@ public class AuthController {
       
     }
   }
-/*  
+  
   @RequestMapping(path="logout")
   public Object logout(HttpSession session, SessionStatus sessionStatus) throws Exception {
     try {
@@ -74,6 +74,7 @@ public class AuthController {
       return JsonResult.error(e.getMessage());
     }
   }
+  
   
   @RequestMapping(path="loginuser")
   public Object loginUser(HttpSession session) throws Exception {
@@ -89,6 +90,20 @@ public class AuthController {
       return JsonResult.error(e.getMessage());
     }
   }
+  
+  
+/*  
+  @RequestMapping(path="logout")
+  public Object logout(HttpSession session, SessionStatus sessionStatus) throws Exception {
+    try {
+      sessionStatus.setComplete();
+      session.invalidate();
+      return JsonResult.success();
+    } catch (Exception e) {
+      return JsonResult.error(e.getMessage());
+    }
+  }
+
   
   @RequestMapping(path="confirmemail")
   public Object confirmEmail(HttpSession session, String email) throws Exception {

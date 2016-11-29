@@ -1,5 +1,27 @@
 var check = false;
 var nick_check = false;
+
+//메인페이지 로그인 버튼 눌렀을 때
+var login_btn = document.querySelector(".login_btn");
+login_btn.onclick = function() {
+	$("#login_tap").removeClass("nonactive")
+	$("#login_tap").addClass("active")
+	$("#signup_tap").removeClass("active")
+	$("#signup_tap").addClass("nonactive")
+	$(".login_form").show()
+	$(".signup_form").hide()
+}
+//메인페이지 회원가입 버튼 눌렀을 때
+var signup_btn = document.querySelector(".signup_btn");
+signup_btn.onclick = function(){
+	$("#signup_tap").removeClass("nonactive")
+	$("#signup_tap").addClass("active")
+	$("#login_tap").removeClass("active")
+	$("#login_tap").addClass("nonactive")
+	$(".login_form").hide()
+	$(".signup_form").show()
+}
+
 //로그인 탭 누를 경우
 $("#login_tap").click(function() {
 	$("#login_tap").removeClass("nonactive")
@@ -10,7 +32,7 @@ $("#login_tap").click(function() {
 	$(".signup_form").hide()
 })
 
-//회원가입 태 누를 경우
+//회원가입 탭 누를 경우
 $("#signup_tap").click(function() {
 	$("#signup_tap").removeClass("nonactive")
 	$("#signup_tap").addClass("active")
@@ -28,8 +50,6 @@ $("#login_btn").click(function() {
 			password : $("#password").val(),
 			saveEmail : $("#saveEmail").is(":checked")  // 체크박스 만들어서 값 받아와야함.
 	}
-	
-	console.log(user);
 	
 	ajaxLogin(user);
 });
@@ -105,4 +125,61 @@ function ajaxLogin(user) {
 			window.location.href="slamdunk01.html"
 		}
 	})
+}
+
+
+//로그아웃 버튼 누를경우
+$('.logout_btn').click(function() {
+	ajaxLogout();
+})
+
+
+//로그인 처리
+function ajaxLogin(user) {
+	$.ajax({
+		url: serverAddr + "/auth/login.json",
+		method: "POST",
+		dataType: "json",
+		data: user,
+		success: function(obj) {
+			var result = obj.jsonResult
+			if (result.state != "success") {
+				alert("로그인 실패입니다.\n이메일 또는 암호를 확인하세요.")
+				return
+			}
+			window.location.reload();
+		}
+	})
+}
+
+//로그아웃 처리
+function ajaxLogout() {
+	$.post(serverAddr+"/auth/logout.json",function(obj) {
+		var result = obj.jsonResult
+		if (result.state != "success") {
+			alert("로그아웃 실패 입니다.")
+			return
+		}
+		window.location.reload()
+	})
+}
+
+
+//로그인 정보 확인
+function ajaxLoginUser() {
+	$.getJSON(serverAddr + "/auth/loginuser.json", function(obj) {
+		var result = obj.jsonResult
+		
+	    if (result.state != "success") {
+	    	$('.logout_btn').hide();
+	    	$(".login_btn").show();
+	    	$(".signup_btn").show();
+	    	return;
+	    }
+		$(".login_btn").hide();
+		$(".signup_btn").hide();
+		$(".loginUser_form").append("<p>"+result.data.nickname+"</p>");
+		$(".loginUser_form").show();
+		
+  })
 }
