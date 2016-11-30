@@ -250,13 +250,13 @@ img{
   border-bottom: 2px solid #ffa500;
 }
 .nonactive {
-  color: rgba(255, 255, 255, 0.2); // 굳이 흐리게?
+  color: rgba(255, 255, 255, 0.2); 
 }
 
 h2 {
   font-size: 22px;
   padding-bottom: 5px;
-  letter-spcaing: 2px;
+  letter-spacing: 2px;
   display: inline-block;
   margin-left: 20px;
   color: white;
@@ -332,7 +332,7 @@ label {
   transition: all 0.5s ease-in-out;
   border: none;
   font-size: 16px;
-  letter-spcaing: 3px;
+  letter-spacing: 3px;
 }
 
 .buttons {
@@ -347,7 +347,7 @@ label {
   transition: all 0.5s ease-in-out;
   border: none;
   font-size: 16px;
-  letter-spcaing: 3px;
+  letter-spacing: 3px;
 }
 
 
