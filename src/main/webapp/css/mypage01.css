@@ -12,6 +12,8 @@ header{
 	width:100%;
 	height: 70px;
 	background: black;
+	position: fixed;
+
 }
 header h3 {
 	float: left;
@@ -20,7 +22,7 @@ header h3 {
 	left:100px;
 	top:20px;
 	font-size: 25px;
-	font-family: Brush Script MT
+	font-family: Brush Script MT;
 }
 header img {
 	width:60px;
@@ -37,24 +39,47 @@ header li  {
 	list-style: none;
 	float: left;
 	padding: 20px 30px 20px 20px;
-
 }
 header li a{
 	color: #ffa500;
 	text-decoration: none;
 }
-main{
-	background: black;
+
+.aside_form{
+	position: fixed;
+	top:70px;
+	width:300px;
+	height:665px;
+	background: pink;
+}
+article{
+	float: right;
+	margin-right: 110px;
 	width:1000px;
-	height: 600px;
-	margin:auto;
-	margin-top: 30px;
+	height: 1200px;
+	background: red;
 	color: #ffa500;
-	border-radius: 30px;
 }
 .left_form{
-	float: left;
+	background: yellow;
+	display: inline-block;
+	box-sizing: border-box;
+	width:250px;
+	
+
+}
+.middle_form{
+	display: inline-block;
+	background: blue;
+	box-sizing: border-box;
+	width:300px;
+
+	
 }
 .right_form{
-	float: right;
+	box-sizing: border-box;
+	display: inline-block;
+	margin-top: 100px;
+	background: lime;
+	width:350px;
 }
