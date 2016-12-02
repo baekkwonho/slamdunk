@@ -10,6 +10,7 @@ login_btn.onclick = function() {
 	$("#signup_tap").addClass("nonactive")
 	$(".login_form").show()
 	$(".signup_form").hide()
+	init();
 }
 //메인페이지 회원가입 버튼 눌렀을 때
 var signup_btn = document.querySelector(".signup_btn");
@@ -87,19 +88,24 @@ $('#signup_btn').click(function(){
 
 	
 	var newUser = {
-		 email : $('#new_email').val(),
+		email : $('#new_email').val(),
 		password : $('#new_password').val(),
 		nickname : $('#new_nickname').val()
 	}
+	
 })
+
+
 //이메일 중복확인 버튼을 눌렀을 경우
-$('#confirm_btn').click(function(){
+$('#confirm_emailbtn').click(function(){
 	var confirm_email={
 		email : $('#new_email').val()
 	}
 	check = true;
-
 })
+
+
+
 //닉네임 중복확인 버튼을 눌렀을 경우
 $('#confirm_nickbtn').click(function(){
 	var confirm_nickname = {
@@ -183,3 +189,32 @@ function ajaxLoginUser() {
 		
   })
 }
+
+
+//쿠키를 이용해서 로그인 정보가 있는지 확인
+function init() {
+	var cookieMap = cookieToObject()
+	
+	if ("email" in cookieMap) { // cookieMap 객체에 email 이라는 이름의 프로퍼티가 있는가?
+		$("#email").val(cookieMap["email"])
+		$("#saveEmail").attr("checked", true)
+
+	}
+	
+}
+// init()함수에서 쓰일 함수 정의
+function cookieToObject() {
+		var cookies = document.cookie.split(";")
+		var obj = {}
+		
+		if (cookies.length === 0) 
+			return obj;
+		
+	    cookies.forEach(function(data) {
+		  var cookie = data.trim().split("=")
+		  obj[cookie[0]] = cookie[1].replace(/\"/gi, "")
+	    });
+	    
+		return obj;
+}
+

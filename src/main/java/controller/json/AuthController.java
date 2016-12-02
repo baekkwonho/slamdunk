@@ -82,7 +82,8 @@ public class AuthController {
     try {
       Member member = (Member)session.getAttribute("member");
       if (member == null) {
-        throw new Exception("로그인이 되지 않았습니다.");
+        return JsonResult.fail();
+        //throw new Exception("로그인이 되지 않았습니다.");
       }
       return JsonResult.success(member);
     } catch (Exception e) {
@@ -91,26 +92,10 @@ public class AuthController {
     }
   }
   
-  
-/*  
-  @RequestMapping(path="logout")
-  public Object logout(HttpSession session, SessionStatus sessionStatus) throws Exception {
-    try {
-      sessionStatus.setComplete();
-      session.invalidate();
-      return JsonResult.success();
-    } catch (Exception e) {
-      return JsonResult.error(e.getMessage());
-    }
-  }
-
-  
   @RequestMapping(path="confirmemail")
   public Object confirmEmail(HttpSession session, String email) throws Exception {
     
     try {
-      
-      System.out.println(email);
       
       HashMap<String, Object> map = new HashMap<>();
       map.put("email", email);
@@ -128,21 +113,43 @@ public class AuthController {
     }
   }
   
-  
-  
-  @RequestMapping(path="defaultsignup")
-  public Object defaultSignUp(HttpSession session, String password, String nickname, SessionStatus sessionStatus) throws Exception {
+  @RequestMapping(path="confirmnickname")
+  public Object confirmNickname(HttpSession session, String nickname) throws Exception {
+    
     try {
-      if (session.getAttribute("confirmemail") == null) {
-        return JsonResult.fail();
-      }
       
       HashMap<String, Object> map = new HashMap<>();
-      map.put("email", session.getAttribute("confirmemail"));
+      map.put("nickname", nickname);
+      Member member = memberDao.confirmNickname(map);
+      
+      if (member == null) {
+        session.setAttribute("confirmnickname", nickname);
+        return JsonResult.success();
+      }
+        return JsonResult.fail();
+      
+    } catch (Exception e) {
+      e.printStackTrace();
+      return JsonResult.error(e.getMessage());
+    }
+  }
+  
+  @RequestMapping(path="signup")
+  public Object signUp(HttpSession session,String email, String password, String nickname, SessionStatus sessionStatus) throws Exception {
+    try {
+//      if (session.getAttribute("confirmemail") == null) {
+//        return JsonResult.fail();
+//      }
+//      if (session.getAttribute("confirmnickname") == null) {
+//        return JsonResult.fail();
+//      }
+      
+      HashMap<String, Object> map = new HashMap<>();
+      map.put("email", email);
       map.put("password", password);
       map.put("nickname", nickname);
       
-      memberDao.insertDefaultMember(map);
+      memberDao.insertMember(map);
       
       sessionStatus.setComplete();
       session.invalidate();
@@ -154,45 +161,9 @@ public class AuthController {
     
   }
   
-  @RequestMapping(path="optionsignup")
-  public Object optionSignUp(HttpSession session, String password, String nickname,
-      String birth, String gender, String address, String drink, SessionStatus sessionStatus) throws Exception {
-    try {
-      
-      System.out.println(birth);
-      System.out.println(gender);
-      System.out.println(address);
-      System.out.println(drink);
-      
-      
-      if (session.getAttribute("confirmemail") == null) {
-        return JsonResult.fail();
-      }
-      
-      System.out.println("aaa");
-      
-      HashMap<String, Object> map = new HashMap<>();
-      map.put("email", session.getAttribute("confirmemail"));
-      map.put("password", password);
-      map.put("nickname", nickname);
-      map.put("birth", birth);
-      map.put("gender", gender);
-      map.put("address", address);
-      map.put("drink", drink);
-      
-      memberDao.insertOptionMember(map);
-      
-      sessionStatus.setComplete();
-      session.invalidate();
-      return JsonResult.success();
-    } catch(Exception e) {
-      e.printStackTrace();
-      return JsonResult.error(e.getMessage());
-    }
-    
-  }
   
-  */
+  
+  
 }
 
 

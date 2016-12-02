@@ -18,9 +18,23 @@
   </resultMap>
   
   <select id="selectOneByEmailAndPassword" resultMap="memberMap" parameterType="map">
-    select * from membs
+    select * from MEMBS
     where EMAIL=#{email} and PWD=password(#{password})
   </select>
+  
+  <select id="confirmEmail" resultMap="memberMap" parameterType="map">
+    select * from MEMBS
+    where EMAIL=#{email}
+  </select>
 
+  <select id="confirmNickname" resultMap="memberMap" parameterType="map">
+    select * from MEMBS
+    where MNAME=#{nickname}
+  </select>
+  
+  <insert id="insertMember" parameterType="map">
+		insert into MEMBS (EMAIL, PWD, MNAME)
+    values (#{email}, password(#{password}), #{nickname})
+  </insert>
 
 </mapper>

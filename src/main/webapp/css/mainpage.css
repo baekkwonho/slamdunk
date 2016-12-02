@@ -366,15 +366,36 @@ hr {
   color: rgba(255, 255, 255, 0.2);
 }
 
-/* .signup_form {
-    display: none;
-  } */
-  
-  .pointer {
-    cursor: pointer;
-  }
+.pointer {
+  cursor: pointer;
+}
 
 
+#confirm_emailbtn {
+	position: absolute;
+	top: 135px;
+	right: 20px;
+	background-color: #E66944;
+  color: #FFF;
+  width: 60px;
+  height: 20px;
+  border-radius: 20px;
+  font-size: 12px;
+  border: none;
+}
+
+#confirm_nickbtn {
+	position: absolute;
+	top: 330px;
+	right: 20px;
+	background-color: #E66944;
+  color: #FFF;
+  width: 60px;
+  height: 20px;
+  border-radius: 20px;
+  font-size: 12px;
+  border: none;
+}
 
 
 
