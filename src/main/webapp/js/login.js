@@ -53,8 +53,10 @@ $("#login_btn").click(function() {
 	}
 	
 	ajaxLogin(user);
+
 });
 //회원가입 버튼을 누를 경우
+
 $('#signup_btn').click(function(){
 	if($('#new_email').val()===""){
 		alert('이메일을 입력해주세요.');
@@ -63,7 +65,7 @@ $('#signup_btn').click(function(){
 	if($('#new_email').val().split("@").length===1 || $('#new_email').val().split('@').length>2 || $('#new_email').val().split('@')[1].split('.').length===1 || $('#new_email').val().split('@')[1].split('.').length>2){
 		alert('이메일 양식이 아닙니다.');
 		return;
-	}
+	}	
 	//signup을 눌렀을때 중복확인을 안했을 경우.
 	if(check === false){
 		alert('이메일을 중복확인 하세요.');
@@ -92,9 +94,22 @@ $('#signup_btn').click(function(){
 		password : $('#new_password').val(),
 		nickname : $('#new_nickname').val()
 	}
-	
+	ajaxSignup(newUser)
 })
 
+function ajaxSignup(user){
+		$.post(serverAddr+"/auth/signup.json",user,function(obj){
+			var result = obj.jsonResult
+			if(result.state !== 'success'){
+				alert('회원가입 실패 입니다..')
+				return;
+			}
+			alert('slamdunk에 오신것을 환영합니다.')
+
+			window.location.reload()
+		})
+
+	}
 
 //이메일 중복확인 버튼을 눌렀을 경우
 $('#confirm_emailbtn').click(function(){
@@ -102,8 +117,20 @@ $('#confirm_emailbtn').click(function(){
 		email : $('#new_email').val()
 	}
 	check = true;
+	ajaxConfirmEmail(confirm_email);
+
 })
 
+	function ajaxConfirmEmail(email){
+		$.post(serverAddr+"/auth/confirmemail.json",email,function(obj){
+			var result = obj.jsonResult
+			if(result.state !== 'success'){
+				alert('이메일이 이미 있습니다.')
+				return;
+			}
+			alert('사용가능한 이메일 입니다.')
+		})
+	}
 
 
 //닉네임 중복확인 버튼을 눌렀을 경우
@@ -112,7 +139,19 @@ $('#confirm_nickbtn').click(function(){
 		nickname : $('#new_nickname').val()
 	}
 	nick_check = true;
+	ajaxConfirmNickname(confirm_nickname)
 })
+
+function ajaxConfirmNickname(nickname){
+		$.post(serverAddr+"/auth/confirmnickname.json",nickname,function(obj){
+			var result = obj.jsonResult
+			if(result.state !== 'success'){
+				alert('닉네임이 이미 있습니다.')
+				return;
+			}
+			alert('사용가능한 닉네임 입니다.')
+		})
+	}
 
 
 //로그인 처리
