@@ -21,26 +21,27 @@
 	</ul>
 </header>
 
-<aside>
-	<div class="aside_form">
-		<ul>
-			<li><a href="#">My Page</a></li>
-			<li><a href="#">Team Page</a></li>
-		</ul>
-	</div>
+<aside class="asidemenu">
+	<ul>
+		<li class="active" id="mypage"><a href="#" >My Page</a></li>
+		<li class="nonactive" id="teampage"><a href="#" >Team Page</a></li>
+	</ul>
 </aside>
 
-<article>
+<div class="mypage_bg">
+<main class="mypage">
+	
 	<div class="left_form">
 		<div class="photo_form">
-		<h3>내 사진</h3>
+		<h3>My Photo</h3>
 		<img src="../images/dog1.jpg" alt="dog">
 		<input type="file" name="file" class="file">
 	</div>
 	</div>
+	
 	<div class="middle_form">
 		<div class="email_form">
-			<h3>나의 이메일 :</h3>
+			<h3>My Email :</h3>
 			<input type="text" placeholder="slamdunk@slamdunk.com" disabled="">
 		</div>
 		<div class="name_form">
@@ -52,13 +53,15 @@
 			<input type="text" name="password" class="password">
 		</div>
 		</div>
+	
 	<div class="right_form">
 		<div class="gender_form">
 			<h3>Gender :</h3>
+			<p>Male</p>
 			<input type="radio" name="gender" value="male">
-			<p>남성</p>
+			<p>Female</p>
 			<input type="radio" name="gender" value="female">
-			<p>여성</p>
+			
 		</div>
 		<div class="height_form">
 			<h3>Height :</h3>
@@ -86,7 +89,67 @@
 			<p>*자유롭게 입력해주세요.</p>
 		</div>
 	</div>
-</article>
-<script src="../js/mypage.js"></script>
+
+</main>
+</div>
+<div class="teampage_bg">
+ <main class="teampage">
+	<img src="../images/dog1.jpg" alt="프로필 사진">
+	<section>
+		<article>
+			<p>team name</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi,<br> tempore sapiente eveniet quibusdam ab ea, quaerat placeat numquam<br> aspernatur, accusamus magnam neque. Repudiandae vitae earum<br> rerum hic nobis alias aut.</p>
+			<p>address</p>
+			<p>인원수</p>
+		</article>
+	</section>
+	
+<div class="members">
+	<p>Member's Introduce</p>
+	<div class="member1">
+		<p>사진</p>
+		<p>닉네임</p>
+		<p>프로필정보</p>
+	</div>
+	<div class="member2">
+		<p>사진</p>
+		<p>닉네임</p>
+		<p>프로필정보</p>
+	</div>
+	<div class="member3">
+		<p>사진</p>
+		<p>닉네임</p>
+		<p>프로필정보</p>
+	</div>
+	<div class="member4">
+		<p>사진</p>
+		<p>닉네임</p>
+		<p>프로필정보</p>
+	</div>
+	<div class="member5">
+		<p>사진</p>
+		<p>닉네임</p>
+		<p>프로필정보</p>
+	</div>
+	<div class="member6">
+		<p>사진</p>
+		<p>닉네임</p>
+		<p>프로필정보</p>
+	</div>
+	<div class="member7">
+		<p>사진</p>
+		<p>닉네임</p>
+		<p>프로필정보</p>
+	</div>
+	<div class="member8">
+		<p>사진</p>
+		<p>닉네임</p>
+		<p>프로필정보</p>
+	</div>
+</div>	
+</main>
+</div>
+<script src='../node_modules/jquery/dist/jquery.min.js'></script>
+ <script src="../js/mypage.js"></script>
 </body>
 </html>

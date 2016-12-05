@@ -1,19 +1,18 @@
 *{
 	margin:0;
 	padding:0;
+	text-decoration: none;
 }
+
 body{
-	background: #353535;
 	width:100%;
 	height: 100%;
-	
-	}
+}
 header{
 	width:100%;
-	height: 70px;
+	height: 65px;
 	background: black;
-	position: fixed;
-
+	
 }
 header h3 {
 	float: left;
@@ -44,42 +43,128 @@ header li a{
 	color: #ffa500;
 	text-decoration: none;
 }
+.asidemenu ul {
+	position:fixed;
+       top:50%; 
+       left:0px;
+       margin-top:-100px; 
+       z-index:13;
+}
+.asidemenu ul li {
+	display:block; 
+	width:200px; 
+	height:60px; 
+	font-family:'righteous';
+	font-size:22px;
+	text-align:right;
+	overflow:hidden;
+	box-sizing:border-box;
+	border-top:1px solid white;
+	font-weight: bold;
+}
 
-.aside_form{
-	position: fixed;
-	top:70px;
-	width:300px;
-	height:665px;
-	background: pink;
+.asidemenu li.active a{
+	color:white;
+	font-size:30px;
 }
-article{
-	float: right;
-	margin-right: 110px;
-	width:1000px;
-	height: 1200px;
-	background: red;
-	color: #ffa500;
+.asidemenu li.nonactive{
+	border-top:1px solid #3A3A3A;
 }
+.asidemenu li.nonactive a{
+	color:#3A3A3A;
+	font-weight: bold;
+}
+
+
+
+.mypage_bg{
+	background: url(../images/slamdunk2.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	overflow: hidden;
+}
+
+.mypage{
+	border: 5px solid white;
+	position:relative;
+	width:680px;
+	height: 680px;
+	border-radius: 100%;
+	left:400px;
+	}
 .left_form{
-	background: yellow;
-	display: inline-block;
-	box-sizing: border-box;
-	width:250px;
-	
-
+	position: absolute;
+	left: 130px;
+	top:110px;
+	color: white;
+	font-size: 18px;
 }
-.middle_form{
-	display: inline-block;
-	background: blue;
-	box-sizing: border-box;
-	width:300px;
+.photo_form h3{
+	margin-left: 20px;
+}
+.photo_form img{
+	border-radius: 100%;
+}
+.photo_form input{
+	display: block;
+	position: relative;
+	left: 20px;
+}
 
-	
+.middle_form{
+	position:absolute;
+	left: 150px;
+	bottom:90px;
+	color: white;
+	font-size: 18px;
+}
+.email_form h3,.name_form h3,.pwd_form h3{
+	margin-top: 15px;
 }
 .right_form{
-	box-sizing: border-box;
-	display: inline-block;
-	margin-top: 100px;
-	background: lime;
-	width:350px;
+	position: absolute;
+	left: 400px;
+	top:150px;
+	color: white;
+	font-size: 18px;
 }
+.gender_form p ,input{
+	display: inline-block;
+}
+.height_form p,.weight_form p{
+	display: inline-block;
+}
+.gender_form input:checked{
+	color: black;
+}
+.gender_form h3,.height_form h3,
+.weight_form h3,.position_form h3,
+.skill_form h3{
+margin-top: 15px;
+}
+.teampage_bg{
+	background: url(../images/redball.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	overflow: hidden;
+}
+.teampage img{
+	display: inline-block;
+	border-radius: 100%;
+	position: absolute;
+	left:250px;
+}
+/*.members{
+	color: white;
+	display: inline-block;
+}
+.member1,.member2,.member3,.member4,
+.member5,.member6,.member7,.member8{
+	width:100px;
+	height: 100px;
+	background: red;
+	position: relative;
+	float: left;
+	margin:20px;
+	
+}*/*/
