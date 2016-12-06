@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.BoardDao">
+  <resultMap type="board" id="boardMap">
+    <id column="BNO" property="no"/> 
+    <result column="MEMBS_MNO" property="mno"/>
+    <result column="TITLE" property="title"/>
+    <result column="CONTENTS" property="contents"/>
+    <result column="WRITER" property="writer"/>
+    <result column="PWD" property="password"/>
+    <result column="CRE_DT" property="cre_dt"/>
+    <result column="VW_CNT" property="vw_cnt"/>
+  </resultMap>
+  
+  <select id="selectBoardList" resultMap="boardMap">
+    select * from BOARDS
+  </select>
+
+</mapper>
