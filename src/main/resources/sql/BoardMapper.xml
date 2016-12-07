@@ -8,7 +8,7 @@
     <result column="MEMBS_MNO" property="mno"/>
     <result column="TITLE" property="title"/>
     <result column="CONTENTS" property="contents"/>
-    <result column="WRITER" property="writer"/>
+    <result column="WRITER" property="writer"/> 
     <result column="PWD" property="password"/>
     <result column="CRE_DT" property="cre_dt"/>
     <result column="VW_CNT" property="vw_cnt"/>
@@ -17,5 +17,10 @@
   <select id="selectBoardList" resultMap="boardMap">
     select * from BOARDS
   </select>
+  
+  <insert id="insert" parameterType="board">
+    insert into BOARDS(MEMBS_MNO, TITLE, CONTENTS, CRE_DT,VW_CNT,WRITER,PWD)
+    values(1,#{title},#{contents},#{cre_dt},1,"test",password("1111"))
+  </insert>
 
 </mapper>

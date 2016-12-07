@@ -17,7 +17,7 @@ public class BoardController {
   @Autowired BoardDao boardDao;
   
   @RequestMapping(path="boardlist")
-  public Object brandList() throws Exception{
+  public Object boardList() throws Exception{
     
     try {
       List<Board> list = boardDao.selectBoardList();
@@ -26,6 +26,18 @@ public class BoardController {
       return JsonResult.fail(e.getMessage());
     }
   }
+  
+  @RequestMapping(path="add")
+  public Object addBoard(Board board) throws Exception{
+    
+    try {
+      boardDao.insert(board);
+      return JsonResult.success();
+    } catch (Exception e) {
+      return JsonResult.fail(e.getMessage());
+    }
+  }
+  
   
 }
 

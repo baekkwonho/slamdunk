@@ -6,6 +6,7 @@ import vo.Board;
 
 public interface BoardDao {
   
-  List<Board> selectBoardList();
+  List<Board> selectBoardList() throws Exception;
+  int insert(Board board) throws Exception;
   
 }

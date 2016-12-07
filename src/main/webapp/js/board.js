@@ -1,4 +1,9 @@
 
+//새글 등록하기
+$("#newboard_btn").click(function() {
+	window.location.href="boardform.html"
+})
+
 
 //Board 게시글 가져오기
 function ajaxBoardList() {

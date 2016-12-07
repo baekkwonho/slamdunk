@@ -22,38 +22,35 @@
 		</ul>
 	</header>
 	
-	<div>
+	<div class="wrap">
 		
-		<div class="wrap">
-		</div>
-		 
-			<h1>Board Form</h1>
 			<div class="board_form">
+				<h1>Board Form</h1>
 				<div class="form_row1">
 				  <div class="title_form">
 					  <label class="title_label">TITLE</label>
-			 	    <input type="text">
+			 	    <input type="text" id="title" class="textbox">
 		  		</div>
 		  		<div class="createDate_form">
 		  		  <!-- <label>등록일</label> -->
-		  		  <label> 2016-12-05</label>
+		  		  <label></label>
 		  		</div>
 		  		<div class="viewCount_form">
 		  		  <label>Hits</label>
-		  		  <span> 124</span>
+		  		  <span>0</span>
 		  		</div>
 				</div>
 				<hr><br>
 	  		<div class="contents_form">
 				<!--   <label class="left_label">내용</label> -->
-				  <textarea id="contents" class="contents" cols="90" rows="15"></textarea>
+				  <textarea id="contents" class="textbox" cols="90" rows="15"></textarea>
 	  		</div>
 	  		
 	  		<div class="buttons_form">
-	  		  <button type="button" class="btn_group">등록</button>
-	  		  <button type="button" class="btn_group">수정</button>
-	  		  <button type="button" class="btn_group">삭제</button>
-	  		  <button type="button" class="btn_group">취소</button>
+	  		  <button type="button" id="ok_btn" class="btn_group">OK</button>
+	  		  <button type="button" id="update_btn" class="btn_group">Update</button>
+	  		  <button type="button" id="delete_btn" class="btn_group">Delete</button>
+	  		  <button type="button" id="cancel_btn" class="btn_group">Cancel</button>
 	  		</div>
 			  
 	    </div>		
@@ -63,10 +60,11 @@
 	
 	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
   <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="../js/board.js"></script>
 	<script src="../js/common.js"></script>
+	<script src="../js/boardform.js"></script>
 	
 	<script>
+	loadBoard()
 	</script>
 	
 </body>
