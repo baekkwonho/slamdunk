@@ -78,6 +78,7 @@ header li a{
 
 
 .mypage_bg{
+	height: 1050px;
 	background: url(../images/slamdunk2.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -87,20 +88,22 @@ header li a{
 .mypage{
 	border: 5px solid white;
 	position:relative;
-	width:680px;
-	height: 680px;
-	border-radius: 100%;
-	left:400px;
+	width:1000px;
+	height: 600px;
+	border-radius: 20%;
+	left:300px;
+	margin-top: 30px;
 	}
 .left_form{
 	position: absolute;
 	left: 130px;
-	top:110px;
+	top:40px;
 	color: white;
 	font-size: 18px;
 }
 .photo_form h3{
 	margin-left: 20px;
+	margin-bottom: 10px;
 }
 .photo_form img{
 	border-radius: 100%;
@@ -114,7 +117,7 @@ header li a{
 .middle_form{
 	position:absolute;
 	left: 150px;
-	bottom:90px;
+	bottom:60px;
 	color: white;
 	font-size: 18px;
 }
@@ -123,10 +126,11 @@ header li a{
 }
 .right_form{
 	position: absolute;
-	left: 400px;
+	left: 430px;
 	top:150px;
 	color: white;
 	font-size: 18px;
+	line-height: 30px;
 }
 .gender_form p ,input{
 	display: inline-block;
@@ -134,37 +138,87 @@ header li a{
 .height_form p,.weight_form p{
 	display: inline-block;
 }
-.gender_form input:checked{
-	color: black;
-}
 .gender_form h3,.height_form h3,
 .weight_form h3,.position_form h3,
 .skill_form h3{
 margin-top: 15px;
 }
-.teampage_bg{
-	background: url(../images/redball.jpg);
-	background-repeat: no-repeat;
-	background-size: cover;
-	overflow: hidden;
+.cancel_btn,.commit_btn{
+	width:100px;
+	height: 50px;
+	margin:20px;
+	position: relative;
+	top:30px;
+	left:650px;
+	background: #3A3A3A;
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+	border:none;
+	border-radius: 20%;
 }
+
+.teampage_bg{
+	background: black;
+	height: 1000px;
+	}
+
 .teampage img{
+	position: relative;
+	top:25px;
+	left:50px;
+	width:200px;
+	height:200px;
 	display: inline-block;
 	border-radius: 100%;
-	position: absolute;
-	left:250px;
 }
-/*.members{
+.teampage article{
+	width:1150px;
+	height: 250px;
+	background: blue;
+	color: white;
+	position:relative;
+	left: 240px;
+}
+
+.teampage article p {
+	line-height: 25px;
+	position: absolute;
+	left: 300px;
+	top:110px;
+}
+.teampage article p.team{
+	top:30px;
+}
+.teampage article p.number{
+	top:50px;
+}
+.teampage article p.address{
+	top:70px;
+}
+.members1,.members2{
 	color: white;
 	display: inline-block;
-}
-.member1,.member2,.member3,.member4,
-.member5,.member6,.member7,.member8{
-	width:100px;
-	height: 100px;
-	background: red;
 	position: relative;
+	left: 220px;
+}
+.members1 h3{
+	position: relative;
+	top:10px;
+	left: 20px;
+}
+.member1,.member2,.member3,.member4{
+	width:250px;
+	height: 300px;
+	background: red;
+	margin:25px;
 	float: left;
-	margin:20px;
-	
-}*/*/
+	text-align: center;
+	}
+.member1:hover,.member2:hover,.member3:hover,.member4:hover{
+	width:270px;
+	height: 320px;
+	background: red;
+	opacity:0.7;
+	transition: all 1s;
+}
