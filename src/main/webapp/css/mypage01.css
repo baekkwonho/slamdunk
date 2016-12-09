@@ -156,11 +156,12 @@ margin-top: 15px;
 	font-weight: bold;
 	border:none;
 	border-radius: 20%;
+	cursor: pointer;
+	outline: 0;
 }
 
 .teampage_bg{
 	background: black;
-	height: 1000px;
 	}
 
 .teampage img{
