@@ -3,3 +3,6 @@
 $("#list_board").click(function() {
 	window.location.href="board.html"
 })
+$(".mypage_btn").click(function(){
+	window.location.href="mypage01.html"
+})

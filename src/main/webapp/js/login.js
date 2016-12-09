@@ -224,6 +224,8 @@ function ajaxLoginUser() {
 		$(".login_btn").hide();
 		$(".signup_btn").hide();
 		$(".loginUser_form").append("<p>"+result.data.nickname+"</p>");
+		$(".loginUser_form").append("<button type ='button' class='mypage_btn'><a href='#'>Mypage</a></button>");
+
 		$(".loginUser_form").show();
 		
   })
