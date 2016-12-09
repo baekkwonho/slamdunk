@@ -87,10 +87,11 @@ header li a:hover {
 .title_form {
 	position: relative;
 	display: inline-block;
+	vertical-align: middle;
 }
 
 .title_label {
-  margin: 0 10px 0 30px;
+  margin: 0 10px 5px 30px;
   vertical-align: middle;
   font-size: 18px;
 }
@@ -197,6 +198,17 @@ hr {
 .textbox:focus {
 	outline: 0;
 	box-shadow: 2px 2px 5px rgba(0,0,0,0.9);
-	
 }
+
+/* 다른 유저가 게시물 볼 경우 */
+
+.view_title {
+	font-size: 20px;
+}
+
+.view_contents {
+	position: relative;
+	margin: 0 40px 0 40px;
+}
+
 

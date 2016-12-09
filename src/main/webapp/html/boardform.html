@@ -25,7 +25,7 @@
 	<div class="wrap">
 		
 			<div class="board_form">
-				<h1>Board Form</h1>
+			  <h1>Board Form</h1>
 				<div class="form_row1">
 				  <div class="title_form">
 					  <label class="title_label">TITLE</label>
@@ -37,7 +37,7 @@
 		  		</div>
 		  		<div class="viewCount_form">
 		  		  <label>Hits</label>
-		  		  <span>0</span>
+		  		  <span>1</span>
 		  		</div>
 				</div>
 				<hr><br>
@@ -64,7 +64,17 @@
 	<script src="../js/boardform.js"></script>
 	
 	<script>
-	loadBoard()
+	
+	if (location.search.startsWith("?")) { // 예) ?no=xxx
+    var no = location.search.split("=")[1];
+    ajaxLoadBoard(no)
+    $("#ok_btn").css("display","none")
+} else {
+	  loadBoard()
+	  $("#update_btn").css("display","none")
+	  $("#delete_btn").css("display","none")
+}
+
 	</script>
 	
 </body>

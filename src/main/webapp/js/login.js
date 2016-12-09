@@ -3,7 +3,7 @@ var nick_check = false;
 
 //메인페이지 로그인 버튼 눌렀을 때
 var login_btn = document.querySelector(".login_btn");
-login_btn.onclick = function() {
+  login_btn.onclick = function() {
 	$("#login_tap").removeClass("nonactive")
 	$("#login_tap").addClass("active")
 	$("#signup_tap").removeClass("active")

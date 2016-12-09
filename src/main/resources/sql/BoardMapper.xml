@@ -16,11 +16,41 @@
   
   <select id="selectBoardList" resultMap="boardMap">
     select * from BOARDS
+    order by BNO desc
+    limit #{startIndex}, #{length}
+  </select>
+  
+  <select id="countAll" resultType="int">
+    select count(*)
+    from BOARDS
   </select>
   
   <insert id="insert" parameterType="board">
     insert into BOARDS(MEMBS_MNO, TITLE, CONTENTS, CRE_DT,VW_CNT,WRITER,PWD)
-    values(1,#{title},#{contents},#{cre_dt},1,"test",password("1111"))
+    values(#{mno},#{title},#{contents},#{cre_dt},1,#{writer},password("1111"))
   </insert>
+  
+  <select id="selectOne" resultMap="boardMap" parameterType="int">
+    select * from BOARDS
+    where BNO = #{no}
+  </select>
+  
+  <update id="updateViewCount" parameterType="board">
+    update BOARDS set 
+    VW_CNT = #{vw_cnt}
+    where BNO = #{no}
+  </update>
+  
+  <update id="update" parameterType="board">
+    update BOARDS set 
+    TITLE = #{title}, 
+    CONTENTS = #{contents} 
+    where BNO = #{no}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from BOARDS 
+    where BNO = #{no}
+  </delete>
 
 </mapper>
