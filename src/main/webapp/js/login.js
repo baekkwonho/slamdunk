@@ -223,9 +223,10 @@ function ajaxLoginUser() {
 	    }
 		$(".login_btn").hide();
 		$(".signup_btn").hide();
+		$(".loginUser_form").append("<button type='button' class='mypage_btn' data-no="+result.data.no+"><a href='#'>Mypage</a></button>");
 		$(".loginUser_form").append("<p>"+result.data.nickname+"</p>");
 		$(".loginUser_form").show();
-		
+		console.log($(".mypage_btn").attr("data-no"))
   })
 }
 
