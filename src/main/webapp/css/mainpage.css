@@ -89,7 +89,7 @@ img{
 	border:none;
 	
 }
-.login_btn a,.signup_btn a, .logout_btn a{
+.login_btn a,.signup_btn a, .logout_btn a, .mypage_btn a{
 	color: white;
 	font-size: 13px;
 	font-weight: bold;
@@ -122,10 +122,20 @@ img{
   height:30px;
   border:none;
 }
+.mypage_btn{
+  position: absolute;
+  top:0;
+  right:100px;
+  margin-top:20px;
+  background: none;
+  width:60px;
+  height:30px;
+  border:none;
+}
 
 .loginUser_form p {
 	position:absolute;
-	right: 100px;
+	right: 150px;
 	top: 0;
 	margin-top:20px;
   background: none;

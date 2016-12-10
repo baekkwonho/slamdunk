@@ -30,7 +30,7 @@ $(document).ready(function(){
 			"position":position.options[position.selectedIndex].value,
 			"skill":document.querySelector(".skill").value
 		}
-
+		
 		
 
 
