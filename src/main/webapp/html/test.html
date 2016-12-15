@@ -3,35 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-  
-  section:nth-child(1) {background-image:url("../images/dog1.jpg")}
-  section:nth-child(2) {background-image:url("../images/jordanl.jpg")}
-  
-  
-</style>
+  <link rel="stylesheet" href="../css/about.css">
 </head>
 <body>
 
-<aside>
-  <ul>
-    <li>1</li>
-    <li>2</li>
-  </ul>
-</aside>
+<div id="flipbook">
+    <div class="hard"> Turn.js </div> 
+    <div class="hard"></div>
+    <div> Page 1 </div>
+    <div> Page 2 </div>
+    <div> Page 3 </div>
+    <div> Page 4 </div>
+    <div class="hard"></div>
+    <div class="hard"></div>
+</div>
 
-  <section>
-    <article>
-      <p>Section01</p>
-        <span>Section01 span</span>
-    </article>
-  </section>
-  <section>
-		 <article>
-		   <p>Section02</p>
-		     <span>Section02 span</span>
-		 </article>
-  </section>
 
+
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../js/turnjs4/lib/turn.js"></script>
+  <script src="../js/common.js"></script>
+ <!--  <script src="../js/about.js"></script> -->
+  
+  <script type="text/javascript">
+  $("#flipbook").turn({
+    width: 400,
+    height: 300,
+    autoCenter: true
+  });
+</script>
 </body>
 </html>
