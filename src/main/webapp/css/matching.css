@@ -1,0 +1,114 @@
+*{
+	margin:0;
+	padding:0;
+	text-decoration: none;
+}
+
+body{
+	width:100%;
+	height: 100%;
+}
+header{
+	width:100%;
+	height: 65px;
+	background: black;
+	
+}
+header h3 {
+	float: left;
+	color: white;
+	position: absolute;
+	left:100px;
+	top:20px;
+	font-size: 25px;
+	font-family: Brush Script MT;
+}
+header img {
+	width:60px;
+	height: 60px;
+	border-radius: 100%;
+	padding-left: 30px;
+	padding-top:5px;
+}
+
+header ul{
+	float: right;
+}
+header li  {
+	list-style: none;
+	float: left;
+	padding: 20px 30px 20px 20px;
+}
+header li a{
+	color: #ffa500;
+	text-decoration: none;
+}
+ .logout_btn a, .mypage_btn a{
+	color: white;
+	font-size: 13px;
+	font-weight: bold;
+	border-bottom: 3px solid #ffa500;
+	border-top: 3px solid #ffa500;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	font-family:play;
+	text-decoration: none;
+	
+}
+.logout_btn{
+  position: absolute;
+  top:0;
+  right:50px;
+  margin-top:20px;
+  background: none;
+  width:60px;
+  height:30px;
+  border:none;
+}
+.mypage_btn{
+  position: absolute;
+  top:0;
+  right:100px;
+  margin-top:20px;
+  background: none;
+  width:60px;
+  height:30px;
+  border:none;
+}
+
+.loginUser_form p {
+	position:absolute;
+	right: 150px;
+	top: 0;
+	margin-top:20px;
+	background: none;
+	width:60px;
+	height:30px;
+	border:none;
+	
+}
+.cityname{
+	position: absolute;
+	right:420px;
+	top:85px;
+}
+.districtname{
+	position: absolute;
+	right:310px;
+	top:85px;
+}
+#calendar {
+    max-width: 900px;
+    height: 750px;
+    margin: 0 auto;
+}
+.fc-toolbar h2{
+	position: relative;
+	right:70px;
+}
+.fc-left{
+	margin-top: 10px;
+}
+.fc-center h2{
+	top: 10px;
+}
