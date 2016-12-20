@@ -3,34 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-  <link rel="stylesheet" href="../css/about.css">
 </head>
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<style>
+  span.glyphicon{
+    font-size: 40px;
+    color: red;
+  }
+</style>
 <body>
 
-<div id="flipbook">
-    <div class="hard"> Turn.js </div> 
-    <div class="hard"></div>
-    <div> Page 1 </div>
-    <div> Page 2 </div>
-    <div> Page 3 </div>
-    <div> Page 4 </div>
-    <div class="hard"></div>
-    <div class="hard"></div>
-</div>
+<button type="button" class="btn btn-default" aria-label="Left Align">
+</button>
+
+  <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
 
 
 
   <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="../js/turnjs4/lib/turn.js"></script>
+  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="../js/common.js"></script>
- <!--  <script src="../js/about.js"></script> -->
   
-  <script type="text/javascript">
-  $("#flipbook").turn({
-    width: 400,
-    height: 300,
-    autoCenter: true
-  });
-</script>
 </body>
 </html>
