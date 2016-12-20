@@ -228,24 +228,33 @@ function ajaxLogout(){
 }
 
 //로그인 정보 확인
-function ajaxLoginUser() {
-	$.getJSON(serverAddr + "/auth/loginuser.json", function(obj) {
-		var result = obj.jsonResult
-		
-	    if (result.state != "success") {
-	    	$('.logout_btn').hide();
-	    	$(".login_btn").show();
-	    	$(".signup_btn").show();
-	    	return;
-	    }
-		$(".login_btn").hide();
-		$(".signup_btn").hide();
-		$(".loginUser_form").append("<p>"+result.data.nickname+"</p>");
-		$(".loginUser_form").append("<button type ='button' class='mypage_btn'><a href='#'>Mypage</a></button>");
+function ajaxLoginUser(){
+ $.ajax({
+ 	url : serverAddr+"/auth/loginuser.json",
+ 	method : "GET",
+ 	dataType : "json",
+ 	success : function(obj){
+ 		var result = obj.jsonResult;
+ 		if(result.state !== "success"){
+ 			$("#icon").hide();
+ 			$(".loginUser_form").hide();
+ 			$(".login_btn").show();
+ 			$(".signup_btn").show();
+ 			return;
+ 		}
 
-		$(".loginUser_form").show();
+ 		$("#icon").show();
+ 		$(".loginUser_form").hide();
+ 		$("#icon").click(function(){
+ 			$(".loginUser_form").show();
+ 		});
+ 		
 		
-  })
+ 		$(".login_btn").hide();
+ 		$(".signup_btn").hide();
+ 		$(".nickname strong").text(result.data.nickname);
+ 	}
+ })
 }
 
 
