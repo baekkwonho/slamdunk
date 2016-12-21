@@ -229,34 +229,35 @@ function ajaxLogout(){
 
 //로그인 정보 확인
 function ajaxLoginUser(){
- $.ajax({
- 	url : serverAddr+"/auth/loginuser.json",
- 	method : "GET",
- 	dataType : "json",
- 	success : function(obj){
- 		var result = obj.jsonResult;
- 		if(result.state !== "success"){
- 			$("#icon").hide();
- 			$(".loginUser_form").hide();
- 			$(".login_btn").show();
- 			$(".signup_btn").show();
- 			return;
- 		}
+	 $.ajax({
+	 	url : serverAddr+"/auth/loginuser.json",
+	 	method : "GET",
+	 	dataType : "json",
+	 	success : function(obj){
+	 		var result = obj.jsonResult;
+	 		if(result.state !== "success"){
+	 			$("#icon").hide();
+	 			$(".loginUser_form").hide();
+	 			$(".login_btn").show();
+	 			$(".signup_btn").show();
+	 			return;
+	 		};
 
- 		$("#icon").show();
- 		$(".loginUser_form").hide();
- 		$("#icon").click(function(){
- 			$(".loginUser_form").show();
- 		});
- 		
-		
- 		$(".login_btn").hide();
- 		$(".signup_btn").hide();
- 		$(".nickname strong").text(result.data.nickname);
- 	}
- })
-}
+	 		$("#icon").show();
+	 		$(".loginUser_form").hide();
+	 		$("#icon").click(function(){
+	 			$(".loginUser_form").toggles();
+	 			
+	 		});
 
+
+	 		$(".login_btn").hide();
+	 		$(".signup_btn").hide();
+	 		$(".nickname strong").text(result.data.nickname);
+	 	
+	 	}
+	})
+};
 
 //쿠키를 이용해서 로그인 정보가 있는지 확인
 function init() {

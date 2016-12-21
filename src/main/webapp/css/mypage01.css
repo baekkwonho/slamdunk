@@ -43,49 +43,41 @@ header li a{
 	color: #ffa500;
 	text-decoration: none;
 }
- .logout_btn a, .mypage_btn a{
-	color: white;
-	font-size: 13px;
-	font-weight: bold;
-	border-bottom: 3px solid #ffa500;
-	border-top: 3px solid #ffa500;
-	padding-bottom: 5px;
-	padding-top: 5px;
-	font-family:play;
-	text-decoration: none;
-	
-}
-.logout_btn{
-  position: absolute;
-  top:0;
-  right:50px;
-  margin-top:20px;
-  background: none;
-  width:60px;
-  height:30px;
-  border:none;
-}
-.mypage_btn{
-  position: absolute;
-  top:0;
-  right:100px;
-  margin-top:20px;
-  background: none;
-  width:60px;
-  height:30px;
-  border:none;
+#icon{
+	width:60px;
+	height: 35px;
+	position: absolute;
+	right:80px;
+	top:15px;
 }
 
-.loginUser_form p {
-	position:absolute;
-	right: 150px;
-	top: 0;
-	margin-top:20px;
-  background: none;
-  width:60px;
-  height:30px;
-  border:none;
-	
+.loginUser_form{
+	width:160px;
+	height: 110px;
+	background: #229396;
+	position: absolute;
+	right: 30px;
+	top:65px;
+	line-height: 25px;
+	text-align: center;
+}
+.loginUser_form span{
+	display: inline-block;
+	margin-top: 6px;
+}
+.mypage_btn,.logout_btn{
+	border:none;
+	font-size: 10px;
+	font-weight: bold;
+	width:50px;
+	color: white;
+}
+
+.mypage_btn{
+	background: #2a5769;
+}
+.logout_btn{
+	background: #002e40;
 }
 
 .asidemenu ul {

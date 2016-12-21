@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(function(){
 	
 	$('body').stop().animate({scrollTop:'0'})
 
@@ -31,20 +31,46 @@ $(document).ready(function(){
 			"skill":document.querySelector(".skill").value
 		}
 		
-		
-
-
-
 	})
 
+	function ajaxLoginUser(){
+	 $.ajax({
+	 	url : serverAddr+"/auth/loginuser.json",
+	 	method : "GET",
+	 	dataType : "json",
+	 	success : function(obj){
+	 		var result = obj.jsonResult;
+	 		if(result.state !== "success"){
+	 			$("#icon").hide();
+	 			$(".loginUser_form").hide();
+	 			return;
+	 		};
+	 		$("#icon").show();
+	 		$(".loginUser_form").hide();
+	 		$("#icon").click(function(){
+	 			$(".loginUser_form").toggle();	
+	 		});
+	 		$(".nickname strong").text(result.data.nickname);
+
+	 		console.log(result);
+	 		$("#id_email").val(result.data.email);
+	 		$(".nickname").val(result.data.nickname);
+	 		if(result.data.height !== 0){
+	 			$(".height").val(result.data.height);
+	 		}
+		 	}
+		})
+	};
 
 
 
 
-
-
-
-
-
+// 호출부분.
+	ajaxLoginUser();
 
 });
+
+	
+	
+
+

@@ -18,9 +18,13 @@
 			<li><a href="#">Board</a></li>
 			<li><a href="#">Q&A</a></li>
 		</ul>
-		<div class="loginUser_form">
-			  <button  type="button"  class="mypage_btn"><a href="#">MyPage</a></button>
-			  <button type="button" class="logout_btn" ><a href="#">LOG OUT</a></button>
+		<img src="../images/user.png" alt="user이미지" id="icon">
+		<div class="loginUser_form" >
+		<span class="nickname"><strong>nickname</strong></span>
+		<span>님</span>
+		<p>환영합니다.</p>
+		<button type="button" class="mypage_btn" >MY PAGE</button>
+		<button type="button" class="logout_btn" >LOG OUT</button>
 		</div>
 	</header>
 
@@ -45,7 +49,7 @@
 	<div class="middle_form">
 		<div class="email_form">
 			<h3>My Email :</h3>
-			<input type="text" placeholder="slamdunk@slamdunk.com" disabled="">
+			<input type="text" disabled="" id="id_email">
 		</div>
 		<div class="name_form">
 			<h3>NickName :</h3>
@@ -162,6 +166,7 @@
 </main>
 </div>
 <script src='../node_modules/jquery/dist/jquery.min.js'></script>
+<script src="../js/common.js"></script>
  <script src="../js/mypage.js"></script>
 </body>
 </html>
