@@ -22,13 +22,11 @@ import vo.Member;
 @RequestMapping("/kbl/") 
 public class KblController {
   
-  @RequestMapping(path="kbllist")
-  public Object boardList() throws Exception{
-    
-    getKbl();
+  @RequestMapping(path="today")
+  public Object kblList() throws Exception{
     
     try {
-      return JsonResult.success();
+      return JsonResult.success(getKbl());
     } catch (Exception e) {
       return JsonResult.fail(e.getMessage());
     }
@@ -94,6 +92,9 @@ public class KblController {
     
     return map;
   }
+  
+  
+  
   
 }
 
