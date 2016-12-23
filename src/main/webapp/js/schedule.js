@@ -1,12 +1,7 @@
 
 $(document).ready(function () {
 	
-	ajaxKblList();
-	
-	
-	
-	
-	function ajaxKblList() {
+	function ajaxKblToday() {
 		$.getJSON(serverAddr + "/kbl/today.json", function(obj) {
 			var result = obj.jsonResult;
 			if (result.state !== "success") {
@@ -14,7 +9,7 @@ $(document).ready(function () {
 				return;
 			}
 		
-			console.log(result);
+			//console.log(result);
 			
 			if(result.data.fgState === "") {
 				$(".today_kbl_left > h3").text("경기가 없습니다");
@@ -59,35 +54,56 @@ $(document).ready(function () {
 		})
 	}
 	
+	function ajaxKblMonth() {
+		$.getJSON(serverAddr + "/kbl/month.json",function(obj) {
+			var result = obj.jsonResult;
+			if (result.state !== "success") {
+				alert("일정 조회 실패입니다.");
+				return;
+			}
+			
+			for (var i = 0; i < result.data.length; i++) {
+				if (result.data[i].hour !== "-") {
+					$(".month_kbl_wrap table").append(
+							"<tr>"+
+							"<td class='month_date'>"+result.data[i].date+"</td>" +
+							"<td class='month_hour'>"+result.data[i].hour+"</td>" +
+							"<td class='month_game'><img src='"+result.data[i].leftImg+"'>"+result.data[i].leftTeam+" "+
+							"<span class='month+score'>"+result.data[i].score+"</span> "+result.data[i].rightTeam+"<img src='"+result.data[i].rightImg+"'>"+
+							"</td>" +
+							"<td class='month_stadium'>"+result.data[i].stadium+"</td>");
+				} else {
+					$(".month_kbl_wrap table").append(
+							"<tr>"+
+							"<td>"+result.data[i].date+"</td>" +
+							"<td>"+result.data[i].hour+"</td>" +
+							"<td colspan='2'> 경기가 없습니다. </td>");
+				}
+			}
+			
+			
+		})
+	}
 	
-	/*
-	$.ajax({
-		crossOrigin: true,
-		type: "GET",
-		dataType : "script",
-		url: "http://sports.news.naver.com/basketball/schedule/index.nhn?category=kbl",
-		success : function(html) {
-			
-			
-			
-			//var list = html.split('<div class="sch_vs" id="todaySchedule0" >')[1].split('</form>')[0]
-			//$(".today_schedule").html(list)
-			
-//			var list = html.split('<div class="sch_vs" id="todaySchedule0" >')[1]
-//			var left = list.split('<div class="vs_btn">')[0]
-//			console.log(left)
-			var left = html.split('<div class="inner_lft ">')[1].split('<div class="vs_btn">')[0]
-//			var left = html.split('<div class="inner_lft live">')[1]
-//			if (left === undifined) {
-//				console.log("aaa")
-//			}
-			
-//			console.log(html);
-//			console.log(typeof html)
-		//	$(".schedule_left").html(left)
-		}
-	})
-	*/
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//ajaxKblToday();
+	ajaxKblMonth();
+	
 });
 
 

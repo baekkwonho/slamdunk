@@ -1,32 +1,69 @@
 package controller.json;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import javax.servlet.http.HttpSession;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import dao.BoardDao;
-import vo.Board;
 import vo.JsonResult;
-import vo.Member;
+import vo.Kbl;
 
 @Controller 
 @RequestMapping("/kbl/") 
 public class KblController {
   
   @RequestMapping(path="today")
-  public Object kblList() throws Exception{
+  public Object kblToday() throws Exception{
     
     try {
       return JsonResult.success(getKbl());
+    } catch (Exception e) {
+      return JsonResult.fail(e.getMessage());
+    }
+  }
+  
+  @RequestMapping(path="month")
+  public Object kblMonth() throws Exception {
+    try {
+
+      Document document = Jsoup.connect("http://sports.news.naver.com/basketball/schedule/index.nhn?category=kbl").get();
+      List<Kbl> list = new ArrayList<Kbl>();
+      Kbl kbl = new Kbl();
+      if (document != null) {
+
+        Elements todayGame = document.select("#content tbody");
+        for (int i = 0, k = 0; i < todayGame.size(); i++) {
+          Elements element = todayGame.get(i).select("tr");
+
+          for (int j = 0; j < element.size(); j++) {
+            kbl.setDate(element.get(0).select(".td_date").text());
+            kbl.setHour(element.get(j).select(".td_hour").text());
+
+            if (element.get(j).select(".td_none").isEmpty() == false) {
+              list.add(k,kbl);
+              k++;
+            }else {
+              kbl.setLeftTeam(element.get(j).select(".team_lft").text());
+              kbl.setLeftImg(element.get(j).select("img[title="+element.get(j).select(".team_lft").text()+"]").attr("src"));
+              kbl.setScore(element.get(j).select(".td_score").text());
+              kbl.setRightTeam((element.get(j).select(".team_rgt").text()));
+              kbl.setRightImg(element.get(j).select("img[title="+element.get(j).select(".team_rgt").text()+"]").attr("src"));
+              kbl.setStadium((element.get(j).select(".td_stadium").text()));
+
+              list.add(k, kbl);
+              k++;
+            }
+            kbl = new Kbl();
+          }
+        }
+      }
+      return JsonResult.success(list);
+      
     } catch (Exception e) {
       return JsonResult.fail(e.getMessage());
     }

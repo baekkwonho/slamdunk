@@ -227,6 +227,7 @@ function ajaxLogout(){
 	})
 }
 
+var toggle = false;
 //로그인 정보 확인
 function ajaxLoginUser(){
  $.ajax({
@@ -246,10 +247,16 @@ function ajaxLoginUser(){
  		$("#icon").show();
  		$(".loginUser_form").hide();
  		$("#icon").click(function(){
- 			$(".loginUser_form").toggle	();
- 			
- 			
+// 			$(".loginUser_form").toggle();
+ 			if (toggle === true) {
+ 			$(".loginUser_form").slideUp();
+ 			toggle = false;
+ 			} else {
+ 				$(".loginUser_form").slideDown();
+ 				toggle = true;
+ 			}
  		});
+ 		
  		
 		
  		$(".login_btn").hide();

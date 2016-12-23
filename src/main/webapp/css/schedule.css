@@ -284,13 +284,13 @@ hr {
 
 .today_kbl_wrap {
 	width: 100%;
-	height: 120px;
+	height: 140px;
 }
 
 .today_kbl_left {
 	border: 1px solid black;
 	width: 330px;
-	height: 100px;
+	height: 120px;
 	display: inline-block;
 	margin: 0 50px 0 100px;
 	text-align: center;
@@ -299,7 +299,7 @@ hr {
 .today_kbl_middle {
   border: 1px solid black;
   width: 330px;
-  height: 100px;
+  height: 120px;
   display: inline-block;
   margin: 0 50px 0 50px;
   text-align: center;
@@ -308,7 +308,7 @@ hr {
 .today_kbl_right {
   border: 1px solid black;
   width: 330px;
-  height: 100px;
+  height: 120px;
   display: inline-block;
   margin: 0 100px 0 50px;
   text-align: center;
@@ -330,6 +330,35 @@ hr {
 
 .month_kbl_wrap {
 	width: 100%;
-	height: 400px;
-	background-color : grey;
+	height: 100%;
+	position: relative;
 }
+
+.month_schedule {
+	margin: auto;
+	font-size: 20px;
+	width: 800px;
+	border: 1px solid black;
+}
+
+th {
+	text-align: center;
+	font-size: 24px;
+}
+
+td {
+	text-align: center;
+}
+
+.month_date {
+	font-weight: bold;
+}
+
+.month_score {
+	font-weight: bold;
+	font-size: 20px;
+}
+
+
+
+

@@ -10,6 +10,7 @@ public interface MemberDao {
   Member confirmEmail(Map<String,Object> paramMap);
   Member confirmNickname(Map<String,Object> paramMap);
   int insertMember(Map<String,Object> paramMap);
+  int update(Member member) throws Exception; //update
   
   
 }

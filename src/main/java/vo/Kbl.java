@@ -9,9 +9,12 @@ public class Kbl implements Serializable {
   String date;
   String hour;
   String leftTeam;
+  String leftImg;
   String score;
   String rightTeam;
+  String rightImg;
   String stadium;
+  
   public String getDate() {
     return date;
   }
@@ -30,6 +33,12 @@ public class Kbl implements Serializable {
   public void setLeftTeam(String leftTeam) {
     this.leftTeam = leftTeam;
   }
+  public String getLeftImg() {
+    return leftImg;
+  }
+  public void setLeftImg(String leftImg) {
+    this.leftImg = leftImg;
+  }
   public String getScore() {
     return score;
   }
@@ -42,12 +51,17 @@ public class Kbl implements Serializable {
   public void setRightTeam(String rightTeam) {
     this.rightTeam = rightTeam;
   }
+  public String getRightImg() {
+    return rightImg;
+  }
+  public void setRightImg(String rightImg) {
+    this.rightImg = rightImg;
+  }
   public String getStadium() {
     return stadium;
   }
   public void setStadium(String stadium) {
     this.stadium = stadium;
   }
-  
   
 }
