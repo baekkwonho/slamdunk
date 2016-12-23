@@ -190,6 +190,7 @@ function ajaxLogin(user){
 //로그아웃 버튼 누를경우
 $('.logout_btn').click(function() {
 	ajaxLogout();
+	
 })
 
 
@@ -246,7 +247,7 @@ function ajaxLoginUser(){
 	 		$("#icon").show();
 	 		$(".loginUser_form").hide();
 	 		$("#icon").click(function(){
-	 			$(".loginUser_form").toggles();
+	 			$(".loginUser_form").toggle();
 	 			
 	 		});
 
