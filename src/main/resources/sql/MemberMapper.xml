@@ -13,7 +13,8 @@
     <result column="POSITION" property="position"/>
     <result column="HEIGHT" property="height"/>
     <result column="WEIGHT" property="weight"/>
-    <result column="SKILLS" property="skills"/>
+    <result column="SKILLS" property="skill"/>
+    <result column="TAUTH" property="tauth"/>
     
   </resultMap>
   
@@ -32,9 +33,38 @@
     where MNAME=#{nickname}
   </select>
   
+  <select id="selectOne" resultMap="memberMap" parameterType="int">
+    select * from MEMBS
+    where MNO=#{no}
+  </select>
+  
   <insert id="insertMember" parameterType="map">
-		insert into MEMBS (EMAIL, PWD, MNAME)
-    values (#{email}, password(#{password}), #{nickname})
+		insert into MEMBS (EMAIL, PWD, MNAME, TAUTH)
+    values (#{email}, password(#{password}), #{nickname}, 0)
   </insert>
+  
+  <update id="update" parameterType="member">
+    update MEMBS set
+    MNAME = #{nickname},
+    PWD = password(#{password}),
+    GEN = #{gender},
+    POSITION = #{position},
+    HEIGHT = #{height},
+    WEIGHT = #{weight},
+    SKILLS = #{skill}
+    where MNO = #{no}
+  </update>
+  
+  <update id="updateTeamNo" parameterType="map">
+    update MEMBS set
+    TNO = #{tno}
+    where MNO = #{no}
+  </update>
+  
+  <update id="updateTauth" parameterType="map">
+    update MEMBS set
+    TAUTH = 1
+    where MNO = #{no}
+  </update>
 
 </mapper>

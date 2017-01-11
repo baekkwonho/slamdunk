@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.TeamDao">
+  <resultMap type="team" id="teamMap">
+    <id column="TNO" property="no"/> 
+    <result column="TNAME" property="teamName"/>
+    <result column="TDESC" property="teamDesc"/>
+    <result column="SIDO" property="sido"/>
+    <result column="GU" property="gu"/>
+    
+  </resultMap>
+  
+  <insert id="insertTeam" parameterType="map">
+    insert into TEAMS (TNAME, TDESC, SIDO, GU)
+    values (#{teamName}, #{teamDesc}, #{sido}, #{gu})
+  </insert>
+  
+  <select id="selectTeamNo" resultMap="teamMap" parameterType="String">
+    select TNO from TEAMS
+    where TNAME = #{teamName}
+  </select>
+  
+  <select id="selectOne" resultMap="teamMap" parameterType="int">
+    select * from TEAMS
+    where TNO=#{no}
+  </select>
+  
+  <update id="update" parameterType="team">
+    update TEAMS set
+    TNAME = #{teamName},
+    TDESC = #{teamDesc},
+    SIDO = #{sido},
+    GU = #{gu}
+    where TNO = #{no}
+  </update>
+  
+  <select id="selectTeamList" resultMap="teamMap">
+    select * from TEAMS
+  </select>
+  
+  
+</mapper>

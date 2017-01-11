@@ -137,12 +137,6 @@ public class AuthController {
   @RequestMapping(path="signup")
   public Object signUp(HttpSession session,String email, String password, String nickname, SessionStatus sessionStatus) throws Exception {
     try {
-//      if (session.getAttribute("confirmemail") == null) {
-//        return JsonResult.fail();
-//      }
-//      if (session.getAttribute("confirmnickname") == null) {
-//        return JsonResult.fail();
-//      }
       
       HashMap<String, Object> map = new HashMap<>();
       map.put("email", email);
@@ -160,6 +154,40 @@ public class AuthController {
     }
     
   }
+  
+  @RequestMapping(path="update")
+  public Object updateMember(Member member) throws Exception {
+    try {
+      
+      System.out.println(member.getNo());
+      System.out.println(member.getEmail());
+      System.out.println(member.getNickname());
+      System.out.println(member.getPassword());
+      System.out.println(member.isGender());
+      System.out.println(member.getHeight());
+      System.out.println(member.getWeight());
+      System.out.println(member.getPosition());
+      System.out.println(member.getSkill());
+      
+      
+      
+      if (memberDao.selectOne(member.getNo()) == null) {
+        //throw new Exception("해당 게시물이 없습니다!");
+        return JsonResult.fail();
+      }
+      
+      
+      memberDao.update(member);
+      return JsonResult.success();
+      
+    } catch (Exception e) {
+      return JsonResult.error(e.getMessage());
+    }
+  }
+  
+  
+ 
+  
   
   
   

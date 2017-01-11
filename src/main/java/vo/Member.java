@@ -14,7 +14,8 @@ public class Member implements Serializable {
   String position;
   float height;
   float weight;
-  String skills;
+  String skill;
+  boolean tauth;
   
   
   public int getNo() {
@@ -71,12 +72,19 @@ public class Member implements Serializable {
   public void setWeight(float weight) {
     this.weight = weight;
   }
-  public String getSkills() {
-    return skills;
+  public String getSkill() {
+    return skill;
   }
-  public void setSkills(String skills) {
-    this.skills = skills;
+  public void setSkill(String skill) {
+    this.skill = skill;
   }
+  public boolean isTauth() {
+    return tauth;
+  }
+  public void setTauth(boolean tauth) {
+    this.tauth = tauth;
+  }
+  
   
   
 }

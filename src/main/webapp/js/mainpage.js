@@ -6,3 +6,4 @@ $("#list_board").click(function() {
 $(".mypage_btn").click(function(){
 	window.location.href="mypage01.html"
 })
+

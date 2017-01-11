@@ -9,16 +9,15 @@
 </head>
 <body>
 	<header>
-		<a href="../html/mainpage.html"><h3 >SlamDunk</h3></a>
-		<a href="../html/mainpage.html"><img src="../images/mainlogo4.png" alt="메인로고"></a>
+		<a href="mainpage.html"><h3>SlamDunk</h3></a>
+		<a href="mainpage.html"><img src="../images/mainlogo4.png" alt="메인로고"></a>
 		<ul>
-			<li><a href="#">About Rule</a></li>
-			<li><a href="#">Schdule</a></li>
-			<li><a href="#">Matching</a></li>
-			<li><a href="#">Board</a></li>
-			<li><a href="#">Q&A</a></li>
+			<li><a href="about.html">About Rule</a></li>
+			<li><a href="schedule.html">Schedule</a></li>
+			<li><a href="matching.html">Matching</a></li>
+			<li id="list_board"><a href="board.html">Board</a></li>
+			<li><a href="#">Who</a></li>
 		</ul>
-		<img src="../images/user.png" alt="user이미지" id="icon">
 		<div class="loginUser_form" >
 		<span class="nickname"><strong>nickname</strong></span>
 		<span>님</span>
@@ -53,7 +52,7 @@
 		</div>
 		<div class="name_form">
 			<h3>NickName :</h3>
-			<input type="text" name="nickname" class="nickname">
+			<input type="text" name="nickname" id="nickname">
 		</div>
 		<div class="pwd_form">
 			<h3>PassWord :</h3>
@@ -109,11 +108,10 @@
 	<section>
 		<article>
 			<img src="../images/dog1.jpg" alt="프로필 사진">
-			<p class="team">Team Name :</p>
-			<p class="number">Numbers :</p>
-			<p class="address">Address :</p>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi,<br> tempore sapiente eveniet quibusdam ab ea, quaerat placeat numquam<br> aspernatur, accusamus magnam neque. Repudiandae vitae earum<br> rerum hic nobis alias aut.</p>
-			
+			<input type="text">
+			<input type="text">
+			<input type="text">
+			<input type="text">
 		</article>
 	</section>
 	
@@ -168,5 +166,6 @@
 <script src='../node_modules/jquery/dist/jquery.min.js'></script>
 <script src="../js/common.js"></script>
  <script src="../js/mypage.js"></script>
+ <script src="../js/teampage.js"></script>
 </body>
 </html>
