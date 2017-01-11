@@ -22,13 +22,13 @@ $(function(){
 	
 		var position = document.querySelector("#position")
 		var user = {
-			"nickname":document.querySelector(".nickname").value,
-			"password":document.querySelector(".password").value,
-			"gender":document.querySelector('input[name="gender"]:checked').value,
-			"height":document.querySelector(".height").value,
-			"weight":document.querySelector(".weight").value,
-			"position":position.options[position.selectedIndex].value,
-			"skill":document.querySelector(".skill").value
+			nickname:document.querySelector(".nickname").value,
+			password:document.querySelector(".password").value,
+			gender:document.querySelector('input[name="gender"]:checked').value,
+			height:document.querySelector(".height").value,
+			weight:document.querySelector(".weight").value,
+			position:position.options[position.selectedIndex].value,
+			skill:document.querySelector(".skill").value
 		}
 		ajaxCommit(user);//함수호출.		
 	})

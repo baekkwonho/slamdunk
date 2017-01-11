@@ -222,7 +222,7 @@ margin-top: 15px;
 .teampage article p {
 	line-height: 25px;
 	position: absolute;
-	left: 300px;
+	left: 0px;
 	top:110px;
 }
 .teampage article p.team{
@@ -233,6 +233,13 @@ margin-top: 15px;
 }
 .teampage article p.address{
 	top:70px;
+}
+.teampage article span.info{
+	width:600px;
+	height: 200px;
+	background: skyblue;
+	position: absolute;
+	right:250px;
 }
 .members1,.members2{
 	color: white;
