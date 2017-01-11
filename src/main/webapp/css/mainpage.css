@@ -77,7 +77,6 @@ img#logoimage{
 	padding-right: 25px;
 	padding-bottom: 5px;
 }
-
 .login_btn{
 	position: absolute;
 	top:0;
@@ -111,34 +110,35 @@ img#logoimage{
 	height:30px;
 	border:none;
 }
- #icon{
-	width:70px;
-	height:60px;
-	position: absolute;
-	right: 80px;
-	top:10px;
-}
 
+#icon{
+	width:50px;
+	height:50px;
+	position: absolute;
+	right: 45px;
+	top:5px;
+}
 .loginUser_form{
 	width:160px;
 	height: 110px;
 	background: #229396;
+	border-radius: 50px 0px 50px 50px;
 	position: absolute;
-	right: 30px;
-	top:65px;
-	line-height: 25px;
+	right: 70px;
+	top:60px;
+	line-height: 23px;
 	text-align: center;
 }
 .loginUser_form span{
 	display: inline-block;
-	margin-top: 6px;
+	margin-top: 10px;
 }
-.loginUser_form .icon{
+.mypage_btn,.logout_btn{
+	border:none;
+	font-size: 12px;
+	font-weight: bold;
 	width:50px;
-	height: 50px;
-	position:absolute;
-	top:10px;
-	right:0px;
+	color: white;
 }
 
 .mypage_btn,.logout_btn{
