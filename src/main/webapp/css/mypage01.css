@@ -74,6 +74,7 @@ header li a{
   width:50px;
   height: 30px;
   color: white;
+  cursor: pointer;
 }
 
 .mypage_btn{
