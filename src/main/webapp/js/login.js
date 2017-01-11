@@ -241,6 +241,9 @@ function ajaxLoginUser(){
 	 			$(".loginUser_form").hide();
 	 			$(".login_btn").show();
 	 			$(".signup_btn").show();
+	 			if ($("header ul").length === 1) {
+	 				$("header ul").css("right", "180px");
+	 			}
 	 			return;
 	 		};
 

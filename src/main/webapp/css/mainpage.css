@@ -135,17 +135,10 @@ img#logoimage{
 }
 .mypage_btn,.logout_btn{
 	border:none;
-	font-size: 12px;
+	font-size: 8px;
 	font-weight: bold;
 	width:50px;
-	color: white;
-}
-
-.mypage_btn,.logout_btn{
-	border:none;
-	font-size: 10px;
-	font-weight: bold;
-	width:50px;
+	height: 30px;
 	color: white;
 }
 

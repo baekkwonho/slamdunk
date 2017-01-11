@@ -20,7 +20,7 @@ header h3 {
 	font-size: 25px;
 	font-family: Brush Script MT;
 }
-header img {
+header #logoimage {
 	position:absolute;
 	left: 30px;
 	top: 5px;
@@ -31,6 +31,8 @@ header img {
 
 header ul{
 	float: right;
+	position: relative;
+	right: 100px;
 }
 header li  {
 	list-style: none;
@@ -50,6 +52,45 @@ header li a:hover {
 	
 }
 
+ #icon{
+  width:50px;
+  height:50px;
+  position: absolute;
+  right: 45px;
+  top:5px;
+}
+.loginUser_form{
+  width:160px;
+  height: 110px;
+  background: #229396;
+  border-radius: 50px 0px 50px 50px;
+  position: absolute;
+  right: 70px;
+  top:70px;
+  line-height: 23px;
+  text-align: center;
+  z-index : 1;
+}
+.loginUser_form span{
+  display: inline-block;
+  margin-top: 10px;
+}
+.mypage_btn,.logout_btn{
+  border:none;
+  font-size: 8px;
+  font-weight: bold;
+  width:50px;
+  height: 30px;
+  color: white;
+}
+
+.mypage_btn{
+  background: #2a5769;
+}
+.logout_btn{
+  background: #002e40;
+}
+
 .login_btn{
   position: absolute;
   top:0;
@@ -61,7 +102,8 @@ header li a:hover {
   border:none;
   
 }
-.login_btn a,.signup_btn a, .logout_btn a{
+
+.login_btn a,.signup_btn a{
   color: white;
   font-size: 13px;
   font-weight: bold;
@@ -71,7 +113,6 @@ header li a:hover {
   padding-top: 5px;
   font-family:play;
   text-decoration: none;
-  
 }
 .signup_btn{
   position: absolute;
@@ -83,30 +124,6 @@ header li a:hover {
   height:30px;
   border:none;
 }
-
-.logout_btn{
-  position: absolute;
-  top:0;
-  right:50px;
-  margin-top:20px;
-  background: none;
-  width:60px;
-  height:30px;
-  border:none;
-}
-
-.loginUser_form p {
-  position:absolute;
-  right: 100px;
-  top: 0;
-  margin-top:20px;
-  background: none;
-  width:60px;
-  height:30px;
-  border:none;
-  
-}
-
 
 .modal-content {
   position: relative;
