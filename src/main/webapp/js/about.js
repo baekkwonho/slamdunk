@@ -15,10 +15,6 @@ $(document).ready(function () {
 			$("body").stop().animate({scrollTop : '2200'}, 1500);
 		});
 	
-		$(".mypage_btn").click(function(){
-			window.location.href="mypage.html"
-		})
-	
 	
 });
 

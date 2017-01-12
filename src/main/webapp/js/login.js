@@ -187,6 +187,12 @@ function ajaxLogin(user){
 	})
 }
 
+
+//마이페이지 버튼 누를 경우
+$(".mypage_btn").click(function(){
+	window.location.href="mypage.html"
+})
+
 //로그아웃 버튼 누를경우
 $('.logout_btn').click(function() {
 	ajaxLogout();

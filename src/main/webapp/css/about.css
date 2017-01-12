@@ -329,7 +329,7 @@ hr {
 }
 
 
-li {
+.about_list li {
   	cursor: pointer;
   	color: black;
 	text-decoration: none;
@@ -337,7 +337,7 @@ li {
        line-height: 25px;
 }
 
-ul li:hover {
+.about_list li:hover {
 	font-size: 30px;
 	color: #ffe959;
 	font-weight: bold;
