@@ -6,10 +6,9 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
 <link rel="stylesheet" href="../css/matching.css">
 <link rel='stylesheet' href='../node_modules/fullcalendar/dist/fullcalendar.css' />
+<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 
-<script src='../node_modules/jquery/dist/jquery.min.js'></script>
-<script src='../node_modules/moment/min/moment.min.js'></script>
-<script src='../node_modules/fullcalendar/dist/fullcalendar.js'></script>
+
 
 <title>Document</title>
 </head>
@@ -17,7 +16,7 @@
 	
 	<header>
 		<a href="mainpage.html"><h3>SlamDunk</h3></a>
-		<a href="mainpage.html"><img src="../images/mainlogo4.png" alt="메인로고"></a></a>
+		<a href="mainpage.html"><img src="../images/mainlogo4.png" alt="메인로고" id="logoimage"></a></a>
 		<ul>
 			<li><a href="about.html">About Rule</a></li>
 			<li><a href="schedule.html">Schedule</a></li>
@@ -25,10 +24,21 @@
 			<li id="list_board"><a href="board.html">Board</a></li>
 			<li><a href="#">Who</a></li>
 		</ul>
-		<div class="loginUser_form">
-			  <button  type="button"  class="mypage_btn"><a href="#">MyPage</a></button>
-			  <button type="button" class="logout_btn" ><a href="#">LOG OUT</a></button>
-		</div>
+
+	    <button type="button" class="login_btn" data-toggle="modal" data-target="#loginModal"><a href="#">LOG IN</a></button>
+	    <button type="button" class="signup_btn" data-toggle="modal" data-target="#loginModal"><a href="#">SIGN UP</a></button>
+    
+    		<img src="../images/sport.png" alt="아이콘 사진" id="icon">
+    
+    <div class="loginUser_form">
+	      <span class="nickname"><strong>nickname</strong></span>
+	        <span>님</span>
+	        <p>환영합니다.</p>
+	        <button type="button" class="mypage_btn" >MY PAGE</button>
+	        <button type="button" class="logout_btn" >LOG OUT</button>
+    </div>
+
+
 	</header>
 
 	<span class="cityname">
@@ -53,7 +63,18 @@
 <div id="myPre"></div>
 
 
-<script src=../js/matching.js></script>
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<script src='../node_modules/moment/min/moment.min.js'></script>
+<script src='../node_modules/fullcalendar/dist/fullcalendar.js'></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/login.js"></script>
+<script src="../js/matching.js"></script>
+
+<script>
+ ajaxLoginUser();
+</script>
+
 
 </body>
 </html>
