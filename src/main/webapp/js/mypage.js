@@ -25,14 +25,28 @@ $(function(){
 		}else{
 			gender = false;
 		}
+		
+		var height = 0;
+		if(document.querySelector(".height").value === ""){
+			height = 0;
+		}else{
+			height=document.querySelector(".height").value;
+		}
+		
+		var weight = 0;
+		if(document.querySelector(".weight").value === ""){
+			weight = 0;
+		}else{
+			weight=document.querySelector(".weight").value;
+		}
 		var position = document.querySelector("#position")
 		if(document.querySelector(".password").value===""){
 			var user = {
 			no :document.querySelector("#id_email").getAttribute("data-no"),
 			nickname:document.querySelector("#nickname").value,
 			gender : gender,
-			height:document.querySelector(".height").value,
-			weight:document.querySelector(".weight").value,
+			height:height,
+			weight:weight,
 			position:position.options[position.selectedIndex].value,
 			skill:document.querySelector(".skill").value
 		}
@@ -42,8 +56,8 @@ $(function(){
 			nickname:document.querySelector("#nickname").value,
 			password:document.querySelector(".password").value,
 			gender:gender,
-			height:document.querySelector(".height").value,
-			weight:document.querySelector(".weight").value,
+			height:height,
+			weight:weight,
 			position:position.options[position.selectedIndex].value,
 			skill:document.querySelector(".skill").value
 		}

@@ -46,6 +46,17 @@
   <update id="update" parameterType="member">
     update MEMBS set
     MNAME = #{nickname},
+    GEN = #{gender},
+    POSITION = #{position},
+    HEIGHT = #{height},
+    WEIGHT = #{weight},
+    SKILLS = #{skill}
+    where MNO = #{no}
+  </update>
+  
+  <update id="updateAll" parameterType="member">
+    update MEMBS set
+    MNAME = #{nickname},
     PWD = password(#{password}),
     GEN = #{gender},
     POSITION = #{position},

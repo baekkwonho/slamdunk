@@ -1,5 +1,9 @@
 $(function() {
 	
+	$("#testinput").attr("data-no",1);
+	
+	
+	/*
 	$.ajax({
 		url : "http://sports.news.naver.com/basketball/news/index.nhn",
 		crossOrigin: true,
@@ -7,6 +11,8 @@ $(function() {
 			console.log(data);
 		}
 	})
+	*/
+	
 	
 	
 	

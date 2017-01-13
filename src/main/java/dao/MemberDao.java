@@ -11,7 +11,9 @@ public interface MemberDao {
   Member confirmNickname(Map<String,Object> paramMap) throws Exception;
   int insertMember(Map<String,Object> paramMap) throws Exception;
   Member selectOne(int no) throws Exception;
-  int update(Member member) throws Exception; //update
+  int update(Member member) throws Exception; //update 비밀번호 없는 경우
+  int updateAll(Member member) throws Exception; // update 비밀번호 있는 경우
+  
   int updateTeamNo(Map<String,Object> paramMap) throws Exception; 
   
   

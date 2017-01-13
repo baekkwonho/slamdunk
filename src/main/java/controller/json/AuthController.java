@@ -156,28 +156,17 @@ public class AuthController {
   }
   
   @RequestMapping(path="update")
-  public Object updateMember(Member member) throws Exception {
+  public Object update(Member member) throws Exception {
     try {
-      
-      System.out.println(member.getNo());
-      System.out.println(member.getEmail());
-      System.out.println(member.getNickname());
-      System.out.println(member.getPassword());
-      System.out.println(member.isGender());
-      System.out.println(member.getHeight());
-      System.out.println(member.getWeight());
-      System.out.println(member.getPosition());
-      System.out.println(member.getSkill());
-      
-      
-      
       if (memberDao.selectOne(member.getNo()) == null) {
-        //throw new Exception("해당 게시물이 없습니다!");
         return JsonResult.fail();
       }
+      if (member.getPassword() == null) {
+        memberDao.update(member);
+      } else {
+        memberDao.updateAll(member);
+      }
       
-      
-      memberDao.update(member);
       return JsonResult.success();
       
     } catch (Exception e) {
