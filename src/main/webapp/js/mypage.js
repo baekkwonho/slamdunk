@@ -19,22 +19,42 @@ $(function(){
 	})
 	
 	$(".commit_btn").click(function(){
-	
+		var gender = true;
+		if(document.querySelector('input[name="gender"]:checked').value==="male"){
+			gender = true;
+		}else{
+			gender = false;
+		}
 		var position = document.querySelector("#position")
-		var user = {
-			nickname:document.querySelector(".nickname").value,
-			password:document.querySelector(".password").value,
-			gender:document.querySelector('input[name="gender"]:checked').value,
+		if(document.querySelector(".password").value===""){
+			var user = {
+			no :document.querySelector("#id_email").getAttribute("data-no"),
+			nickname:document.querySelector("#nickname").value,
+			gender : gender,
 			height:document.querySelector(".height").value,
 			weight:document.querySelector(".weight").value,
 			position:position.options[position.selectedIndex].value,
 			skill:document.querySelector(".skill").value
 		}
-		ajaxCommit(user);//함수호출.
+		}else{
+			var user = {
+			no :document.querySelector("#id_email").getAttribute("data-no"),
+			nickname:document.querySelector("#nickname").value,
+			password:document.querySelector(".password").value,
+			gender:gender,
+			height:document.querySelector(".height").value,
+			weight:document.querySelector(".weight").value,
+			position:position.options[position.selectedIndex].value,
+			skill:document.querySelector(".skill").value
+		}
+		}
+		
+		console.log(user);
+		ajaxCommit(user);
 		
 	})
 
-	function ajaxCommit(user){//객체를 받아서 넘겨주기위해.
+	function ajaxCommit(user){
 		console.log(user);
 		$.ajax({
 			url:serverAddr+"/auth/update.json",
@@ -70,8 +90,7 @@ $(function(){
 	 			$(".loginUser_form").toggle();	
 	 		});
 	 		$(".nickname strong").text(result.data.nickname);
-
-	 		console.log(result);
+	 		$("#id_email").attr("data-no", result.data.no);
 	 		$("#id_email").val(result.data.email);
 	 		$("#nickname").val(result.data.nickname);
 	 		if(result.data.height !== 0){
