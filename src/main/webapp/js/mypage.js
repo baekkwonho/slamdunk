@@ -103,6 +103,7 @@ $(function(){
 	 		$("#icon").click(function(){
 	 			$(".loginUser_form").toggle();	
 	 		});
+	 		console.log(result);
 	 		$(".nickname strong").text(result.data.nickname);
 	 		$("#id_email").attr("data-no", result.data.no);
 	 		$("#id_email").val(result.data.email);

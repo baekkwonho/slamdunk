@@ -103,7 +103,8 @@ function ajaxSignup(user){
 		method : "POST",
 		dataType : "json",
 		success : function(obj){
-			var reult = obj.jsonResult;
+			var result = obj.jsonResult;
+			console.log(result);
 			if(result.state !== "success"){
 				alert("회원가입 실패 입니다.");
 				return;
