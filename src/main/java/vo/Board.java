@@ -11,7 +11,6 @@ public class Board implements Serializable {
   String title;
   String contents;
   String writer;
-  String password;
   Date cre_dt;
   int vw_cnt;
   public int getNo() {
@@ -43,12 +42,6 @@ public class Board implements Serializable {
   }
   public void setWriter(String writer) {
     this.writer = writer;
-  }
-  public String getPassword() {
-    return password;
-  }
-  public void setPassword(String password) {
-    this.password = password;
   }
   public Date getCre_dt() {
     return cre_dt;

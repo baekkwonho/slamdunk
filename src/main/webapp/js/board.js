@@ -15,6 +15,7 @@ $("#newboard_btn").click(function() {
 
 var pageNo = 1;
 var pageLength = 10;
+var totalPage = 0;
 
 //Board 게시글 가져오기
 function ajaxBoardList() {
@@ -59,41 +60,46 @@ function ajaxBoardList() {
 		
 		// 리스트 링크
 		$(".boardLink").click(function(event) {
-			window.location.href = "boardform.html?no=" + $(this).data("data-no");
+			window.location.href = "boardform.html?no=" + $(this).attr("data-no");
 	    });
 	    
 	    //현재 페이지
 	    pageNo = result.data.pageNo;
-	    var totalPage = result.data.totalPage;
+	    totalPage = result.data.totalPage;
 	    
-	    var writePageNo = ""
+	    var writePageNo = "";
+	    var temp = "";
 	    for (var i = 1; i <= totalPage; i++) {
-	    	var temp = "<span>"+i+"</span>";
+	    	if (pageNo === i) {
+	    		temp = "<span class='currPage'>"+i+"</span>";
+	    	} else {
+	    		temp = "<span>"+i+"</span>";
+	    	}
 	    	writePageNo += temp;
-	    	console.log(writePageNo);
 	    }
 	    
 	    $("#pageNo").html(writePageNo);
 	    
 	 //   $("#pageNo").text(pageNo);
 	    
-	    
-	    console.log(totalPage);
-	    
 	})
 }
 
 $("#next_btn").click(function() {
+	if (pageNo === totalPage) {
+		return;
+	}
 	pageNo++;
 	ajaxBoardList();
 });
 
 $("#prev_btn").click(function() {
 	pageNo--;
+	if (pageNo < 1) {
+		return;
+	}
 	ajaxBoardList();
 });
-
-
 
 
 
