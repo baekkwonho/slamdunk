@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.NoticeDao">
+  <resultMap type="notice" id="noticeMap">
+    <id column="NNO" property="no"/> 
+    <result column="MEMBS_MNO" property="mno"/>
+    <result column="TITLE" property="title"/>
+    <result column="CONTENTS" property="contents"/>
+    <result column="WRITER" property="writer"/> 
+    <result column="CRE_DT" property="cre_dt"/>
+    <result column="VW_CNT" property="vw_cnt"/>
+  </resultMap>
+  
+  <select id="selectNotice" resultMap="noticeMap">
+    select * from NOTICES
+    order by NNO desc
+  </select>
+  
+  <insert id="insert" parameterType="notice">
+    insert into NOTICES(MEMBS_MNO, TITLE, CONTENTS, CRE_DT, VW_CNT, WRITER)
+    values(1, #{title}, #{contents}, #{cre_dt},1,#{writer})
+  </insert>
+  
+  <select id="selectOne" resultMap="noticeMap" parameterType="int">
+    select * from NOTICES
+    where NNO = #{no}
+  </select>
+  
+  <update id="updateViewCount" parameterType="notice">
+    update NOTICES set 
+    VW_CNT = #{vw_cnt}
+    where NNO = #{no}
+  </update>
+  
+  <update id="update" parameterType="notice">
+    update NOTICES set 
+    TITLE = #{title}, 
+    CONTENTS = #{contents} 
+    where NNO = #{no}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    delete from NOTICES 
+    where NNO = #{no}
+  </delete>
+  
+</mapper>

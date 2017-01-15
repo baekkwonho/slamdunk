@@ -14,7 +14,7 @@ $("#newboard_btn").click(function() {
 })
 
 var pageNo = 1;
-var pageLength = 10;
+var pageLength = 9;
 var totalPage = 0;
 
 //Board 게시글 가져오기
@@ -44,7 +44,21 @@ function ajaxBoardList() {
 		};
 		*/
 		
+		
 		var writeList = "";
+		
+		// 공지사항 부분 넣어주기.
+		for (var i = 0; i < 1; i++) {
+			writeList += "<tr class='noticeLink' href='#' data-no="+result.data.noticeList[i].no+">"+
+			"<td>[공지사항]</td>"+
+			"<td>"+result.data.noticeList[i].title+"</td>"+
+			"<td>"+result.data.noticeList[i].writer+"</td>"+
+			"<td>"+result.data.noticeList[i].cre_dt+"</td>"+
+			"<td>"+result.data.noticeList[i].vw_cnt+"</td>" +
+			"<tr>";
+		};
+		
+		
 		for (var i = 0; i < result.data.list.length; i++) {
 			writeList += "<tr class='boardLink' href='#' data-no="+result.data.list[i].no+">"+
 			"<td>"+result.data.list[i].no+"</td>"+
@@ -57,6 +71,10 @@ function ajaxBoardList() {
 		
 		$("tbody").html(writeList);
 		
+		//공지사항 링크
+		$(".noticeLink").click(function(event) {
+			window.location.href = "boardform.html?noticeno=" + $(this).attr("data-no");
+		})
 		
 		// 리스트 링크
 		$(".boardLink").click(function(event) {

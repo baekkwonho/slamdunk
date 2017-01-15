@@ -16,7 +16,7 @@ function ajaxLoadBoard(no) {
 		if (result.state != "success") {
 			alert("조회 실패입니다.");
 			return;
-		};
+		}
 		
 		$.getJSON(serverAddr + "/auth/loginuser.json", function(obj2) {
 			var memberResult = obj2.jsonResult;
@@ -29,7 +29,7 @@ function ajaxLoadBoard(no) {
 				$(".contents_form").append("<p class='view_contents'>"+result.data.contents+"</p>");
 				$("#update_btn, #delete_btn").css("display","none");
 				return;
-			};
+			}
 			
 			//로그인 유저와 작성자가 동일 할 경우
 			$("#title").val(result.data.title);
@@ -123,3 +123,5 @@ function ajaxDeleteBoard(no) {
 $("#cancel_btn").click(function() {
 	window.location.href="board.html";
 });
+
+

@@ -62,18 +62,25 @@
   <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script src="../js/common.js"></script>
 	<script src="../js/boardform.js"></script>
+	<script src="../js/notice.js"></script>
 	
 	<script>
 	
-	if (location.search.startsWith("?")) { // 예) ?no=xxx
-    var no = location.search.split("=")[1];
-    ajaxLoadBoard(no)
-    $("#ok_btn").css("display","none")
-} else {
+	if (location.search.startsWith("?")) {
+		if (location.search.split("?")[1].split("=")[0] == "no") {
+	    var no = location.search.split("=")[1];
+	    ajaxLoadBoard(no)
+	    $("#ok_btn").css("display","none")
+		} else {
+			var noticeno = location.search.split("?")[1].split("=")[1];
+			ajaxLoadNotice(noticeno);
+		  $("#ok_btn").css("display","none")
+		}
+	} else {
 	  loadBoard()
 	  $("#update_btn").css("display","none")
 	  $("#delete_btn").css("display","none")
-}
+  }
 
 	</script>
 	

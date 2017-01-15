@@ -11,33 +11,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import dao.BoardDao;
+import dao.NoticeDao;
 import vo.Board;
 import vo.JsonResult;
 import vo.Member;
+import vo.Notice;
 
 @Controller 
 @RequestMapping("/board/") 
 public class BoardController {
   
   @Autowired BoardDao boardDao;
-  
-/*  
-  @RequestMapping(path="boardlist")
-  public Object boardList() throws Exception{
-    
-    try {
-      List<Board> list = boardDao.selectBoardList();
-      return JsonResult.success(list);
-    } catch (Exception e) {
-      return JsonResult.fail(e.getMessage());
-    }
-  }
-*/
+  @Autowired NoticeDao noticeDao;
 
   @RequestMapping(path="boardlist")
   public Object boardList(
       @RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="10") int length) throws Exception{
+      @RequestParam(defaultValue="9") int length) throws Exception{
     
     try {
       HashMap<String, Object> map = new HashMap<>();
@@ -46,7 +36,10 @@ public class BoardController {
       List<Board> list = boardDao.selectBoardList(map);
       int totalPage = getTotalPage(length);
       
+      List<Notice> noticeList = noticeDao.selectNotice();
+      
       HashMap<String, Object> data = new HashMap<>();
+      data.put("noticeList", noticeList);
       data.put("list", list);
       data.put("totalPage", totalPage);
       data.put("pageNo", pageNo);
@@ -63,9 +56,19 @@ public class BoardController {
     
     try {
       Member member = (Member)session.getAttribute("member");
-      board.setMno(member.getNo());
-      board.setWriter(member.getNickname());
-      boardDao.insert(board);
+      
+      if (member.getNo() == 1) {
+        Notice notice = new Notice();
+        notice.setTitle(board.getTitle());
+        notice.setContents(board.getContents());
+        notice.setCre_dt(board.getCre_dt());
+        notice.setWriter(member.getNickname());
+        noticeDao.insert(notice);
+      } else {
+        board.setMno(member.getNo());
+        board.setWriter(member.getNickname());
+        boardDao.insert(board);
+      }
       return JsonResult.success();
     } catch (Exception e) {
       return JsonResult.fail(e.getMessage());
@@ -92,15 +95,52 @@ public class BoardController {
     }
   }
   
-  @RequestMapping(path="update")
-  public Object updateBoard(Board board) throws Exception {
+  @RequestMapping(path="detailnotice")
+  public Object detailNotice(int noticeno) throws Exception {
     try {
+      Notice notice = noticeDao.selectOne(noticeno);
       
-      if (boardDao.selectOne(board.getNo()) == null) {
-        throw new Exception("해당 게시물이 없습니다!");
+      if (notice == null) 
+        throw new Exception("해당 번호의 게시물이 존재하지 않습니다.");
+      
+      notice.setVw_cnt(notice.getVw_cnt()+1);
+      noticeDao.updateViewCount(notice);
+      
+      notice = noticeDao.selectOne(noticeno);
+      
+      return JsonResult.success(notice);
+      
+    } catch (Exception e) {
+      return JsonResult.fail(e.getMessage());
+    }
+  }
+  
+  
+  
+  
+  @RequestMapping(path="update")
+  public Object updateBoard(HttpSession session, Board board) throws Exception {
+    try {
+      Member member = (Member)session.getAttribute("member");
+      
+      if (member.getNo() == 1) {
+        if (noticeDao.selectOne(board.getNo()) == null) {
+          throw new Exception("해당 게시물이 없습니다.");
+        } else {
+          Notice notice = new Notice();
+          notice.setNo(board.getNo());
+          notice.setTitle(board.getTitle());
+          notice.setContents(board.getContents());
+          noticeDao.update(notice);
+        }
+      } else {
+          if (boardDao.selectOne(board.getNo()) == null) {
+            throw new Exception("해당 게시물이 없습니다!");
+          } else {
+            boardDao.update(board);
+          }
       }
       
-      boardDao.update(board);
       return JsonResult.success();
       
     } catch (Exception e) {
@@ -109,12 +149,25 @@ public class BoardController {
   }
   
   @RequestMapping(path="delete")
-  public Object deleteBoard(int no) throws Exception {
+  public Object deleteBoard(HttpSession session, int no) throws Exception {
     try {
-      if (boardDao.selectOne(no) == null) {
-        throw new Exception("해당 게시물이 없거나 암호가 일치하지 않습니다!");
+      
+      Member member = (Member)session.getAttribute("member");
+      
+      if (member.getNo() == 1) {
+        if (noticeDao.selectOne(no) == null) {
+          throw new Exception("해당 게시물이 없습니다.");
+        } else {
+          noticeDao.delete(no);
+        }
+      } else {
+        if (boardDao.selectOne(no) == null) {
+          throw new Exception("해당 게시물이 없습니다.");
+        } else {
+          boardDao.delete(no);
+        }
       }
-      boardDao.delete(no);
+      
       return JsonResult.success();
       
     } catch (Exception e) {

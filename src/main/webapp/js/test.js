@@ -1,18 +1,20 @@
 $(function() {
 	
-	$("#testinput").attr("data-no",1);
 	
 	
-	/*
 	$.ajax({
-		url : "http://sports.news.naver.com/basketball/news/index.nhn",
+		url : "http://sports.news.naver.com/basketball/news/index.nhn?type=popular",
 		crossOrigin: true,
 		success : function(data) {
-			console.log(data);
+//			$("a").attr("href","http://sports.news.naver.com/basketball/news/read.nhn?oid=486&aid=0000000398");
+			$("a").attr("href","http://sports.news.naver.com"+data.split("aside_news_list")[1].split("li")[1].split('href="')[1].split('"')[0]);
+			//$("body").html("<a href='https://sport.news.naver.com"+data.split("aside_news_list")[1].split("li")[1].split('href="')[1].split('"')[0]+"'>news</a>")
+			console.log(data.split("aside_news_list")[1].split("li")[1].split('"')[1].split('"')[0]);
+			console.log(data.split("aside_news_list")[1].split("li")[1].split("<span>")[1].split("</span>")[0]);
+			var title = data.split("aside_news_list")[1].split("li")[1].split("<span>")[1].split("</span>")[0];
+			var link = data.split("aside_news_list")[1].split("li")[1].split('"')[1].split('"')[0];
 		}
 	})
-	*/
-	
 	
 	
 	
