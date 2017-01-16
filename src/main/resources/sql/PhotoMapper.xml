@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.PhotoDao">
+  <resultMap type="photo" id="photoMap">
+    <id column="PHNO" property="no"/> 
+    <result column="MEMBS_MNO" property="mno"/>
+    <result column="PHOT_PATH" property="photo_path"/>
+  </resultMap>
+  
+  <insert id="insert" parameterType="photo">
+    insert into MEMBS_PHOS(MEMBS_MNO, PHOT_PATH)
+    value("#{mno}", #{photo_path})
+  </insert>
+  
+</mapper>
