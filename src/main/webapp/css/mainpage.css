@@ -155,7 +155,7 @@ img#logoimage{
 	bottom:0px;
 	right:-600px;
 	background:#111;
-	opacity:0.5;
+	
 	transform:skewX(-40deg);
 	transition:all 1s; 
 }
@@ -197,7 +197,7 @@ img#logoimage{
 	left: 140px;
 	color: white;
 }
-.content_box2 p{
+.content_box2  img{
 	position: fixed;
 	top:400px;
 	left: 200px;
