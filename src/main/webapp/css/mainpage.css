@@ -141,7 +141,6 @@ img#logoimage{
 	height: 30px;
 	color: white;
 }
-
 .mypage_btn{
 	background: #2a5769;
 }
@@ -155,75 +154,81 @@ img#logoimage{
 	bottom:0px;
 	right:-600px;
 	background:#111;
-	
 	transform:skewX(-40deg);
 	transition:all 1s; 
+	opacity: 0.8;
 }
-
 .side:hover{
-	right:0px; 
-	opacity:0.5;
+	right:20px; 
+	opacity: 0.8;
 }
-
 .side .con{
 	width:450px;
 	height:100%; 
 	position:absolute;
-	left:150px;
+	left: 150px;
 	bottom:0px;
 	background:#000;
 	box-sizing:border-box;
 	padding:10px;
 	transition:all 1s;
 }
-.content_box1 h3{
+.content_box1 h2{
 	position: fixed;
-	top:200px;
+	top:180px;
 	color: white;
-}
-.content_box1 p{
-	position: fixed;
-	top:250px;
-	left: 140px;
-	width:170px;
-	height: 80px;
-	border: 1px solid white;
+	font-size: 25px;
 	transform:skewX(40deg);
-	display: inline-block;
+}
+.content_box1 h3{
+	cursor: pointer;
+	position: fixed;
+	top:220px;
+	color: white;
+	font-size: 18px;
+	transform:skewX(40deg);
+}
+.content_box2 h2{
+	position: fixed;
+	top:310px;
+	color: white;
+	transform:skewX(40deg);
+	font-size: 25px;
 }
 .content_box2 h3{
 	position: fixed;
 	top:350px;
-	left: 140px;
 	color: white;
+	transform:skewX(40deg);
+	font-size:18px;
 }
 .content_box2  img{
 	position: fixed;
-	top:400px;
-	left: 200px;
-	width:170px;
-	height: 80px;
+	top:410px;
+	left: 180px;
+	width:250px;
+	height: 120px;
 	border: 1px solid white;
 	transform:skewX(40deg);
 	display: inline-block;
+	cursor: pointer;
+}
+.content_box3 h2{
+	position: fixed;
+	top:530px;
+	left: 146px;
+	color: white;
+	font-size: 25px;
+	transform:skewX(40deg);
 }
 .content_box3 h3{
 	position: fixed;
-	top:500px;
-	left: 200px;
+	top:560px;
+	left: 190px;
 	color: white;
-}
-.content_box3 p{
-	position: fixed;
-	top:550px;
-	left: 260px;
-	width:170px;
-	height: 80px;
-	border: 1px solid white;
+	cursor: pointer;
 	transform:skewX(40deg);
-	display: inline-block;
 }
-
 .side:hover .con{
 	left:70px;
 }
@@ -234,7 +239,6 @@ img#logoimage{
 	right:0;
 	color: #ffa500;
 }
-
 /*에니메이션*/
 .btnContents i:nth-child(1) {animation: ani linear 1.5s 0s infinite;}
 .btnContents i:nth-child(2) {animation: ani linear 1.5s 0.5s infinite;}
