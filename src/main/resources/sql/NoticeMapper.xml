@@ -16,6 +16,7 @@
   <select id="selectNotice" resultMap="noticeMap">
     select * from NOTICES
     order by NNO desc
+    limit 1
   </select>
   
   <insert id="insert" parameterType="notice">

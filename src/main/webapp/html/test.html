@@ -6,24 +6,27 @@
 </head>
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
 <style>
-
-
 </style>
 <body>
 
-  <input type="file" name="file" class="file" multiple>
-  <button id="addbtn">add</button>
+  <label>Photo (사진)</label>
+  <img id="uploadImage" src="">
+  <button id="selectFileBtn">파일 선택</button>
+  <input id="fileupload" type="file" name="file" multiple>
+  <h5>newFilename</h5><p id="newFileName"></p>
+  <h5>originFilename</h5><p id="originFileName"></p>
+  
+  <button id="addbtn">Add</button>
+  <button id="defaultbtn">default</button>
   
   <script src="../node_modules/jquery/dist/jquery.min.js"></script>
   <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="../node_modules/jquery.ajax-cross-origin/js/jquery.ajax-cross-origin.min.js"></script>
-  
   <!--blueimp-file-upload 사용시 jquery-ui 필요 -->
   <script src="../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
   <script src="../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
-  
   <script src="../js/common.js"></script>
   <script src="../js/test.js"></script>
+  
   <script>
   </script>
 </body>

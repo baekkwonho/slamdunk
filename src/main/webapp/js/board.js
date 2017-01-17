@@ -29,35 +29,16 @@ function ajaxBoardList() {
 			return;
 		}
 		
-		//리스트 출력
-		
-		/* append 이용 시 페이지가 넘어갈 경우에도 계속해서 리스트를 추가 하게 되어 사용 불가
-		for (var i = 0; i < result.data.list.length; i++) {
-			$("tbody").append(
-					"<tr class='boardLink' href='#' data-no="+result.data.list[i].no+">"+
-					"<td>"+result.data.list[i].no+"</td>"+
-					"<td>"+result.data.list[i].title+"</td>"+
-					"<td>"+result.data.list[i].writer+"</td>"+
-					"<td>"+result.data.list[i].cre_dt+"</td>"+
-					"<td>"+result.data.list[i].vw_cnt+"</td>" +
-					"<tr>");
-		};
-		*/
-		
-		
 		var writeList = "";
 		
 		// 공지사항 부분 넣어주기.
-		for (var i = 0; i < 1; i++) {
-			writeList += "<tr class='noticeLink' href='#' data-no="+result.data.noticeList[i].no+">"+
+			writeList += "<tr class='noticeLink' href='#' data-no="+result.data.noticeList[0].no+">"+
 			"<td>[공지사항]</td>"+
-			"<td>"+result.data.noticeList[i].title+"</td>"+
-			"<td>"+result.data.noticeList[i].writer+"</td>"+
-			"<td>"+result.data.noticeList[i].cre_dt+"</td>"+
-			"<td>"+result.data.noticeList[i].vw_cnt+"</td>" +
+			"<td>"+result.data.noticeList[0].title+"</td>"+
+			"<td>"+result.data.noticeList[0].writer+"</td>"+
+			"<td>"+result.data.noticeList[0].cre_dt+"</td>"+
+			"<td>"+result.data.noticeList[0].vw_cnt+"</td>" +
 			"<tr>";
-		};
-		
 		
 		for (var i = 0; i < result.data.list.length; i++) {
 			writeList += "<tr class='boardLink' href='#' data-no="+result.data.list[i].no+">"+

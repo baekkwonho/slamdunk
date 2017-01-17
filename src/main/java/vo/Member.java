@@ -16,6 +16,7 @@ public class Member implements Serializable {
   float weight;
   String skill;
   boolean tauth;
+  String photo_path;
   
   
   public int getNo() {
@@ -83,6 +84,12 @@ public class Member implements Serializable {
   }
   public void setTauth(boolean tauth) {
     this.tauth = tauth;
+  }
+  public String getPhoto_path() {
+    return photo_path;
+  }
+  public void setPhoto_path(String photo_path) {
+    this.photo_path = photo_path;
   }
   
   

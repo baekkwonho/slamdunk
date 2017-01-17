@@ -5,13 +5,24 @@
 <mapper namespace="dao.PhotoDao">
   <resultMap type="photo" id="photoMap">
     <id column="PHNO" property="no"/> 
-    <result column="MEMBS_MNO" property="mno"/>
+    <result column="MNO" property="mno"/>
     <result column="PHOT_PATH" property="photo_path"/>
   </resultMap>
   
   <insert id="insert" parameterType="photo">
-    insert into MEMBS_PHOS(MEMBS_MNO, PHOT_PATH)
-    value("#{mno}", #{photo_path})
+    insert into MEMBS_PHOS(MNO, PHOT_PATH)
+    value(#{mno}, #{photo_path})
   </insert>
+  
+  <update id="update" parameterType="photo">
+    update MEMBS_PHOS set
+    PHOT_PATH = #{photo_path}
+    where MNO = #{mno}
+  </update>
+  
+  <select id="selectOnePhoto" resultMap="photoMap" parameterType="int">
+    select * from MEMBS_PHOS
+    where MNO = #{mno}
+  </select>
   
 </mapper>
