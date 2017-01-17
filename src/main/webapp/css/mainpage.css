@@ -222,9 +222,10 @@ img#logoimage{
 	transform:skewX(40deg);
 }
 .content_box3 h3{
+	font-size:18px;
 	position: fixed;
-	top:560px;
-	left: 190px;
+	top:570px;
+	left: 195px;
 	color: white;
 	cursor: pointer;
 	transform:skewX(40deg);
