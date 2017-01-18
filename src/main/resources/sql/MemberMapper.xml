@@ -15,6 +15,7 @@
     <result column="WEIGHT" property="weight"/>
     <result column="SKILLS" property="skill"/>
     <result column="TAUTH" property="tauth"/>
+    <result column="PHOT_PATH" property="photo_path"/>
     
   </resultMap>
   

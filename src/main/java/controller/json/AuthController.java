@@ -1,6 +1,7 @@
 package controller.json;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -12,14 +13,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
 
 import dao.MemberDao;
+import dao.PhotoDao;
 import vo.JsonResult;
 import vo.Member;
+import vo.Photo;
 
 @Controller 
 @RequestMapping("/auth/") 
 public class AuthController {
   
   @Autowired MemberDao memberDao;
+  @Autowired PhotoDao photoDao;
   
   @RequestMapping(path="login")
   public Object login(
@@ -54,6 +58,9 @@ public class AuthController {
         
       } else {
         session.setAttribute("member", member);
+        List<Photo> photo = photoDao.selectOnePhoto(member.getNo());
+        member.setPhoto_path(photo.get(0).getPhoto_path());
+        System.out.println(member.getPhoto_path());
         return JsonResult.success(member);
       }
       
@@ -163,8 +170,10 @@ public class AuthController {
       }
       if (member.getPassword() == null) {
         memberDao.update(member);
+        updatePhoto(member);
       } else {
         memberDao.updateAll(member);
+        updatePhoto(member);
       }
       
       return JsonResult.success();
@@ -174,7 +183,37 @@ public class AuthController {
     }
   }
   
-  
+  public void updatePhoto(Member member) throws Exception{
+    try {
+      
+      Photo photo = new Photo();
+      // 1. 처음 등록 하는 경우
+      if (photoDao.selectOnePhoto(member.getNo()) == null) {
+        System.out.println("new photo");
+        photo.setMno(member.getNo());
+        photo.setPhoto_path(member.getPhoto_path());
+        photoDao.insert(photo);
+      }
+      
+      // 3. default Image 인경우
+      if (member.getPhoto_path().equals("default Image")) {
+        System.out.println("default!");
+        photo.setMno(member.getNo());
+        photo.setPhoto_path("");
+        photoDao.update(photo);
+      } else if(member.getPhoto_path().equals("")){
+        
+      } else { // 사진 변경하는 경우
+        System.out.println("change");
+        photo.setMno(member.getNo());
+        photo.setPhoto_path(member.getPhoto_path());
+        photoDao.update(photo);
+      }
+      
+    } catch (Exception e) {
+      e.getMessage();
+    }
+  }
  
   
   
