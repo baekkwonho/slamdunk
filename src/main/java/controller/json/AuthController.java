@@ -59,9 +59,13 @@ public class AuthController {
       } else {
         session.setAttribute("member", member);
         List<Photo> photo = photoDao.selectOnePhoto(member.getNo());
-        member.setPhoto_path(photo.get(0).getPhoto_path());
-        System.out.println(member.getPhoto_path());
-        return JsonResult.success(member);
+        if (photo.size() == 0) {
+          return JsonResult.success(member);
+        } else {
+          member.setPhoto_path(photo.get(0).getPhoto_path());
+          System.out.println(member.getPhoto_path());
+          return JsonResult.success(member);
+        }
       }
       
     } catch (Exception e) {
