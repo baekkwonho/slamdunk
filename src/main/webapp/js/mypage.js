@@ -17,7 +17,32 @@ $(function(){
 		$("#mypage").addClass("nonactive")
 		$('body').stop().animate({scrollTop : '1100'},1500)
 	})
-	
+
+	$(".photoBtn").click(function(){
+		$(".file").click();
+	});
+
+	$(".file").fileupload({
+		url : serverAddr + "/photo/add.json",
+		dataType:"json",
+		add : function(e,data){
+			data.submit();
+		},
+		done: function(e,data){
+			$(".originFileName").text(data.result.originFilename);
+			$(".dataFileName").text(data.result.filename);	
+			$(".left_form img").attr("src","/slamdunk/upload/"+data.result.filename);
+		}
+
+	});
+
+	$(".defaultBtn").click(function(){
+		$(".left_form img").attr("src","/slamdunk/images/bg05.jpg");
+		$(".originFileName").text("");
+		$(".dataFileName").text("default Image");
+	});
+
+
 	$(".commit_btn").click(function(){
 		var gender = true;
 		if(document.querySelector('input[name="gender"]:checked').value==="male"){
@@ -48,7 +73,8 @@ $(function(){
 			height:height,
 			weight:weight,
 			position:position.options[position.selectedIndex].value,
-			skill:document.querySelector(".skill").value
+			skill:document.querySelector(".skill").value,
+			photo_path:document.querySelector(".dataFileName").value
 		}
 		}else{
 			var user = {
@@ -59,7 +85,8 @@ $(function(){
 			height:height,
 			weight:weight,
 			position:position.options[position.selectedIndex].value,
-			skill:document.querySelector(".skill").value
+			skill:document.querySelector(".skill").value,
+			photo_path:document.querySelector(".dataFileName").value
 		}
 		}
 		
