@@ -95,7 +95,6 @@ $(function(){
 	})
 
 	function ajaxCommit(user){
-		console.log(user);
 		$.ajax({
 			url:serverAddr+"/auth/update.json",
 			method:"POST",
@@ -130,6 +129,9 @@ $(function(){
 	 			$(".loginUser_form").toggle();	
 	 		});
 	 		console.log(result);
+	 		if(result.data.photo_path !== ""){
+	 			$(".photo_form img").attr("src","/slamdunk/upload/"+result.data.photo_path);
+	 		}
 	 		$(".nickname strong").text(result.data.nickname);
 	 		$("#id_email").attr("data-no", result.data.no);
 	 		$("#id_email").val(result.data.email);
