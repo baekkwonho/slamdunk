@@ -60,16 +60,15 @@ header li a:hover {
   top:10px;
 }
 .loginUser_form{
-  width:160px;
-  height: 110px;
-  background: #229396;
-  border-radius: 50px 0px 50px 50px;
-  position: absolute;
-  right: 70px;
-  top:60px;
-  line-height: 23px;
-  text-align: center;
-}
+    width: 134px;
+    height: 108px;
+    background: #e09115;
+    position: absolute;
+    right: 7px;
+    top: 70px;
+    line-height: 23px;
+    text-align: center;
+  }
 .loginUser_form span{
   display: inline-block;
   margin-top: 10px;
@@ -84,10 +83,10 @@ header li a:hover {
 }
 
  .mypage_btn{
-  background: #2a5769;
+  background: #91692c;
 }
 .logout_btn{
-  background: #002e40;
+  background: #704c15;
 }
 
  .login_btn{
