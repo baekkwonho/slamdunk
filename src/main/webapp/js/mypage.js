@@ -74,7 +74,7 @@ $(function(){
 			weight:weight,
 			position:position.options[position.selectedIndex].value,
 			skill:document.querySelector(".skill").value,
-			photo_path:document.querySelector(".dataFileName").value
+			photo_path:document.querySelector(".dataFileName").textContent
 		}
 		}else{
 			var user = {
@@ -86,10 +86,9 @@ $(function(){
 			weight:weight,
 			position:position.options[position.selectedIndex].value,
 			skill:document.querySelector(".skill").value,
-			photo_path:document.querySelector(".dataFileName").value
+			photo_path:document.querySelector(".dataFileName").textContent
 		}
 		}
-		
 		console.log(user);
 		ajaxCommit(user);
 		

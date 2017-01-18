@@ -63,7 +63,6 @@ public class AuthController {
           return JsonResult.success(member);
         } else {
           member.setPhoto_path(photo.get(0).getPhoto_path());
-          System.out.println(member.getPhoto_path());
           return JsonResult.success(member);
         }
       }
@@ -189,18 +188,18 @@ public class AuthController {
   
   public void updatePhoto(Member member) throws Exception{
     try {
-      
+      System.out.println("start photo");
+      System.out.println(member.getNo());
+      System.out.println("path"+member.getPhoto_path());
+      System.out.println(photoDao.selectOnePhoto(member.getNo()).size());
       Photo photo = new Photo();
       // 1. 처음 등록 하는 경우
-      if (photoDao.selectOnePhoto(member.getNo()) == null) {
+      if (photoDao.selectOnePhoto(member.getNo()).size() == 0) {
         System.out.println("new photo");
         photo.setMno(member.getNo());
         photo.setPhoto_path(member.getPhoto_path());
         photoDao.insert(photo);
-      }
-      
-      // 3. default Image 인경우
-      if (member.getPhoto_path().equals("default Image")) {
+      }else if (member.getPhoto_path().equals("default Image")) { // 3. default Image 인경우
         System.out.println("default!");
         photo.setMno(member.getNo());
         photo.setPhoto_path("");

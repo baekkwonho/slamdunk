@@ -60,51 +60,6 @@ public class PhotoController {
     return filename.substring(filename.lastIndexOf("."));
   }
   
-  
-  @RequestMapping(path="update")
-  public Object photoUpdate(Member member) throws IOException {
-    try {
-      updatePhoto(member);
-      return JsonResult.success();
-    }catch (Exception e) {
-      return JsonResult.fail();
-    }
-    
-    
-  }
-  
-  public void updatePhoto(Member member) throws Exception{
-    try {
-      
-      Photo photo = new Photo();
-      // 1. 처음 등록 하는 경우
-      if (photoDao.selectOnePhoto(member.getNo()) == null) {
-        System.out.println("new photo");
-        photo.setMno(member.getNo());
-        photo.setPhoto_path(member.getPhoto_path());
-        photoDao.insert(photo);
-      }
-      
-      // 3. default Image 인경우
-      if (member.getPhoto_path().equals("default Image")) {
-        System.out.println("default!");
-        photo.setMno(member.getNo());
-        photo.setPhoto_path("");
-        photoDao.update(photo);
-      } else if(member.getPhoto_path().equals("")){
-        
-      } else { // 사진 변경하는 경우
-        System.out.println("change");
-        photo.setMno(member.getNo());
-        photo.setPhoto_path(member.getPhoto_path());
-        photoDao.update(photo);
-      }
-      
-    } catch (Exception e) {
-      e.getMessage();
-    }
-  }
-  
 }
 
 
