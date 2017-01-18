@@ -68,7 +68,6 @@ public class ScheduleController {
 
       if (document != null) {
         Elements todayGame = document.select("#content tbody");
-        System.out.println(todayGame);
 
         for (int i = 0, k = 0; i < todayGame.size(); i++) {
           Elements element = todayGame.get(i).select("tr");

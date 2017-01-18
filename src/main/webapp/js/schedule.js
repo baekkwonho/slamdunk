@@ -15,8 +15,8 @@ $(document).ready(function () {
 							"<tr>"+
 							"<td class='month_date'>"+result.data[i].date+"</td>" +
 							"<td class='month_hour'>"+result.data[i].hour+"</td>" +
-							"<td class='month_game'><img src='"+result.data[i].leftImg+"'>"+result.data[i].leftTeam+" "+
-							"<span class='month_score'>"+result.data[i].score+"</span> "+result.data[i].rightTeam+"<img src='"+result.data[i].rightImg+"'>"+
+							"<td class='month_game'><img src='"+result.data[i].leftImg+"'class='teamimg'>"+result.data[i].leftTeam+" "+
+							"<span class='month_score'>"+result.data[i].score+"</span> "+result.data[i].rightTeam+"<img src='"+result.data[i].rightImg+"'class='teamimg'>"+
 							"</td>" +
 							"<td class='month_stadium'>"+result.data[i].stadium+"</td>"+"</tr>");
 				} else {
@@ -48,8 +48,8 @@ $(document).ready(function () {
 					"<tr>"+
 					"<td class='month_nba_date'>"+result.data[i].date+"</td>" +
 					"<td class='month_nba_hour'>"+result.data[i].hour+"</td>" +
-					"<td class='month_nba_game'><img src='"+result.data[i].leftImg+"'>"+result.data[i].leftTeam+" "+
-					"<span class='month_nba_score'>"+result.data[i].score+"</span> "+result.data[i].rightTeam+"<img src='"+result.data[i].rightImg+"'>"+
+					"<td class='month_nba_game'><img src='"+result.data[i].leftImg+"'class='teamimg'>"+result.data[i].leftTeam+" "+
+					"<span class='month_nba_score'>"+result.data[i].score+"</span> "+result.data[i].rightTeam+"<img src='"+result.data[i].rightImg+"'class='teamimg'>"+
 					"</td>" +
 					"<td class='month_nba_stadium'>"+result.data[i].stadium+"</td>"+"</tr>");
 					} else {
