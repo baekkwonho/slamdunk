@@ -1,55 +1,55 @@
  *{
-	margin:0;
-	padding:0;
-} 
+margin:0;
+padding:0;
+}
 body{
-	width:100%;
-	height: 100%;
+width:100%;
+height: 100%;
 }
 header{
-	width:100%;
-	height: 70px;
-	background: black;
+width:100%;
+height: 70px;
+background: black;
 }
 header h3 {
-	/* float: left; */
-	color: white;
-	position: absolute;
-	left:100px;
-	top:3px;
-	font-size: 25px;
-	font-family: Brush Script MT;
+/* float: left; */
+color: white;
+position: absolute;
+left:100px;
+top:3px;
+font-size: 25px;
+font-family: Brush Script MT;
 }
 header #logoimage {
-	position:absolute;
-	left: 30px;
-	top: 5px;
-	width:60px;
-	height: 60px;
-	border-radius: 100%;
+position:absolute;
+left: 30px;
+top: 5px;
+width:60px;
+height: 60px;
+border-radius: 100%;
 }
 
 header ul{
-	float: right;
-	position: relative;
-	right: 100px;
+float: right;
+position: relative;
+right: 100px;
 }
 header li  {
-	list-style: none;
-	float: left;
-	padding: 20px 30px 20px 20px;
-	pointer: cursor;
-	text-decoration: none;
+list-style: none;
+float: left;
+padding: 20px 30px 20px 20px;
+pointer: cursor;
+text-decoration: none;
 }
 header li a{
-	color: #ffa500;
-	text-decoration: none;
+color: #ffa500;
+text-decoration: none;
 }
 
 header li a:hover {
-	color: white;
-	text-decoration: none;
-	
+color: white;
+text-decoration: none;
+
 }
 
 #icon{
@@ -99,7 +99,7 @@ header li a:hover {
   width:50px;
   height:30px;
   border:none;
-  
+
 }
 .login_btn a,.signup_btn a{
   color: white;
@@ -111,7 +111,7 @@ header li a:hover {
   padding-top: 5px;
   font-family:play;
   text-decoration: none;
-  
+
 }
 .signup_btn{
   position: absolute;
@@ -124,13 +124,12 @@ header li a:hover {
   border:none;
 }
 
-
 .modal-content {
   position: relative;
   height: 600px;
   width: 405px;
   margin: auto;
-  padding: 10px 10px; 
+  padding: 10px 10px;
   /* background: url('../images/names.jpg') no-repeat center center; */
   background-color: #353535;
   background-size: cover;
@@ -140,7 +139,7 @@ header li a:hover {
   border-bottom: 2px solid #ffa500;
 }
 .nonactive {
-  color: rgba(255, 255, 255, 0.2); 
+  color: rgba(255, 255, 255, 0.2);
 }
 
 h2 {
@@ -240,7 +239,6 @@ label {
   letter-spacing: 3px;
 }
 
-
 hr {
   border: 1px solid rgba(255, 255, 255, 0.1);
   top: 65px;
@@ -259,7 +257,6 @@ hr {
 .pointer {
   cursor: pointer;
 }
-
 
 #confirm_emailbtn {
   position: absolute;
@@ -287,93 +284,55 @@ hr {
   border: none;
 }
 
-
-
-.today_time {
-	width: 100%;
-	height: 100px;
-	background: grey;
-	text-align: center;
-	color: white;
-	font-size: 40px;
-	padding-top: 15px;
-}
-
-.today_kbl_wrap {
-	width: 100%;
-	height: 140px;
-}
-
-.today_kbl_left {
-	border: 1px solid black;
-	width: 330px;
-	height: 120px;
-	display: inline-block;
-	margin: 0 50px 0 100px;
-	text-align: center;
-}
-
-.today_kbl_middle {
-  border: 1px solid black;
-  width: 330px;
-  height: 120px;
-  display: inline-block;
-  margin: 0 50px 0 50px;
+.month_nba_wrap {
+  float: left;
+  width: 550px;
+  margin-left: 100px;
   text-align: center;
 }
 
-.today_kbl_right {
-  border: 1px solid black;
-  width: 330px;
-  height: 120px;
-  display: inline-block;
-  margin: 0 100px 0 50px;
-  text-align: center;
+.nbalogo {
+width: 100px;
+height: 80px;
 }
 
-.kbl_state {
-	color : grey;
-}
-
-.kbl_score {
-	font-size: 30px;
-	color: #4bcca7;
-}
-
-.kbl_team {
-	font-size: 18px;
-	color: #3e433f;
+.nba {
+font-size: 40px;
+font-weight: bold;
+margin-left: -100px;
 }
 
 .month_kbl_wrap {
-	width: 100%;
-	height: 100%;
-	position: relative;
+float: right;
+width: 550px;
+margin-right: 100px;
+text-align: center;
 }
 
-.month_schedule {
-	margin: auto;
-	font-size: 20px;
-	width: 800px;
-	border: 1px solid black;
+.kbllogo {
+width: 80px;
+height: 80px;
 }
 
+.kbl {
+font-size: 40px;
+font-weight : bold;
+}
+
+.month_kbl_schedule {
+width: 100%;
+}
+
+.month_nba_game, .month_game{
+  font-weight: bold;
+}
 th {
-	text-align: center;
-	font-size: 24px;
+text-align: center;
+}
+tr {
+border: 1px solid black;
 }
 
-td {
-	text-align: center;
+.teamimg {
+width: 50px;
 }
-
-.month_date {
-	font-weight: bold;
-}
-
-.month_score {
-	font-weight: bold;
-	font-size: 20px;
-}
-
-
