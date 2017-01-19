@@ -8,7 +8,7 @@ $(function(){
 		$("#teampage").removeClass("active");
 		$("#teampage").addClass("nonactive");
 		$('body').stop().animate({scrollTop : '0'},1500);
-		
+
  	})
 	
 	$("#teampage").click(function(){
@@ -192,24 +192,21 @@ $(function(){
 	});
 
 	$(window).scroll(function(){
-	  // Change this to target a different percentage
-	  var targetPercentage = 70;
-	  //Change this to the ID of the content you are trying to show.
-	  var targetID = "#navigation";
-	  //Window Math
-	  var scrollTo = $(window).scrollTop(),
-	      docHeight = $(document).height(),
-	      windowHeight = $(window).height();
-	      scrollPercent = (scrollTo / (docHeight-windowHeight)) * 100;
-	  //스크롤 표시
-	  $('#percentageCounter h1').text(scrollPercent+"%");
-	  //네비바 보이기
-	  if(scrollPercent > targetPercentage) {
-	    $(targetID).css({ top: '0' });
-	  } else {
-	    $(targetID).css({ top: '-'+$(targetID).height+'px' });
-	  }
-	}).trigger('scroll');
+		console.log($('body').scrollTop());
+		var value = $('body').scrollTop();
+		if(value >= 1100){
+			$("#teampage").addClass("active");
+			$("#teampage").removeClass("nonactive");
+			$("#mypage").removeClass("active");
+			$("#mypage").addClass("nonactive");
+		}else if(value===0){
+			$("#mypage").addClass("active");
+			$("#mypage").removeClass("nonactive");
+			$("#teampage").removeClass("active");
+			$("#teampage").addClass("nonactive");	
+		}
+	});
+	
 
 // 호출부분.
 	ajaxLoginUser();
