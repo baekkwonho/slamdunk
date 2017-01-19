@@ -166,11 +166,14 @@ public class AuthController {
   }
   
   @RequestMapping(path="update")
-  public Object update(Member member) throws Exception {
+  public Object update(Member member,HttpSession session, SessionStatus sessionStatus) throws Exception {
     try {
       if (memberDao.selectOne(member.getNo()) == null) {
         return JsonResult.fail();
       }
+      
+      sessionStatus.setComplete();
+      
       if (member.getPassword() == null) {
         memberDao.update(member);
         updatePhoto(member);
@@ -179,6 +182,12 @@ public class AuthController {
         updatePhoto(member);
       }
       
+      member = memberDao.selectOne(member.getNo());
+      List<Photo> photo = photoDao.selectOnePhoto(member.getNo());
+      if (photo.size() != 0) {
+        member.setPhoto_path(photo.get(0).getPhoto_path());
+      }
+      session.setAttribute("member", member);
       return JsonResult.success();
       
     } catch (Exception e) {
@@ -188,26 +197,18 @@ public class AuthController {
   
   public void updatePhoto(Member member) throws Exception{
     try {
-      System.out.println("start photo");
-      System.out.println(member.getNo());
-      System.out.println("path"+member.getPhoto_path());
-      System.out.println(photoDao.selectOnePhoto(member.getNo()).size());
       Photo photo = new Photo();
       // 1. 처음 등록 하는 경우
       if (photoDao.selectOnePhoto(member.getNo()).size() == 0) {
-        System.out.println("new photo");
         photo.setMno(member.getNo());
         photo.setPhoto_path(member.getPhoto_path());
         photoDao.insert(photo);
       }else if (member.getPhoto_path().equals("default Image")) { // 3. default Image 인경우
-        System.out.println("default!");
         photo.setMno(member.getNo());
         photo.setPhoto_path("");
         photoDao.update(photo);
       } else if(member.getPhoto_path().equals("")){
-        
       } else { // 사진 변경하는 경우
-        System.out.println("change");
         photo.setMno(member.getNo());
         photo.setPhoto_path(member.getPhoto_path());
         photoDao.update(photo);
