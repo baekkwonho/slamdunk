@@ -8,8 +8,6 @@ public class Team implements Serializable {
   int no;
   String teamName;
   String teamDesc;
-  String sido;
-  String gu;
   
   
   public int getNo() {
@@ -30,20 +28,6 @@ public class Team implements Serializable {
   public void setTeamDesc(String teamDesc) {
     this.teamDesc = teamDesc;
   }
-  public String getSido() {
-    return sido;
-  }
-  public void setSido(String sido) {
-    this.sido = sido;
-  }
-  public String getGu() {
-    return gu;
-  }
-  public void setGu(String gu) {
-    this.gu = gu;
-  }
-  
-  
   
   
 }

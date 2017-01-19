@@ -3,6 +3,8 @@ package controller.json;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import dao.MemberDao;
 import dao.TeamDao;
 import vo.JsonResult;
+import vo.Member;
 import vo.Team;
 
 @Controller 
@@ -20,23 +23,26 @@ public class TeamController {
   @Autowired MemberDao memberDao;
   
   @RequestMapping(path="insert")
-  public Object insertTeam(String teamName, String teamDesc, String sido, String gu, int mno) throws Exception {
+  public Object insertTeam(String teamName, String teamDesc, HttpSession session) throws Exception {
     try {
       
       HashMap<String, Object> newTeam = new HashMap<>();
       newTeam.put("teamName", teamName);
       newTeam.put("teamDesc", teamDesc);
-      newTeam.put("sido", sido);
-      newTeam.put("gu", gu);
-      
+      Member member = (Member) session.getAttribute("member");
+      System.out.println(member.getNo());
+      System.out.println(newTeam.get("teamName"));
+      System.out.println(newTeam.get("teamDesc"));
+      System.out.println("insert NewTeam");
       teamDao.insertTeam(newTeam);
-      Team team = teamDao.selectTeamNo(teamName);
+      Team team = teamDao.selectTeam(teamName);
       System.out.println(team.getNo());
-      
+      System.out.println(team.getTeamName());
+      System.out.println(team.getTeamDesc());
       
       HashMap<String, Object> map = new HashMap<>();
       map.put("tno", team.getNo());
-      map.put("no", mno);
+      map.put("no", member.getNo());
       memberDao.updateTeamNo(map);
       
       return JsonResult.success();

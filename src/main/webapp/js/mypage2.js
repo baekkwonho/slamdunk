@@ -191,6 +191,23 @@ $(function(){
 		window.location.reload();
 	});
 
+	
+	$(window).scroll(function() {
+		//console.log($(document).scrollTop());
+		var value = $(document).scrollTop();
+		if (value >= 1100) {
+			$("#teampage").addClass("active")
+			$("#teampage").removeClass("nonactive")
+			$("#mypage").removeClass("active")
+			$("#mypage").addClass("nonactive")
+		} else if (value === 0){
+			$("#mypage").addClass("active")
+			$("#mypage").removeClass("nonactive")
+			$("#teampage").removeClass("active")
+			$("#teampage").addClass("nonactive")
+		}
+		
+	});
 
 
 // 호출부분.

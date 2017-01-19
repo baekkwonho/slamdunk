@@ -7,18 +7,16 @@
     <id column="TNO" property="no"/> 
     <result column="TNAME" property="teamName"/>
     <result column="TDESC" property="teamDesc"/>
-    <result column="SIDO" property="sido"/>
-    <result column="GU" property="gu"/>
     
   </resultMap>
   
   <insert id="insertTeam" parameterType="map">
-    insert into TEAMS (TNAME, TDESC, SIDO, GU)
-    values (#{teamName}, #{teamDesc}, #{sido}, #{gu})
+    insert into TEAMS (TNAME, TDESC)
+    values (#{teamName}, #{teamDesc})
   </insert>
   
-  <select id="selectTeamNo" resultMap="teamMap" parameterType="String">
-    select TNO from TEAMS
+  <select id="selectTeam" resultMap="teamMap" parameterType="String">
+    select * from TEAMS
     where TNAME = #{teamName}
   </select>
   
@@ -30,9 +28,7 @@
   <update id="update" parameterType="team">
     update TEAMS set
     TNAME = #{teamName},
-    TDESC = #{teamDesc},
-    SIDO = #{sido},
-    GU = #{gu}
+    TDESC = #{teamDesc}
     where TNO = #{no}
   </update>
   
