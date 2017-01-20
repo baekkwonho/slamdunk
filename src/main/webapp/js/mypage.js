@@ -192,7 +192,6 @@ $(function(){
 	});
 
 	$(window).scroll(function(){
-		console.log($('body').scrollTop());
 		var value = $('body').scrollTop();
 		if(value >= 1100){
 			$("#teampage").addClass("active");
@@ -207,6 +206,10 @@ $(function(){
 		}
 	});
 	
+	
+	
+	
+	ajaxLoginUser();
 });
 
 	
