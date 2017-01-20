@@ -207,10 +207,6 @@ $(function(){
 		}
 	});
 	
-
-// 호출부분.
-	ajaxLoginUser();
-
 });
 
 	
