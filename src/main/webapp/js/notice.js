@@ -7,6 +7,7 @@ function ajaxLoadNotice(noticeno) {
 			return;
 		}
 		
+		// 게시글 작성자와 유저가 다를 경우
 		$.getJSON(serverAddr + "/auth/loginuser.json", function(obj2) {
 			var memberResult = obj2.jsonResult;
 			if (memberResult.state !== "success" || memberResult.data.nickname !== result.data.writer) {

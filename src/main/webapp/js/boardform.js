@@ -98,11 +98,6 @@ function ajaxUpdateBoard(board) {
 //delete 버튼 눌었을 때
 
 $("#delete_btn").click(function() {
-	/*
-	var no = {
-			no : location.search.split("=")[1]
-	};
-	*/
 	var no = location.search.split("=")[1];
 	ajaxDeleteBoard(no);
 });
