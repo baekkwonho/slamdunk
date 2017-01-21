@@ -61,10 +61,7 @@ $('#signup_btn').click(function(){
 		alert('이메일을 입력해주세요.');
 		return;
 	}
-	// if($('#new_email').val().split("@").length===1 || $('#new_email').val().split('@').length>2 || $('#new_email').val().split('@')[1].split('.').length===1 || $('#new_email').val().split('@')[1].split('.').length>2){
-	// 	alert('이메일 양식이 아닙니다.');
-	// 	return;
-	// }	
+
 	//signup을 눌렀을때 중복확인을 안했을 경우.
 	if(check === false){
 		alert('이메일을 중복확인 하세요.');
@@ -117,10 +114,13 @@ function ajaxSignup(user){
 
 //이메일 중복확인 버튼을 눌렀을 경우
 $('#confirm_emailbtn').click(function(){
+	if($('#new_email').val().split("@").length===1 || $('#new_email').val().split('@').length>2 || $('#new_email').val().split('@')[1].split('.').length===1 || $('#new_email').val().split('@')[1].split('.').length>2 || $("#new_email").val()=== ""){
+	alert('이메일 양식이 아닙니다.');
+	return;
+	 }	
 	var confirm_email={
 		email : $('#new_email').val()
 	}
-
 	ajaxConfirmEmail(confirm_email);
 
 })
@@ -270,9 +270,11 @@ function ajaxLoginUser(){
 	})
 };
 
+
+// <!--save email-->
 //쿠키를 이용해서 로그인 정보가 있는지 확인
 function init() {
-	var cookieMap = cookieToObject()
+	var cookieMap = cookieToObject();
 	
 	if ("email" in cookieMap) { // cookieMap 객체에 email 이라는 이름의 프로퍼티가 있는가?
 		$("#email").val(cookieMap["email"])
