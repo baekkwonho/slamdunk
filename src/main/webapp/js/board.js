@@ -22,7 +22,7 @@ var totalPage = 0;
 function ajaxBoardList() {
 	$.getJSON(serverAddr +"/board/boardlist.json", {
 		"pageNo" : pageNo,
-		"lenth" : pageLength
+		"length" : pageLength
 	}, function(obj) {
 		var result = obj.jsonResult
 		if (result.state !== "success") {
@@ -39,7 +39,7 @@ function ajaxBoardList() {
 			"<td>"+result.data.noticeList[0].writer+"</td>"+
 			"<td>"+result.data.noticeList[0].cre_dt+"</td>"+
 			"<td>"+result.data.noticeList[0].vw_cnt+"</td>" +
-			"<tr>";
+			"</tr>";
 		
 		// 게시판 부분 추가하기.
 		for (var i = 0; i < result.data.list.length; i++) {
@@ -49,7 +49,7 @@ function ajaxBoardList() {
 			"<td>"+result.data.list[i].writer+"</td>"+
 			"<td>"+result.data.list[i].cre_dt+"</td>"+
 			"<td>"+result.data.list[i].vw_cnt+"</td>" +
-			"<tr>";
+			"</tr>";
 		};
 		
 		// 공지사항과 게시판 부분 한꺼번에 tbody에 넣어주기.
