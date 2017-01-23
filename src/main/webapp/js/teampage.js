@@ -18,14 +18,14 @@ $(".resister_btn").click(function(){
 		teamDesc : document.querySelector("#memo_area").value
 	}
 	console.log(team);
-
+	ajaxInserTeam(team);
 
 });
 
 //서버에 요청하기.
 	function ajaxInserTeam(team){
 		$.ajax({
-			url : serverAdd+"/team/insert.json",
+			url : serverAddr+"/team/insert.json",
 			method : "POST",
 			dataType : "json",
 			data : team,
@@ -37,6 +37,7 @@ $(".resister_btn").click(function(){
 					return;
 				}
 				window.location.reload();
+				//함수 호출 후
 				console.log("aaaa");
 			}
 		})
