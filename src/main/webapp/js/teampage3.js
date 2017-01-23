@@ -18,7 +18,7 @@ $(function(){
 	}
 	
 	var team = {
-		teamName : "slamdunk2",
+		teamName : "slamdunk",
 		teamDesc : "slamdunk2입니다."
 	}
 	
@@ -40,12 +40,11 @@ $(function(){
 	}
 	
 	console.log(team);
-	
-	
-	
+	console.log("aa");
 	
 	ajaxInsertTeam(team);
 	
-	ajaxTeamList();
+	
+	
 	
 })

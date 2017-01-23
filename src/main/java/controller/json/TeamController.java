@@ -34,8 +34,14 @@ public class TeamController {
       System.out.println(newTeam.get("teamName"));
       System.out.println(newTeam.get("teamDesc"));
       System.out.println("insert NewTeam");
-      teamDao.insertTeam(newTeam);
+      
       Team team = teamDao.selectTeam(teamName);
+      if (team != null) {
+        return JsonResult.fail();
+      }
+      
+      teamDao.insertTeam(newTeam);
+      team = teamDao.selectTeam(teamName);
       System.out.println(team.getNo());
       System.out.println(team.getTeamName());
       System.out.println(team.getTeamDesc());
