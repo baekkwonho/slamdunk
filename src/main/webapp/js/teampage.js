@@ -77,6 +77,8 @@ $(".teamdefaultBtn").click(function(){
 				if(result.data === null){
 					$(".update_btn").hide();
 					$(".delete_btn").hide();
+					$(".members1").hide();
+					$(".members2").hide();
 				}else{
 					if (result.data.tphoto_path !== null && result.data.tphoto_path !== "") {
 	 				$("article img").attr("src","/slamdunk/upload/"+result.data.tphoto_path);
@@ -85,6 +87,8 @@ $(".teamdefaultBtn").click(function(){
 					$(".teamname").css("display","none");
 					$(".tname").text(result.data.teamName);
 					$("#memo_area").text(result.data.teamDesc);
+					$(".team_members1").hide();
+					$(".team_members2").hide();
 				}
 			}
 		})

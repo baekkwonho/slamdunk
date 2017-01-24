@@ -369,3 +369,36 @@ position: absolute;
 	opacity:0.7;
 	transition: all 1s;
 }
+.team_members1,.team_members2{
+	color: white;
+	display: inline-block;
+	position: relative;
+	left: 220px;
+}
+.team_member1,.team_member2,.team_member3,.team_member4{
+	width:250px;
+	height: 300px;
+	background: gray;
+	margin:25px;
+	float: left;
+	text-align: center;
+	}
+.team_member_p{
+	width:100px;
+	height: 100px;
+	border:1px solid black;
+	margin:10px auto;
+}
+.teams{
+	width:150px;
+	height:100px;
+	border:1px solid black;
+	margin:10px auto;
+	overflow: scroll;
+	text-overflow: ellipsis;
+}
+.team_members1 h3{
+	position: relative;
+	top:10px;
+	left: 20px;
+}
