@@ -32,14 +32,10 @@ public class TeamController {
   @RequestMapping(path="insert")
   public Object insertTeam(String teamName, String teamDesc, String tphoto_path, HttpSession session, SessionStatus sessionStatus) throws Exception {
     try {
-      System.out.println(tphoto_path);
       HashMap<String, Object> newTeam = new HashMap<>();
       newTeam.put("teamName", teamName);
       newTeam.put("teamDesc", teamDesc);
       Member member = (Member) session.getAttribute("member");
-      System.out.println(member.getNo());
-      System.out.println(newTeam.get("teamName"));
-      System.out.println(newTeam.get("teamDesc"));
       
       Team team = teamDao.selectTeam(teamName);
       if (team != null) {
@@ -52,22 +48,16 @@ public class TeamController {
         updateTeamPhoto(team);
       }
       
-      
       List<TeamPhoto> teamPhoto = teamPhotoDao.selectOnePhoto(team.getNo());
       if (teamPhoto.size() != 0) {
         team.setTphoto_path(teamPhoto.get(0).getTphoto_path());
       }
-      
-      System.out.println(team.getNo());
-      System.out.println(team.getTeamName());
-      System.out.println(team.getTeamDesc());
       
       HashMap<String, Object> map = new HashMap<>();
       map.put("tno", team.getNo());
       map.put("no", member.getNo());
       memberDao.updateTeamNo(map);
       
-      System.out.println(memberDao.countTno(team.getNo()));
       if (memberDao.countTno(team.getNo()) == 1) {
         memberDao.updateTauth(member.getNo());
       }
@@ -83,6 +73,36 @@ public class TeamController {
       return JsonResult.success();
     } catch(Exception e) {
       e.printStackTrace();
+      return JsonResult.error(e.getMessage());
+    }
+  }
+  
+  
+  @RequestMapping(path="update")
+  public Object teamUpdate(String teamDesc, String tphoto_path, HttpSession session) throws Exception {
+    try {
+      
+      Member member = (Member) session.getAttribute("member");
+      
+      HashMap<String, Object> map = new HashMap<>();
+      map.put("no", member.getTno());
+      map.put("teamDesc", teamDesc);
+      
+      teamDao.update(map);
+      Team team = teamDao.selectOne(member.getTno());
+      team.setTphoto_path(tphoto_path);
+      
+      if (tphoto_path != "") {
+        updateTeamPhoto(team);
+      }
+      
+      List<TeamPhoto> teamPhoto = teamPhotoDao.selectOnePhoto(team.getNo());
+      if (teamPhoto.size() != 0) {
+        team.setTphoto_path(teamPhoto.get(0).getTphoto_path());
+      }
+      
+      return JsonResult.success();
+    } catch (Exception e) {
       return JsonResult.error(e.getMessage());
     }
   }
@@ -108,19 +128,14 @@ public class TeamController {
         return JsonResult.fail();
       }
       
-      System.out.println(member.getTno());
       if (member.getTno() == 0) {
         return JsonResult.success();
       }
       Team team = teamDao.selectOne(member.getTno());
-      System.out.println(team.getNo());
-      System.out.println(team.getTeamName());
-      System.out.println(team.getTeamDesc());
       List<TeamPhoto> teamPhoto = teamPhotoDao.selectOnePhoto(team.getNo());
       
       if (teamPhoto.size() != 0) {
         team.setTphoto_path(teamPhoto.get(0).getTphoto_path());
-        System.out.println(team.getTphoto_path());
       }
       
       return JsonResult.success(team);

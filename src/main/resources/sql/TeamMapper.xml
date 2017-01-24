@@ -25,9 +25,8 @@
     where TNO=#{no}
   </select>
   
-  <update id="update" parameterType="team">
+  <update id="update" parameterType="map">
     update TEAMS set
-    TNAME = #{teamName},
     TDESC = #{teamDesc}
     where TNO = #{no}
   </update>

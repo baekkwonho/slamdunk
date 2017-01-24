@@ -10,7 +10,7 @@ public interface TeamDao {
   int insertTeam(Map<String,Object> paramMap) throws Exception;
   Team selectOne(int no) throws Exception;
   Team selectTeam(String teamName) throws Exception;
-  int update(Team team) throws Exception; //update
+  int update(Map<String,Object> paramMap) throws Exception; //update
   List<Team> selectTeamList() throws Exception;
   
   

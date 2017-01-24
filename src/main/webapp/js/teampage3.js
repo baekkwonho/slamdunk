@@ -1,21 +1,6 @@
 
 $(function(){
 
-	function ajaxTeamList(){
-		$.ajax({
-			url:serverAddr+"/team/teamlist.json",
-			method:"GET",
-			dataType:"json",
-			success:function(obj){
-				var result = obj.jsonResult;
-				if(result.state !== "success"){
-					alert("변경이 실패되었습니다.");
-					return;
-				}
-				console.log(result);
-			}
-		})
-	}
 	// 사진버튼처리
 	$(".teamphotoBtn").click(function(){
 		$(".teamfile").click();
@@ -110,6 +95,40 @@ $(function(){
 			
 		})
 	}
+	
+	function ajaxTeamList(){
+		$.ajax({
+			url:serverAddr+"/team/teamlist.json",
+			method:"GET",
+			dataType:"json",
+			success:function(obj){
+				var result = obj.jsonResult;
+				if(result.state !== "success"){
+					alert("변경이 실패되었습니다.");
+					return;
+				}
+				console.log(result);
+			}
+		})
+	}
+	
+	function ajaxTeamUpdate(team){
+		$.ajax({
+			url : serverAddr + "/team/update.json",
+			method : "POST",
+			data : team,
+			dataType : "json",
+			success : function(obj) {
+				var result = obj.jsonResult;
+				if (result.state !== "success") {
+					alert("변경 실패");
+					return;
+				}
+				console.log(result);
+				
+			}
+		})
+	}
 
 	
 	$(".update_btn").click(function(){
@@ -118,21 +137,17 @@ $(function(){
 				tphoto_path : document.querySelector(".teamdataFileName").textContent
 		}
 		console.log(team);
+		ajaxTeamUpdate(team);
 	})
 
 	
-
-
-
-
-
 	
 	
 	
 	console.log("myteam")
 	ajaxMyTeam();
 
-
+	ajaxTeamList();
 
 
 
