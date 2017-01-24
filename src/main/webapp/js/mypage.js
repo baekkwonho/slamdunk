@@ -18,7 +18,7 @@ $(function(){
 		$("#mypage").addClass("nonactive");
 		$('body').stop().animate({scrollTop : '1100'},1500);
 	})
-
+	//사진 부분
 	$(".photoBtn").click(function(){
 		$(".file").click();
 	});
