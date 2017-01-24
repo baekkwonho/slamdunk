@@ -90,6 +90,30 @@ $(".teamdefaultBtn").click(function(){
 		})
 	}
 
+	$(".update_btn").click(function(){
+		var teaminfo = {
+			tphoto_path : document.querySelector('.teamdataFileName').textContent,
+			teamDesc : document.querySelector("#memo_area").value
+		}
+		ajaxTeamUpdate(teaminfo);
+	});
+
+	function ajaxTeamUpdate(team){
+		$.ajax({
+		url : serverAddr+"/team/update.json",
+		method : "POST",
+		dataType : "json",
+		data : team,
+		success : function(obj){
+			var result = obj.jsonResult;
+			if(result.state !== "success"){
+				alert("수정이 실패했습니다");
+				return;
+			}
+			window.location.reload();
+		}
+	})
+	}
 
 
 
