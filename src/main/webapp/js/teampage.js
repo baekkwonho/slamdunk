@@ -62,6 +62,33 @@ $(".teamdefaultBtn").click(function(){
 		})
 
 	}
+	function ajaxteamLoginUser(){
+		$.ajax({
+			url : serverAddr+"/team/myteam.json",
+			method : "GET",
+			dataType : "json",
+			success : function(obj){
+				var result = obj.jsonResult;
+				if(result.state !== "success"){
+					alert("팀 조회를 실패했습니다.");
+					return;
+				}
+				console.log(result);
+				if(result.data === null){
+					$(".update_btn").hide();
+					$(".delete_btn").hide();
+				}else{
+					if (result.data.tphoto_path !== null && result.data.tphoto_path !== "") {
+	 				$("article img").attr("src","/slamdunk/upload/"+result.data.tphoto_path);
+	 				$(".resister_btn").hide();
+	 				}
+					$(".teamname").css("display","none");
+					$(".tname").text(result.data.teamName);
+					$("#memo_area").text(result.data.teamDesc);
+				}
+			}
+		})
+	}
 
 
 
@@ -71,7 +98,6 @@ $(".teamdefaultBtn").click(function(){
 
 
 
-
-
+ajaxteamLoginUser();
 
 });

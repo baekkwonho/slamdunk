@@ -243,6 +243,9 @@ margin-top: 15px;
 	display: inline-block;
 	border-radius: 100%;
 }
+article{
+	position: relative;
+}
 .teampage article{
 	width:1150px;
 	height: 250px;
@@ -260,8 +263,8 @@ margin-top: 15px;
 	display: none;
 }
 .teamname{
-    position: relative;
-    top: -165px;
+      position: absolute;
+    top: 43px;
     left: 419px;
 }
 #team_name{
@@ -281,13 +284,36 @@ margin-top: 15px;
 }
 .teamphotoBtn{
     position: absolute;
-    bottom: 12px;
-    left: 250px;
+    bottom: 40px;
+    left: 278px;
 }
 .teamdefaultBtn{
     position: absolute;
-    left: 285px;
+    left: 315px;
+    bottom: 40px;
+}
+.teamdataFileName{
+	display: none;
+}
+.tname{
+    position: absolute;
+    left: 420px;
+    top: 38px;
+}
+.update_btn{
+    position: absolute;
+    right: 63px;
     bottom: 12px;
+}
+.delete_btn{
+    position: absolute;
+    right: 11px;
+    bottom: 12px;
+}
+.teamoriginFileName{
+position: absolute;
+    left: 106px;
+    bottom: 4px;
 }
 .teampage article p.team{
 	top:30px;
@@ -342,7 +368,4 @@ margin-top: 15px;
 	background: gray;
 	opacity:0.7;
 	transition: all 1s;
-}
-.teamdataFileName{
-	display: none;
 }
