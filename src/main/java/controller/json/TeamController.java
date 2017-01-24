@@ -8,12 +8,17 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.support.SessionStatus;
 
 import dao.MemberDao;
+import dao.PhotoDao;
 import dao.TeamDao;
+import dao.TeamPhotoDao;
 import vo.JsonResult;
 import vo.Member;
+import vo.Photo;
 import vo.Team;
+import vo.TeamPhoto;
 
 @Controller 
 @RequestMapping("/team/") 
@@ -21,11 +26,13 @@ public class TeamController {
   
   @Autowired TeamDao teamDao;
   @Autowired MemberDao memberDao;
+  @Autowired TeamPhotoDao teamPhotoDao;
+  @Autowired PhotoDao photoDao;
   
   @RequestMapping(path="insert")
-  public Object insertTeam(String teamName, String teamDesc, HttpSession session) throws Exception {
+  public Object insertTeam(String teamName, String teamDesc, String tphoto_path, HttpSession session, SessionStatus sessionStatus) throws Exception {
     try {
-      
+      System.out.println(tphoto_path);
       HashMap<String, Object> newTeam = new HashMap<>();
       newTeam.put("teamName", teamName);
       newTeam.put("teamDesc", teamDesc);
@@ -33,15 +40,24 @@ public class TeamController {
       System.out.println(member.getNo());
       System.out.println(newTeam.get("teamName"));
       System.out.println(newTeam.get("teamDesc"));
-      System.out.println("insert NewTeam");
       
       Team team = teamDao.selectTeam(teamName);
       if (team != null) {
         return JsonResult.fail();
       }
-      
       teamDao.insertTeam(newTeam);
       team = teamDao.selectTeam(teamName);
+      if (tphoto_path != "") {
+        team.setTphoto_path(tphoto_path);
+        updateTeamPhoto(team);
+      }
+      
+      
+      List<TeamPhoto> teamPhoto = teamPhotoDao.selectOnePhoto(team.getNo());
+      if (teamPhoto.size() != 0) {
+        team.setTphoto_path(teamPhoto.get(0).getTphoto_path());
+      }
+      
       System.out.println(team.getNo());
       System.out.println(team.getTeamName());
       System.out.println(team.getTeamDesc());
@@ -50,6 +66,19 @@ public class TeamController {
       map.put("tno", team.getNo());
       map.put("no", member.getNo());
       memberDao.updateTeamNo(map);
+      
+      System.out.println(memberDao.countTno(team.getNo()));
+      if (memberDao.countTno(team.getNo()) == 1) {
+        memberDao.updateTauth(member.getNo());
+      }
+      
+      sessionStatus.setComplete();
+      member = memberDao.selectOne(member.getNo());
+      List<Photo> photo = photoDao.selectOnePhoto(member.getNo());
+      if (photo.size() != 0) {
+        member.setPhoto_path(photo.get(0).getPhoto_path());
+      }
+      session.setAttribute("member", member);
       
       return JsonResult.success();
     } catch(Exception e) {
@@ -71,7 +100,62 @@ public class TeamController {
     }
   }
   
+  @RequestMapping(path="myteam")
+  public Object myTeam(HttpSession session) throws Exception {
+    try {
+      Member member = (Member)session.getAttribute("member");
+      if (member == null) {
+        return JsonResult.fail();
+      }
+      
+      System.out.println(member.getTno());
+      if (member.getTno() == 0) {
+        return JsonResult.success();
+      }
+      Team team = teamDao.selectOne(member.getTno());
+      System.out.println(team.getNo());
+      System.out.println(team.getTeamName());
+      System.out.println(team.getTeamDesc());
+      List<TeamPhoto> teamPhoto = teamPhotoDao.selectOnePhoto(team.getNo());
+      
+      if (teamPhoto.size() != 0) {
+        team.setTphoto_path(teamPhoto.get(0).getTphoto_path());
+        System.out.println(team.getTphoto_path());
+      }
+      
+      return JsonResult.success(team);
+    } catch (Exception e) {
+      return JsonResult.error(e.getMessage());
+    }
+  }
   
+  
+  
+  
+  
+  
+  public void updateTeamPhoto(Team team) throws Exception{
+    try {
+      TeamPhoto teamPhoto = new TeamPhoto();
+      // 1. 처음 등록 하는 경우
+      if (teamPhotoDao.selectOnePhoto(team.getNo()).size() == 0) {
+        teamPhoto.setTno(team.getNo());
+        teamPhoto.setTphoto_path(team.getTphoto_path());
+        teamPhotoDao.insert(teamPhoto);
+      }else if (team.getTphoto_path().equals("default Image")) { // 3. default Image 인경우
+        teamPhoto.setTno(team.getNo());
+        teamPhoto.setTphoto_path("");
+        teamPhotoDao.update(teamPhoto);
+      } else { // 사진 변경하는 경우
+        teamPhoto.setTno(team.getNo());
+        teamPhoto.setTphoto_path(team.getTphoto_path());
+        teamPhotoDao.update(teamPhoto);
+      }
+      
+    } catch (Exception e) {
+      e.getMessage();
+    }
+  }
   
   
   

@@ -2,14 +2,12 @@ package vo;
 
 import java.io.Serializable;
 
-public class Team implements Serializable {
+public class TeamPhoto implements Serializable {
   private static final long serialVersionUID = 1L;
 
   int no;
-  String teamName;
-  String teamDesc;
+  int tno;
   String tphoto_path;
-  
   
   public int getNo() {
     return no;
@@ -17,17 +15,11 @@ public class Team implements Serializable {
   public void setNo(int no) {
     this.no = no;
   }
-  public String getTeamName() {
-    return teamName;
+  public int getTno() {
+    return tno;
   }
-  public void setTeamName(String teamName) {
-    this.teamName = teamName;
-  }
-  public String getTeamDesc() {
-    return teamDesc;
-  }
-  public void setTeamDesc(String teamDesc) {
-    this.teamDesc = teamDesc;
+  public void setTno(int tno) {
+    this.tno = tno;
   }
   public String getTphoto_path() {
     return tphoto_path;
@@ -35,7 +27,6 @@ public class Team implements Serializable {
   public void setTphoto_path(String tphoto_path) {
     this.tphoto_path = tphoto_path;
   }
-  
   
   
   

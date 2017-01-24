@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.TeamPhotoDao">
+  <resultMap type="teamphoto" id="teamphotoMap">
+    <id column="TPHNO" property="no"/> 
+    <result column="TNO" property="tno"/>
+    <result column="TPHOT_PATH" property="tphoto_path"/>
+  </resultMap>
+  
+  <insert id="insert" parameterType="teamphoto">
+    insert into TEAMS_PHOS(TNO, TPHOT_PATH)
+    value(#{tno}, #{tphoto_path})
+  </insert>
+  
+  <update id="update" parameterType="teamphoto">
+    update TEAMS_PHOS set
+    TPHOT_PATH = #{tphoto_path}
+    where TNO = #{tno}
+  </update>
+  
+  <select id="selectOnePhoto" resultMap="teamphotoMap" parameterType="int">
+    select * from TEAMS_PHOS
+    where TNO = #{tno}
+  </select>
+  
+</mapper>

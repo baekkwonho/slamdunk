@@ -15,6 +15,7 @@ public interface MemberDao {
   int updateAll(Member member) throws Exception; // update 비밀번호 있는 경우
   
   int updateTeamNo(Map<String,Object> paramMap) throws Exception; 
-  
+  int countTno(int tno) throws Exception;
+  int updateTauth(int no) throws Exception;
   
 }

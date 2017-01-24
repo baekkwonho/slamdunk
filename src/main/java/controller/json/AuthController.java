@@ -176,9 +176,11 @@ public class AuthController {
       
       if (member.getPassword() == null) {
         memberDao.update(member);
-        updatePhoto(member);
       } else {
         memberDao.updateAll(member);
+      }
+      
+      if (member.getPhoto_path() != "") {
         updatePhoto(member);
       }
       
@@ -207,7 +209,6 @@ public class AuthController {
         photo.setMno(member.getNo());
         photo.setPhoto_path("");
         photoDao.update(photo);
-      } else if(member.getPhoto_path().equals("")){
       } else { // 사진 변경하는 경우
         photo.setMno(member.getNo());
         photo.setPhoto_path(member.getPhoto_path());

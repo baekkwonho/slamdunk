@@ -15,7 +15,6 @@
     <result column="WEIGHT" property="weight"/>
     <result column="SKILLS" property="skill"/>
     <result column="TAUTH" property="tauth"/>
-    <result column="PHOT_PATH" property="photo_path"/>
     
   </resultMap>
   
@@ -73,7 +72,13 @@
     where MNO = #{no}
   </update>
   
-  <update id="updateTauth" parameterType="map">
+  <select id="countTno" resultType="int" parameterType="int">
+    select count(*)
+    from MEMBS
+    where TNO = #{no}
+  </select>
+  
+  <update id="updateTauth" parameterType="int">
     update MEMBS set
     TAUTH = 1
     where MNO = #{no}
