@@ -25,4 +25,9 @@
     where MNO = #{mno}
   </select>
   
+  <select id="selectOnePhotoPath" resultType="string" parameterType="int">
+    select PHOT_PATH from MEMBS_PHOS
+    where MNO = #{mno}
+  </select>
+  
 </mapper>

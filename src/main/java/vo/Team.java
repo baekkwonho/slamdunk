@@ -9,6 +9,7 @@ public class Team implements Serializable {
   String teamName;
   String teamDesc;
   String tphoto_path;
+  int count;
   
   
   public int getNo() {
@@ -34,6 +35,12 @@ public class Team implements Serializable {
   }
   public void setTphoto_path(String tphoto_path) {
     this.tphoto_path = tphoto_path;
+  }
+  public int getCount() {
+    return count;
+  }
+  public void setCount(int count) {
+    this.count = count;
   }
   
   

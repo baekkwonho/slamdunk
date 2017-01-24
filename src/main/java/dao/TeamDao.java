@@ -12,6 +12,6 @@ public interface TeamDao {
   Team selectTeam(String teamName) throws Exception;
   int update(Map<String,Object> paramMap) throws Exception; //update
   List<Team> selectTeamList() throws Exception;
-  
+  int selectCount(int no) throws Exception;
   
 }

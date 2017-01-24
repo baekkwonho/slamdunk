@@ -38,6 +38,11 @@
     where MNO=#{no}
   </select>
   
+  <select id="selectTeamMember" resultMap="memberMap" parameterType="int">
+    select * from MEMBS
+    where TNO = #{tno}
+  </select>
+  
   <insert id="insertMember" parameterType="map">
 		insert into MEMBS (EMAIL, PWD, MNAME, TAUTH)
     values (#{email}, password(#{password}), #{nickname}, 0)
@@ -75,7 +80,7 @@
   <select id="countTno" resultType="int" parameterType="int">
     select count(*)
     from MEMBS
-    where TNO = #{no}
+    where TNO = #{tno}
   </select>
   
   <update id="updateTauth" parameterType="int">

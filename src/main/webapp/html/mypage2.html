@@ -115,14 +115,16 @@
       <button type = "button" class="teamphotoBtn">첨부</button>
       <button type = "button" class="teamdefaultBtn">삭제</button>
       <button type ="button" class="resister_btn">팀 등록</button>
-      <button type ="button" class="update_btn">수정</button>
-      <img src="../images/teamimg.jpg" alt="프로필 사진" class="teamPhoto">
+      <button type ="button" class="update_btn">팀 수정</button>
+      <button type ="button" class="delete_btn">팀 탈퇴</button>
+      <img src="../images/teamimg.jpg" alt="프로필 사진" >
       <input type="file" name="file" class="teamfile">
       <p class="teamoriginFileName"></p>
       <p class="teamdataFileName"></p>
-      <p id="team_name">Team name</p>
+      <p id="team_name">Team name:</p>
+      <p class="tname"></p>
       <input type="text" class="teamname">
-      <p id="team_intro">Team Introduce</p>
+      <p id="team_intro">Team Introduce:</p>
       <textarea name="memo" id="memo_area" cols="60" rows="10"" placeholder="**간단한 팀소개와 재미있는 매칭이 되기위해 한마디 해주세요.**"></textarea>
     </article>
   </section>
@@ -175,6 +177,7 @@
 </div>  
 </main>
 </div>
+
 <script src='../node_modules/jquery/dist/jquery.min.js'></script>
 <script src="../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
   <script src="../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>

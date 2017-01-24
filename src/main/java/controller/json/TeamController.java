@@ -112,6 +112,9 @@ public class TeamController {
     try {
       
       List<Team> list = teamDao.selectTeamList();
+      for (int i = 0; i < list.size(); i++) {
+        list.get(i).setCount(memberDao.countTno(list.get(i).getNo()));
+      }
       
       return JsonResult.success(list);
     }catch (Exception e) {
@@ -119,6 +122,26 @@ public class TeamController {
       return JsonResult.error(e.getMessage());
     }
   }
+  
+  @RequestMapping(path="teammemberlist")
+  public Object teamMemberList(int no) throws Exception {
+    try {
+      System.out.println(no);
+      List<Member> list = memberDao.selectTeamMember(no);
+      
+      for (int i = 0; i < list.size(); i++) {
+        list.get(i).setPhoto_path(photoDao.selectOnePhotoPath(list.get(i).getNo()));
+      }
+      
+      return JsonResult.success(list);
+    } catch (Exception e) {
+      return JsonResult.error(e.getMessage());
+    }
+  }
+  
+  
+  
+  
   
   @RequestMapping(path="myteam")
   public Object myTeam(HttpSession session) throws Exception {
