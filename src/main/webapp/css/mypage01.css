@@ -386,10 +386,7 @@ position: absolute;
     float: left;
 }
 .team_member_p{
-	width:100px;
-	height: 100px;
-	border:1px solid black;
-	margin:10px auto;
+	
 }
 .teams{
 	width:150px;
@@ -415,4 +412,12 @@ position: absolute;
 .curr_num{
 	color:yellow;
 	font-size: 20px;
+}
+.tauth{
+    position: absolute;
+    left: 418px;
+    top: 69px;
+}
+.team_member span{
+	    line-height: 60px;
 }

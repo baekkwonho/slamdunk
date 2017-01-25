@@ -80,7 +80,7 @@ $(".teamdefaultBtn").click(function(){
 					$(".members1").hide();
 					$(".members2").hide();
 					ajaxTeamList();
-				}else{
+				}else if(result.data.tAuth === true){
 					if (result.data.tphoto_path !== null && result.data.tphoto_path !== "") {
 	 				$("article img").attr("src","/slamdunk/upload/"+result.data.tphoto_path);
 	 				$(".resister_btn").hide();
@@ -90,6 +90,21 @@ $(".teamdefaultBtn").click(function(){
 					$("#memo_area").text(result.data.teamDesc);
 					$(".team_members1").hide();
 					$(".team_members2").hide();
+				}else{
+					if (result.data.tphoto_path !== null && result.data.tphoto_path !== "") {
+	 				$("article img").attr("src","/slamdunk/upload/"+result.data.tphoto_path);
+	 				$(".resister_btn").hide();
+	 				}
+					$(".teamname").css("display","none");
+					$(".tname").text(result.data.teamName);
+					$("#memo_area").hide();
+					$(".tauth").text(result.data.teamDesc);
+					$(".team_members1").hide();
+					$(".team_members2").hide();
+					$(".teamphotoBtn").hide();
+					$(".teamdefaultBtn").hide();
+					$(".update_btn").hide();
+					
 				}
 			}
 		})
@@ -139,7 +154,7 @@ $(".teamdefaultBtn").click(function(){
 				var str = "<h3>Team List</h3>";//문자 초기화
 				
 				for(var i=0;i<result.data.list.length;i++){
-					str+="<div class='team_member'><p class='team_member_p'>Team Name</p><p>"+result.data.list[i].teamName+"</p><p class='Nteam'>"+result.data.list[i].count+"</p><p class='teams'>"+result.data.list[i].teamDesc+"</p><button type ='button' class='team_btn'  data-no='"+result.data.list[i].no+"'>Join</button></div>"
+					str+="<div class='team_member'><span class='team_member_p'>Team Name : </span><span>"+result.data.list[i].teamName+"</span><br><span>인원수 : </span><span class='Nteam'>"+result.data.list[i].count+"</span><p class='teams'>"+result.data.list[i].teamDesc+"</p><button type ='button' class='team_btn'  data-no='"+result.data.list[i].no+"'>Join</button></div>"
 				}
 				$(".team_members1").html(str);
 				
