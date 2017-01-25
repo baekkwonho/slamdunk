@@ -116,6 +116,10 @@ $(".teamdefaultBtn").click(function(){
 	})
 	}
 
+	var pageNo = 1;
+	var totalPage = 0;
+	
+	
 	function ajaxTeamList(){
 		$.ajax({
 			url:serverAddr+"/team/teamlist.json",
@@ -128,6 +132,11 @@ $(".teamdefaultBtn").click(function(){
 					return;
 				}
 				console.log(result);
+				pageNo = result.data.pageNo;
+				totalPage = result.data.totalPage;
+				
+				console.log("pageNo: " + pageNo);
+				console.log("totalPage: " + totalPage);
 			}
 		})
 	}

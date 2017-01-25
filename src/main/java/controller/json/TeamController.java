@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.support.SessionStatus;
 
 import dao.MemberDao;
@@ -108,15 +109,29 @@ public class TeamController {
   }
   
   @RequestMapping(path="teamlist")
-  public Object teamList() throws Exception {
+  public Object teamList(
+      @RequestParam(defaultValue="1") int pageNo,
+      @RequestParam(defaultValue="8") int length) throws Exception {
     try {
       
-      List<Team> list = teamDao.selectTeamList();
+      HashMap<String, Object> map = new HashMap<>();
+      map.put("startIndex", (pageNo - 1) * length);
+      map.put("length", length);
+      
+      List<Team> list = teamDao.selectTeamList(map);
+      int totalPage = getTotalPage(length);
+      
       for (int i = 0; i < list.size(); i++) {
         list.get(i).setCount(memberDao.countTno(list.get(i).getNo()));
       }
       
-      return JsonResult.success(list);
+      HashMap<String,Object> data = new HashMap<>();
+      data.put("list", list);
+      data.put("totalPage", totalPage);
+      data.put("pageNo", pageNo);
+      data.put("length", length);
+      
+      return JsonResult.success(data);
     }catch (Exception e) {
       e.printStackTrace();
       return JsonResult.error(e.getMessage());
@@ -126,7 +141,6 @@ public class TeamController {
   @RequestMapping(path="teammemberlist")
   public Object teamMemberList(int no) throws Exception {
     try {
-      System.out.println(no);
       List<Member> list = memberDao.selectTeamMember(no);
       
       for (int i = 0; i < list.size(); i++) {
@@ -196,7 +210,14 @@ public class TeamController {
   }
   
   
-  
+  public int getTotalPage(int pageSize) throws Exception {
+    int countAll = teamDao.countAll();
+    int totalPage = countAll / pageSize;
+    if ((countAll % pageSize) > 0) {
+      totalPage++;
+    }
+    return totalPage;
+  }
   
   
 }

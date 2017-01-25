@@ -31,14 +31,14 @@
     where TNO = #{no}
   </update>
   
-  <select id="selectTeamList" resultMap="teamMap">
+  <select id="selectTeamList" resultMap="teamMap" parameterType="map">
     select * from TEAMS
+    limit #{startIndex}, #{length}
   </select>
   
-  <select id="selectCount" resultType="int" parameterType="int">
+  <select id="countAll" resultType="int" parameterType="int">
     select count(*)
     from TEAMS
-    where TNO = #{no}
   </select>
   
   
