@@ -169,6 +169,7 @@ public class TeamController {
         return JsonResult.success();
       }
       Team team = teamDao.selectOne(member.getTno());
+      team.settAuth(member.isTauth());
       List<TeamPhoto> teamPhoto = teamPhotoDao.selectOnePhoto(team.getNo());
       
       if (teamPhoto.size() != 0) {

@@ -77,14 +77,29 @@ $(".teamdefaultBtn").click(function(){
 				if(result.data === null){
 					$(".update_btn").hide();
 					$(".delete_btn").hide();
-				}else{
+				}else if (result.data !== null && result.data.tAuth === true){
 					if (result.data.tphoto_path !== null && result.data.tphoto_path !== "") {
+	 				$("article img").attr("src","/slamdunk/upload/"+result.data.tphoto_path);
 	 				$("article img").attr("src","/slamdunk/upload/"+result.data.tphoto_path);
 	 				$(".resister_btn").hide();
 	 				}
 					$(".teamname").css("display","none");
 					$(".tname").text(result.data.teamName);
 					$("#memo_area").text(result.data.teamDesc);
+					ajaxTeamMemberList(result.data.no);
+				} else {
+					if (result.data.tphoto_path !== null && result.data.tphoto_path !== "") {
+		 				$("article img").attr("src","/slamdunk/upload/"+result.data.tphoto_path);
+		 				$("article img").attr("src","/slamdunk/upload/"+result.data.tphoto_path);
+		 				$(".resister_btn").hide();
+		 				}
+					$(".teamname").css("display","none");
+					$(".tname").text(result.data.teamName);
+					$(".teamdesc").text(result.data.teamDesc);
+					$("#memo_area").css("display","none");
+					$(".teamphotoBtn").css("display","none");
+					$(".teamdefaultBtn").css("display","none");
+					
 					ajaxTeamMemberList(result.data.no);
 				}
 			}
@@ -122,7 +137,7 @@ $(".teamdefaultBtn").click(function(){
 	
 	function ajaxTeamList(){
 		$.ajax({
-			url:serverAddr+"/team/teamlist.json",
+			url:serverAddr+"/team/teamlist.json?pageNo="+pageNo,
 			method:"GET",
 			dataType:"json",
 			success:function(obj){
