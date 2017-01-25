@@ -119,10 +119,13 @@ $(".teamdefaultBtn").click(function(){
 		}
 	})
 	}
-
+	
+	var currpageno = 1;
+	var totalpage = 0;
+	
 	function ajaxTeamList(){
 		$.ajax({
-			url : serverAddr+"/team/teamlist.json",
+			url : serverAddr+"/team/teamlist.json?pageNo="+currpageno,
 			method:"GET",
 			dataType:"json",
 			success : function(obj){
@@ -135,14 +138,44 @@ $(".teamdefaultBtn").click(function(){
 				
 				var str = "<h3>Team List</h3>";//문자 초기화
 				
-				for(var i=0;i<result.data.length;i++){
-					str+="<div class='team_member'><p class='team_member_p'>Team Name</p><p>"+result.data[i].teamName+"</p><p class='Nteam'>"+result.data[i].count+"</p><p class='teams'>"+result.data[i].teamDesc+"</p><button type ='button' class='team_btn'  data-no='"+result.data[i].no+"'>Join</button></div>"
+				for(var i=0;i<result.data.list.length;i++){
+					str+="<div class='team_member'><p class='team_member_p'>Team Name</p><p>"+result.data.list[i].teamName+"</p><p class='Nteam'>"+result.data.list[i].count+"</p><p class='teams'>"+result.data.list[i].teamDesc+"</p><button type ='button' class='team_btn'  data-no='"+result.data.list[i].no+"'>Join</button></div>"
 				}
 				$(".team_members1").html(str);
+				
+				currpageno = result.data.pageNo;
+				totalpage = result.data.totalPage;
+
+				var numPageno = "";
+				var numTemp = "";
+				for(var i =1;i<=totalpage;i++){
+					if(currpageno === i){
+						numTemp = "<span class='curr_num'>"+i+"</span>"
+					}else{
+						numTemp = "<span>"+i+"</span>"
+					}
+					numPageno+=numTemp;
+				}
+				$(".num").html(numPageno);
 			}
 		})
 	}
 
+	$(".pre_btn").click(function(){
+		if(currpageno === 1){
+			return;
+		}
+		currpageno--;
+		ajaxTeamList();
+	});
+
+	$(".next_btn").click(function(){
+		if(currpageno === totalpage){
+			return;
+		}
+		currpageno++;
+		ajaxTeamList();
+	});
 
 
 

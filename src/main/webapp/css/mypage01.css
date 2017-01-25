@@ -412,3 +412,7 @@ position: absolute;
     position: relative;
     bottom: 37px;
 }
+.curr_num{
+	color:yellow;
+	font-size: 20px;
+}
