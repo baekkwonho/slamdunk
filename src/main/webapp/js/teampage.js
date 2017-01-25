@@ -79,6 +79,7 @@ $(".teamdefaultBtn").click(function(){
 					$(".delete_btn").hide();
 					$(".members1").hide();
 					$(".members2").hide();
+					ajaxTeamList();
 				}else{
 					if (result.data.tphoto_path !== null && result.data.tphoto_path !== "") {
 	 				$("article img").attr("src","/slamdunk/upload/"+result.data.tphoto_path);
@@ -119,6 +120,28 @@ $(".teamdefaultBtn").click(function(){
 	})
 	}
 
+	function ajaxTeamList(){
+		$.ajax({
+			url : serverAddr+"/team/teamlist.json",
+			method:"GET",
+			dataType:"json",
+			success : function(obj){
+				var result = obj.jsonResult;
+				if(result.state !== "success"){
+					alert("팀 리스트 조회 실패입니다.");
+					return;
+				}
+				console.log(result);
+				
+				var str = "<h3>Team List</h3>";//문자 초기화
+				
+				for(var i=0;i<result.data.length;i++){
+					str+="<div class='team_member'><p class='team_member_p'>Team Name</p><p>"+result.data[i].teamName+"</p><p class='Nteam'>"+result.data[i].count+"</p><p class='teams'>"+result.data[i].teamDesc+"</p><button type ='button' class='team_btn'  data-no='"+result.data[i].no+"'>Join</button></div>"
+				}
+				$(".team_members1").html(str);
+			}
+		})
+	}
 
 
 
