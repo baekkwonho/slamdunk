@@ -174,6 +174,11 @@ $(".teamdefaultBtn").click(function(){
 					numPageno+=numTemp;
 				}
 				$(".num").html(numPageno);
+				$(".team_btn").click(function(){
+					//console.log($(this).attr("data-no")); //자신(버튼)안에 있는 속성(data-no)가져오기.
+					ajaxJoinTeam($(this).attr("data-no"));
+				});
+
 			}
 		})
 	}
@@ -246,6 +251,22 @@ $(".teamdefaultBtn").click(function(){
 		})
 	}
 
+	function ajaxJoinTeam(datano){
+		$.ajax({
+			url : serverAddr+"/jointeam/join.json",
+			method : "POST",
+			dataType : "json",
+			data : {no : datano},
+			success : function(obj){
+				var result = obj.jsonResult;
+				if(result.state !== "success" ){
+					alert("신청 중 입니다.");
+					return;
+			}
+			alert("신청이 완료 되었습니다.");
+		}
+		})
+	}
 
 
 

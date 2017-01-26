@@ -159,6 +159,12 @@ $(function(){
 	 		}else{
 	 			$("input:radio[name='gender']:radio[value='male']").attr("checked",true);
 	 			}
+
+	 			if(result.data.requestCount !== 0){
+	 				ajaxRequest();
+	 			}
+
+
 		 	}
 		})
 	};
@@ -205,9 +211,66 @@ $(function(){
 			$("#teampage").addClass("nonactive");	
 		}
 	});
-	
-	
-	
+		function ajaxRequest(){
+			$.ajax({
+				url : serverAddr+"/jointeam/list.json",
+				method : "GET",
+				dataType : 'json',
+				success :function(obj){
+					var result = obj.jsonResult;
+					if(result.state !== "success"){
+						alert("가입 요청 리스트 조회 실패입니다.");
+						return;
+					}
+					console.log(result);
+					var str = "";
+					for(var i=0;i<result.data.length;i++){
+						str+="<span class='request_p'>"+result.data[i].reqNickname+"님에게 가입신청이 왔습니다.</span><button type='button' class='ok_btn' data-no ='"+result.data[i].reqno+"'>승인</button><button type ='button' class='no_btn' data-no ='"+result.data[i].reqno+"'>거절</button>"
+					}
+					$(".request").html(str);
+					$(".request").css("background","#e09115");
+					$(".ok_btn").click(function(){
+						ajaxOkrequest($(this).attr("data-no"));
+					});
+					$(".no_btn").click(function(){
+						ajaxNorequest($(this).attr("data-no"));
+					});
+				}
+			})
+		}
+		
+		function ajaxOkrequest(datano){
+			$.ajax({
+				url : serverAddr+"/jointeam/ok.json",
+				method : "GET",
+				dataType : "json",
+				data: {no : datano},
+				success : function(obj){
+					var result = obj.jsonResult;
+					if(result.state !== "success"){
+						alert("승인이 실패 했습니다.");
+						return;
+					}
+					window.location.reload();
+				}
+			})
+		}
+	function ajaxNorequest(datano){
+		$.ajax({
+			url : serverAddr+"/jointeam/no.json",
+			method : "GET",
+			dataType :"json",
+			data : {no : datano},
+			success : function(obj){
+				var result = obj.jsonResult;
+				if(result.state !== "success"){
+					alert("거절이 실패 했습니다.");
+					return;
+				}
+				window.location.reload();
+			}
+		})
+	}
 	
 	ajaxLoginUser();
 });
