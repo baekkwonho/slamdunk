@@ -207,7 +207,23 @@ $(".teamdefaultBtn").click(function(){
 				console.log(result);
 				var str = "<h3>Member's Introduce</h3>";
 				for(var i=0;i<result.data.list.length;i++){
-					str+="<div class='member1'><p class='member_p'>"+result.data.photo_path+"</p><span>닉네임 :</span><span>result.data.nickname</span><p>Profile :</p><p class='member_info'>"+result.data.gender+result.data.position+result.data.height+result.data.skill"</p></div>"
+					var gender = "남자";
+					if(result.data.list[i].gender === false){
+						gender = "여자";
+					}
+					var position = "미지정"
+					if(result.data.list[i].position !== null){
+						position = result.data.list[i].position;
+					}
+					var skill = "미지정";
+					if(result.data.list[i].skill !== null){
+						skill = result.data.list[i].skill;
+					}
+					var photo = "/slamdunk/images/bg05.jpg"
+					if(result.data.list[i].photo_path !== null && result.data.list[i].photo_path !== ""){
+						photo = "/slamdunk/upload/"+result.data.list[i].photo_path;
+					}
+					str += "<div class='member1'><img class='member_p' src=' "+photo+" ' ><span>닉네임 :</span><span>"+result.data.list[i].nickname+"</span><p class='member_info'>Gender :"+gender+"<br>Position :"+position+"<br>Height :"+result.data.list[i].height+"<br>Skill :"+skill+"</p></div>"
 				}
 				$(".members1").html(str);
 			}
