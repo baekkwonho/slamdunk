@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
 
+import dao.JoinTeamDao;
 import dao.MemberDao;
 import dao.PhotoDao;
 import vo.JsonResult;
@@ -24,6 +25,7 @@ public class AuthController {
   
   @Autowired MemberDao memberDao;
   @Autowired PhotoDao photoDao;
+  @Autowired JoinTeamDao joinTeamDao;
   
   @RequestMapping(path="login")
   public Object login(
@@ -95,6 +97,9 @@ public class AuthController {
         return JsonResult.fail();
         //throw new Exception("로그인이 되지 않았습니다.");
       }
+      
+      member.setRequstCount(joinTeamDao.countRequest(member.getNo()));
+      
       return JsonResult.success(member);
     } catch (Exception e) {
       e.printStackTrace();

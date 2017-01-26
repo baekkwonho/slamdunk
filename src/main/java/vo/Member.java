@@ -17,6 +17,7 @@ public class Member implements Serializable {
   String skill;
   boolean tauth;
   String photo_path;
+  int requstCount;
   
   
   public int getNo() {
@@ -90,6 +91,12 @@ public class Member implements Serializable {
   }
   public void setPhoto_path(String photo_path) {
     this.photo_path = photo_path;
+  }
+  public int getRequstCount() {
+    return requstCount;
+  }
+  public void setRequstCount(int requstCount) {
+    this.requstCount = requstCount;
   }
   
   

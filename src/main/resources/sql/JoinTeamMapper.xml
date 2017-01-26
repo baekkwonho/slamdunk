@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.JoinTeamDao">
+  <resultMap type="jointeam" id="jointeamMap">
+    <id column="JTNO" property="jtno"/> 
+    <result column="RESNO" property="resno"/>
+    <result column="REQNO" property="reqno"/>
+  </resultMap>
+  
+  <insert id="insert" parameterType="jointeam">
+    insert into JOIN_TEAM(RESNO, REQNO)
+    values(#{resno}, #{reqno})
+  </insert>
+  
+  <select id="selectOnebyReqno" resultType="int" parameterType="int">
+    select count(*) from JOIN_TEAM
+    where REQNO = #{no}
+  </select>
+  
+  <select id="countRequest" resultType="int" parameterType="int">
+    select count(*) from JOIN_TEAM
+    where RESNO = #{no}
+  </select>
+  
+  <select id="selectList" resultMap = "jointeamMap" parameterType="int">
+    select * from JOIN_TEAM
+    where RESNO = #{no}
+  </select>
+  
+  <delete id="delete" parameterType="int">
+    delete from JOIN_TEAM
+    where REQNO = #{no}
+  </delete>
+  
+  
+</mapper>

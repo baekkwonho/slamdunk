@@ -89,5 +89,15 @@
     TAUTH = 1
     where MNO = #{no}
   </update>
+  
+  <select id="selectMemberbyTauth" resultMap="memberMap" parameterType="int">
+    select * from MEMBS
+    where TNO = #{tno} and TAUTH = 1
+  </select>
+  
+  <select id="selectNickname" resultType="string" parameterType="int">
+    select MNAME from MEMBS
+    where MNO = #{no}
+  </select>
 
 </mapper>

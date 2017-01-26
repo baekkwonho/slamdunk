@@ -1,23 +1,24 @@
 $(function(){
 	
-	$('body').stop().animate({scrollTop:'0'})
+	$('body').stop().animate({scrollTop:'0'});
 
 	$('#mypage').click(function(){
-		$("#mypage").addClass("active")
-		$("#mypage").removeClass("nonactive")
-		$("#teampage").removeClass("active")
-		$("#teampage").addClass("nonactive")
-		$('body').stop().animate({scrollTop : '0'},1500)
+		$("#mypage").addClass("active");
+		$("#mypage").removeClass("nonactive");
+		$("#teampage").removeClass("active");
+		$("#teampage").addClass("nonactive");
+		$('body').stop().animate({scrollTop : '0'},1500);
+
  	})
 	
 	$("#teampage").click(function(){
-		$("#teampage").addClass("active")
-		$("#teampage").removeClass("nonactive")
-		$("#mypage").removeClass("active")
-		$("#mypage").addClass("nonactive")
-		$('body').stop().animate({scrollTop : '1100'},1500)
+		$("#teampage").addClass("active");
+		$("#teampage").removeClass("nonactive");
+		$("#mypage").removeClass("active");
+		$("#mypage").addClass("nonactive");
+		$('body').stop().animate({scrollTop : '1100'},1500);
 	})
-
+	//사진 부분
 	$(".photoBtn").click(function(){
 		$(".file").click();
 	});
@@ -106,7 +107,6 @@ $(function(){
 					alert("변경이 실패되었습니다.");
 					return;
 				}
-				//window.location.href="mainpage2.html";
 				window.location.reload();
 			}
 		})
@@ -159,7 +159,18 @@ $(function(){
 	 		}else{
 	 			$("input:radio[name='gender']:radio[value='male']").attr("checked",true);
 	 			}
+	 		
+	 		//countRequest 설정 
+	 		if (result.data.requstCount !== 0) {
+	 			//joinTeam list 가져오기
+	 			ajaxJoinTeamList();
+	 		}
+	 		
 		 	}
+	 
+	 	
+	 
+	 
 		})
 	};
 
@@ -174,7 +185,7 @@ $(function(){
 					alert("로그아웃 실패 입니다.");
 					return;
 				}
-				window.location.href="mainpage2.html";
+				window.location.href="mainpage.html";
 			}
 		})
 	}
@@ -191,28 +202,96 @@ $(function(){
 		window.location.reload();
 	});
 
-	
-	$(window).scroll(function() {
-		//console.log($(document).scrollTop());
-		var value = $(document).scrollTop();
-		if (value >= 1100) {
-			$("#teampage").addClass("active")
-			$("#teampage").removeClass("nonactive")
-			$("#mypage").removeClass("active")
-			$("#mypage").addClass("nonactive")
-		} else if (value === 0){
-			$("#mypage").addClass("active")
-			$("#mypage").removeClass("nonactive")
-			$("#teampage").removeClass("active")
-			$("#teampage").addClass("nonactive")
+	$(window).scroll(function(){
+		var value = $('body').scrollTop();
+		if(value >= 1100){
+			$("#teampage").addClass("active");
+			$("#teampage").removeClass("nonactive");
+			$("#mypage").removeClass("active");
+			$("#mypage").addClass("nonactive");
+		}else if(value===0){
+			$("#mypage").addClass("active");
+			$("#mypage").removeClass("nonactive");
+			$("#teampage").removeClass("active");
+			$("#teampage").addClass("nonactive");	
 		}
-		
 	});
-
-
-// 호출부분.
+	
+	
+	// 팀 가입 요청이 있는 경우 실행 될 함수
+	function ajaxJoinTeamList() {
+		$.ajax({
+			url : serverAddr + "/jointeam/list.json",
+			method : "GET",
+			dataType : "json",
+			success : function(obj) {
+				var result = obj.jsonResult;
+				if (result.state !== "success") {
+					alert("가입 요청 리스트 조회 실패");
+					return;
+				}
+				console.log(result);
+				var str = "";
+				for (var i = 0; i < result.data.length; i++) {
+					str += "<span>"+result.data[i].reqNickname+" 님에게 가입신청이 왔습니다.</span>"+
+					"<button type='button' class='ok_btn' data-no='"+result.data[i].reqno+"'>승인</button>"+
+					"<button type='button' class='no_btn' data-no='"+result.data[i].reqno+"'>거절</button>"
+				}
+				$(".joinTeam").css("background","#e09115");
+				$(".joinTeam").html(str);
+				
+				$(".ok_btn").click(function() {
+					console.log($(this).attr("data-no"));
+					ajaxOkTeam($(this).attr("data-no"));
+				})
+				
+				$(".no_btn").click(function() {
+					console.log($(this).attr("data-no"));
+					ajaxNoTeam($(this).attr("data-no"));
+				})
+				
+				
+			}
+		})
+	}
+	
+	// 팀 승인 함수
+	function ajaxOkTeam(no) {
+		$.ajax({
+			url : serverAddr + "/jointeam/ok.json?no="+no,
+			method : "GET",
+			dataType : "json",
+			success : function(obj) {
+				var result = obj.jsonResult;
+				if (result.state !== "success") {
+					alert("승인 실패");
+					return;
+				}
+				console.log(result);
+				//reload
+			}
+		})
+	}
+	
+	function ajaxNoTeam(no) {
+		$.ajax({
+			url : serverAddr + "/jointeam/no.json?no="+no,
+			method : "GET",
+			dataType : "json",
+			success : function(obj) {
+				var result = obj.jsonResult;
+				if (result.state !== "success") {
+					alert("승인 실패");
+					return;
+				}
+				console.log(result);
+				//reload
+			}
+		})
+	}
+	
+	
 	ajaxLoginUser();
-
 });
 
 	

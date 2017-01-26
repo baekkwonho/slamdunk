@@ -20,4 +20,7 @@ public interface MemberDao {
   int countTno(int tno) throws Exception;
   int updateTauth(int no) throws Exception;
   
+  Member selectMemberbyTauth(int tno) throws Exception;
+  String selectNickname(int no) throws Exception;
+  
 }

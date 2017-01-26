@@ -31,6 +31,7 @@ $(".resister_btn").click(function(){
 		teamDesc : document.querySelector("#memo_area").value,
 		tphoto_path:document.querySelector(".teamdataFileName").textContent
 	}
+	console.log(team);
 	ajaxInserTeam(team);
 
 });
@@ -56,6 +57,7 @@ $(".teamdefaultBtn").click(function(){
 				}
 				window.location.reload();
 				//함수 호출 후
+				console.log("aaaa");
 			}
 		})
 
@@ -75,30 +77,35 @@ $(".teamdefaultBtn").click(function(){
 				if(result.data === null){
 					$(".update_btn").hide();
 					$(".delete_btn").hide();
-				}else if (result.data !== null && result.data.tAuth === true){
+					$(".members1").hide();
+					$(".members2").hide();
+					ajaxTeamList();
+				}else if(result.data.tAuth === true){
 					if (result.data.tphoto_path !== null && result.data.tphoto_path !== "") {
-	 				$("article img").attr("src","/slamdunk/upload/"+result.data.tphoto_path);
 	 				$("article img").attr("src","/slamdunk/upload/"+result.data.tphoto_path);
 	 				$(".resister_btn").hide();
 	 				}
 					$(".teamname").css("display","none");
 					$(".tname").text(result.data.teamName);
 					$("#memo_area").text(result.data.teamDesc);
-					ajaxTeamMemberList(result.data.no);
-				} else {
+					$(".team_members1").hide();
+					$(".team_members2").hide();
+					ajaxTeammemberList(result.data.no);
+				}else{
 					if (result.data.tphoto_path !== null && result.data.tphoto_path !== "") {
-		 				$("article img").attr("src","/slamdunk/upload/"+result.data.tphoto_path);
-		 				$("article img").attr("src","/slamdunk/upload/"+result.data.tphoto_path);
-		 				$(".resister_btn").hide();
-		 				}
+	 				$("article img").attr("src","/slamdunk/upload/"+result.data.tphoto_path);
+	 				$(".resister_btn").hide();
+	 				}
 					$(".teamname").css("display","none");
 					$(".tname").text(result.data.teamName);
-					$(".teamdesc").text(result.data.teamDesc);
-					$("#memo_area").css("display","none");
-					$(".teamphotoBtn").css("display","none");
-					$(".teamdefaultBtn").css("display","none");
-					
-					ajaxTeamMemberList(result.data.no);
+					$("#memo_area").hide();
+					$(".tauth").text(result.data.teamDesc);
+					$(".team_members1").hide();
+					$(".team_members2").hide();
+					$(".teamphotoBtn").hide();
+					$(".teamdefaultBtn").hide();
+					$(".update_btn").hide();
+					ajaxTeammemberList(result.data.no);
 				}
 			}
 		})
@@ -128,59 +135,127 @@ $(".teamdefaultBtn").click(function(){
 		}
 	})
 	}
-
-	var pageNo = 1;
-	var totalPage = 0;
 	
+	var currpageno = 1;
+	var totalpage = 0;
 	
 	function ajaxTeamList(){
 		$.ajax({
-			url:serverAddr+"/team/teamlist.json?pageNo="+pageNo,
+			url : serverAddr+"/team/teamlist.json?pageNo="+currpageno,
 			method:"GET",
 			dataType:"json",
-			success:function(obj){
+			success : function(obj){
 				var result = obj.jsonResult;
 				if(result.state !== "success"){
-					alert("변경이 실패되었습니다.");
-					return;
-				}
-				pageNo = result.data.pageNo;
-				totalPage = result.data.totalPage;
-				
-			}
-		})
-	}
-
-	
-	function ajaxTeamMemberList(no) {
-		$.ajax({
-			url:serverAddr+"/team/teammemberlist.json?no="+no+"&pageNo=1",
-			method:"GET",
-			dataType:"json",
-			success:function(obj){
-				var result = obj.jsonResult;
-				if(result.state !== "success"){
-					alert("변경이 실패되었습니다.");
+					alert("팀 리스트 조회 실패입니다.");
 					return;
 				}
 				console.log(result);
-				console.log(result.data.pageNo);
 				
+				var str = "<h3>Team List</h3>";//문자 초기화
+				
+				for(var i=0;i<result.data.list.length;i++){
+					str+="<div class='team_member'><span class='team_member_p'>Team Name : </span><span>"+result.data.list[i].teamName+"</span><br><span>인원수 : </span><span class='Nteam'>"+result.data.list[i].count+"</span><p class='teams'>"+result.data.list[i].teamDesc+"</p><button type ='button' class='team_btn'  data-no='"+result.data.list[i].no+"'>Join</button></div>"
+				}
+				$(".team_members1").html(str);
+				
+				currpageno = result.data.pageNo;
+				totalpage = result.data.totalPage;
+
+				var numPageno = "";
+				var numTemp = "";
+				for(var i =1;i<=totalpage;i++){
+					if(currpageno === i){
+						numTemp = "<span class='curr_num'>"+i+"</span>"
+					}else{
+						numTemp = "<span>"+i+"</span>"
+					}
+					numPageno+=numTemp;
+				}
+				$(".num").html(numPageno);
+				
+				//join btn 
+				$(".team_btn").click(function(){
+					
+					ajaxSignUpTeam($(this).attr("data-no"));
+				})
 			}
 		})
 	}
 
+	$(".pre_btn").click(function(){
+		if(currpageno === 1){
+			return;
+		}
+		currpageno--;
+		ajaxTeamList();
+	});
 
+	$(".next_btn").click(function(){
+		if(currpageno === totalpage){
+			return;
+		}
+		currpageno++;
+		ajaxTeamList();
+	});
 
+	function ajaxTeammemberList(no){
+		$.ajax({
+			url : serverAddr+"/team/teammemberlist.json?no="+no+"&pageNo="+currpageno,
+			method : "GET",
+			dataType:"json",
+			success : function(obj){
+				var result = obj.jsonResult;
+				if(result.state !== "success"){
+					alert("팀원 조회를 실패했습니다.");
+					return;
+				}
+				console.log(result);
+				var str = "<h3>Member's Introduce</h3>";
+				for(var i=0;i<result.data.list.length;i++){
+					var gender = "남자";
+					if(result.data.list[i].gender === false){
+						gender = "여자";
+					}
+					var position = "미지정"
+					if(result.data.list[i].position !== null){
+						position = result.data.list[i].position;
+					}
+					var skill = "미지정";
+					if(result.data.list[i].skill !== null){
+						skill = result.data.list[i].skill;
+					}
+					var photo = "/slamdunk/images/bg05.jpg"
+					if(result.data.list[i].photo_path !== null && result.data.list[i].photo_path !== ""){
+						photo = "/slamdunk/upload/"+result.data.list[i].photo_path;
+					}
+					str += "<div class='member1'><img class='member_p' src=' "+photo+" ' ><span>닉네임 :</span><span>"+result.data.list[i].nickname+"</span><p class='member_info'>Gender :"+gender+"<br>Position :"+position+"<br>Height :"+result.data.list[i].height+"<br>Skill :"+skill+"</p></div>"
+				}
+				$(".members1").html(str);
+			}
+		})
+	}
+
+// join버튼 눌렀을때실행할 함수
+	function ajaxSignUpTeam(no) {
+		$.ajax({
+			url : serverAddr + "/jointeam/join.json",
+			method : "POST",
+			dataType : "json",
+			data : {no : no},
+			success : function(obj) {
+				var result = obj.jsonResult;
+				if (result.state !== "success") {
+					alert("이미 가입신청 진행중입니다.");
+					return;
+				}
+				console.log(result);
+			}
+		})
+	}
+	
 
 
 ajaxteamLoginUser();
-ajaxTeamList();
-
 
 });
-
-
-
-
-
