@@ -164,6 +164,7 @@ $(".teamdefaultBtn").click(function(){
 
 				var numPageno = "";
 				var numTemp = "";
+				
 				for(var i =1;i<=totalpage;i++){
 					if(currpageno === i){
 						numTemp = "<span class='curr_num'>"+i+"</span>"
@@ -223,9 +224,24 @@ $(".teamdefaultBtn").click(function(){
 					if(result.data.list[i].photo_path !== null && result.data.list[i].photo_path !== ""){
 						photo = "/slamdunk/upload/"+result.data.list[i].photo_path;
 					}
-					str += "<div class='member1'><img class='member_p' src=' "+photo+" ' ><span>닉네임 :</span><span>"+result.data.list[i].nickname+"</span><p class='member_info'>Gender :"+gender+"<br>Position :"+position+"<br>Height :"+result.data.list[i].height+"<br>Skill :"+skill+"</p></div>"
+					str += "<div class='member1'><img class='member_p' src=' "+photo+" ' ><span class='team_nick'>NickName:"+result.data.list[i].nickname+"</span><p class='member_info'>Gender : "+gender+"<br>Position : "+position+"<br>Height : "+result.data.list[i].height+"<br>Skill : "+skill+"</p></div>"
 				}
 				$(".members1").html(str);
+				currpageno = result.data.pageNo;
+				totalpage = result.data.totalPage;
+
+				var numPageno = "";
+				var numTemp = "";
+
+				for(var i=1;i<=totalpage;i++){
+					if(currpageno === i){
+						numTemp="<span class='curr_num'>"+i+"</span>";
+					}else{
+						numTemp="<span>"+i+"</span>";
+					}
+					numPageno+=numTemp;
+				}
+				$(".num").html(numPageno);
 			}
 		})
 	}
