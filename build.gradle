@@ -3,6 +3,9 @@ apply plugin: 'java'
 apply plugin: 'eclipse-wtp'
 apply plugin: 'war'
 
+war {
+  exclude 'webapp/upload'
+}
 
 // 이클립스 WTP의 설정 파일을 만들 때 제공할 정보.
 eclipse {

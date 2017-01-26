@@ -139,15 +139,31 @@ public class TeamController {
   }
   
   @RequestMapping(path="teammemberlist")
-  public Object teamMemberList(int no) throws Exception {
+  public Object teamMemberList(
+      @RequestParam(defaultValue="1") int pageNo,
+      @RequestParam(defaultValue="8") int length,
+      int no) throws Exception {
     try {
-      List<Member> list = memberDao.selectTeamMember(no);
+      
+      HashMap<String, Object> map = new HashMap<>();
+      map.put("tno",no);
+      map.put("startIndex", (pageNo - 1) * length);
+      map.put("length", length);
+      
+      List<Member> list = memberDao.selectTeamMember(map);
+      int totalPage = getMemberListTotalPage(length, no);
       
       for (int i = 0; i < list.size(); i++) {
         list.get(i).setPhoto_path(photoDao.selectOnePhotoPath(list.get(i).getNo()));
       }
       
-      return JsonResult.success(list);
+      HashMap<String,Object> data = new HashMap<>();
+      data.put("list", list);
+      data.put("totalPage", totalPage);
+      data.put("pageNo", pageNo);
+      data.put("length", length);
+      
+      return JsonResult.success(data);
     } catch (Exception e) {
       return JsonResult.error(e.getMessage());
     }
@@ -213,6 +229,15 @@ public class TeamController {
   
   public int getTotalPage(int pageSize) throws Exception {
     int countAll = teamDao.countAll();
+    int totalPage = countAll / pageSize;
+    if ((countAll % pageSize) > 0) {
+      totalPage++;
+    }
+    return totalPage;
+  }
+  
+  public int getMemberListTotalPage(int pageSize,int tno) throws Exception {
+    int countAll = memberDao.countTno(tno);
     int totalPage = countAll / pageSize;
     if ((countAll % pageSize) > 0) {
       totalPage++;

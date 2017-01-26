@@ -31,7 +31,6 @@ $(".resister_btn").click(function(){
 		teamDesc : document.querySelector("#memo_area").value,
 		tphoto_path:document.querySelector(".teamdataFileName").textContent
 	}
-	console.log(team);
 	ajaxInserTeam(team);
 
 });
@@ -57,7 +56,6 @@ $(".teamdefaultBtn").click(function(){
 				}
 				window.location.reload();
 				//함수 호출 후
-				console.log("aaaa");
 			}
 		})
 
@@ -146,12 +144,9 @@ $(".teamdefaultBtn").click(function(){
 					alert("변경이 실패되었습니다.");
 					return;
 				}
-				console.log(result);
 				pageNo = result.data.pageNo;
 				totalPage = result.data.totalPage;
 				
-				console.log("pageNo: " + pageNo);
-				console.log("totalPage: " + totalPage);
 			}
 		})
 	}
@@ -159,7 +154,7 @@ $(".teamdefaultBtn").click(function(){
 	
 	function ajaxTeamMemberList(no) {
 		$.ajax({
-			url:serverAddr+"/team/teammemberlist.json?no="+no,
+			url:serverAddr+"/team/teammemberlist.json?no="+no+"&pageNo=1",
 			method:"GET",
 			dataType:"json",
 			success:function(obj){
@@ -169,6 +164,8 @@ $(".teamdefaultBtn").click(function(){
 					return;
 				}
 				console.log(result);
+				console.log(result.data.pageNo);
+				
 			}
 		})
 	}

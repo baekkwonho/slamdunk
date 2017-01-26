@@ -38,9 +38,10 @@
     where MNO=#{no}
   </select>
   
-  <select id="selectTeamMember" resultMap="memberMap" parameterType="int">
+  <select id="selectTeamMember" resultMap="memberMap" parameterType="map">
     select * from MEMBS
     where TNO = #{tno}
+    limit #{startIndex}, #{length}
   </select>
   
   <insert id="insertMember" parameterType="map">
