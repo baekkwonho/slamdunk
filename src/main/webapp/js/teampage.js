@@ -90,6 +90,7 @@ $(".teamdefaultBtn").click(function(){
 					$("#memo_area").text(result.data.teamDesc);
 					$(".team_members1").hide();
 					$(".team_members2").hide();
+					ajaxTeammemberList(result.data.no);
 				}else{
 					if (result.data.tphoto_path !== null && result.data.tphoto_path !== "") {
 	 				$("article img").attr("src","/slamdunk/upload/"+result.data.tphoto_path);
@@ -104,7 +105,7 @@ $(".teamdefaultBtn").click(function(){
 					$(".teamphotoBtn").hide();
 					$(".teamdefaultBtn").hide();
 					$(".update_btn").hide();
-					
+					ajaxTeammemberList(result.data.no);
 				}
 			}
 		})
@@ -192,7 +193,26 @@ $(".teamdefaultBtn").click(function(){
 		ajaxTeamList();
 	});
 
-
+	function ajaxTeammemberList(no){
+		$.ajax({
+			url : serverAddr+"/team/teammemberlist.json?no="+no+"&pageNo="+currpageno,
+			method : "GET",
+			dataType:"json",
+			success : function(obj){
+				var result = obj.jsonResult;
+				if(result.state !== "success"){
+					alert("팀원 조회를 실패했습니다.");
+					return;
+				}
+				console.log(result);
+				var str = "<h3>Member's Introduce</h3>";
+				for(var i=0;i<result.data.list.length;i++){
+					str+="<div class='member1'><p class='member_p'>"+result.data.photo_path+"</p><span>닉네임 :</span><span>result.data.nickname</span><p>Profile :</p><p class='member_info'>"+result.data.gender+result.data.position+result.data.height+result.data.skill"</p></div>"
+				}
+				$(".members1").html(str);
+			}
+		})
+	}
 
 
 
