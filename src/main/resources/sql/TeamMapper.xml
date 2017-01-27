@@ -41,5 +41,10 @@
     from TEAMS
   </select>
   
+  <delete id="delete" parameterType="int">
+    delete from TEAMS
+    where TNO = #{no}
+  </delete>
+  
   
 </mapper>

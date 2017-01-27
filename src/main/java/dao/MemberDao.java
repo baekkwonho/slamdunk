@@ -22,5 +22,7 @@ public interface MemberDao {
   
   Member selectMemberbyTauth(int tno) throws Exception;
   String selectNickname(int no) throws Exception;
+  int deleteTno(int no) throws Exception;
+  List<Member> selectTno(int no) throws Exception;
   
 }

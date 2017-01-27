@@ -180,7 +180,6 @@ public class TeamController {
       if (member == null) {
         return JsonResult.fail();
       }
-      
       if (member.getTno() == 0) {
         return JsonResult.success();
       }
@@ -198,6 +197,29 @@ public class TeamController {
     }
   }
   
+  
+  @RequestMapping(path="delete")
+  public Object deleteTeam(HttpSession session) throws Exception {
+    try {
+      
+      Member member = (Member)session.getAttribute("member");
+      if (member.isTauth() == true) {
+        int tno = member.getTno();
+        List<Member> list = memberDao.selectTno(member.getTno());
+        for (int i = 0; i < list.size(); i++) {
+          memberDao.deleteTno(list.get(i).getNo());
+        }
+        teamDao.delete(tno);
+      } else {
+         memberDao.deleteTno(member.getNo());
+      }
+      member.setTauth(false);
+      member.setTno(0);
+      return JsonResult.success(member);
+    } catch (Exception e) {
+      return JsonResult.error(e.getMessage());
+    }
+  }
   
   
   

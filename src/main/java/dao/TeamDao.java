@@ -13,5 +13,5 @@ public interface TeamDao {
   int update(Map<String,Object> paramMap) throws Exception; //update
   List<Team> selectTeamList(Map<String,Object> paramMap) throws Exception;
   int countAll() throws Exception;
-  
+  int delete(int no) throws Exception;
 }

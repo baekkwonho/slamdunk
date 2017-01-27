@@ -99,5 +99,16 @@
     select MNAME from MEMBS
     where MNO = #{no}
   </select>
+  
+  <update id="deleteTno" parameterType="int">
+    update MEMBS set
+    TNO = null, TAUTH = 0
+    where MNO = #{no}
+  </update>
+  
+  <select id="selectTno" resultMap="memberMap" parameterType="int">
+    select * from MEMBS
+    where TNO = #{no}
+  </select>
 
 </mapper>
