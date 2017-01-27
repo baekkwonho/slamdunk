@@ -11,6 +11,7 @@ public class Team implements Serializable {
   String tphoto_path;
   int count;
   boolean tAuth;
+  String capatin;
   
   
   public int getNo() {
@@ -48,6 +49,12 @@ public class Team implements Serializable {
   }
   public void settAuth(boolean tAuth) {
     this.tAuth = tAuth;
+  }
+  public String getCapatin() {
+    return capatin;
+  }
+  public void setCapatin(String capatin) {
+    this.capatin = capatin;
   }
   
   
