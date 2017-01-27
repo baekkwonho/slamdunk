@@ -123,7 +123,7 @@ public class TeamController {
       
       for (int i = 0; i < list.size(); i++) {
         list.get(i).setCount(memberDao.countTno(list.get(i).getNo()));
-        list.get(i).setCapatin(memberDao.selectMemberbyTauth(list.get(i).getNo()).getNickname());
+        list.get(i).setCaptain(memberDao.selectMemberbyTauth(list.get(i).getNo()).getNickname());
       }
       
       HashMap<String,Object> data = new HashMap<>();
