@@ -1,33 +1,120 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../node_modules/fullcalendar/dist/fullcalendar.min.css">
+  <link rel="stylesheet" href="../css/test.css">
+  <title></title>
 </head>
-<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-<style>
-</style>
 <body>
 
-  <label>Photo (사진)</label>
-  <img id="uploadImage" src="">
-  <button id="selectFileBtn">파일 선택</button>
-  <input id="fileupload" type="file" name="file" multiple>
-  <h5>newFilename</h5><p id="newFileName"></p>
-  <h5>originFilename</h5><p id="originFileName"></p>
+  <header>
+    <a href="mainpage.html"><h3>SlamDunk</h3></a>
+    <a href="mainpage.html"><img src="../images/mainlogo4.png" alt="메인로고" id="logoimage"></a>
+    <ul>
+      <li><a href="about.html">About Rule</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="matching.html">Matching</a></li>
+      <li id="list_board"><a href="board.html">Board</a></li>
+      <li><a href="#">Who</a></li>
+    </ul>
+    <div class="btn_form">
+    <button type="button" class="login_btn" data-toggle="modal" data-target="#loginModal"><a href="#">LOG IN</a></button>
+    <button type="button" class="signup_btn" data-toggle="modal" data-target="#loginModal"><a href="#">SIGN UP</a></button>
+    <img src="../images/Sport-basketball-icon.png" alt="아이콘 사진" id="icon">
+    
+    <div class="loginUser_form">
+      <span class="nickname"><strong>nickname</strong></span>
+        <span>님</span>
+        <p>환영합니다.</p>
+        <button type="button" class="mypage_btn" >MY PAGE</button>
+        <button type="button" class="logout_btn" >LOG OUT</button>
+    </div>
+  </div>
+
+<!-- Login modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <div class="login_wrap">
+           <h2 id="login_tap" class="active pointer"> LOGIN </h2>
+           <h2 id="signup_tap" class="nonactive pointer"> SIGN UP</h2>
+           <br><br><br>
+           <form class="login_form">
+             <input type="email" id="email" class="text" name="email" placeholder="email">
+             <br>
+             <input type="password" id="password" class="text" name="password" placeholder="password">
+             <br>
+             <input type="checkbox" id="saveEmail"/>
+             <label for="saveEmail">Save Email</label>
+             <button type="button" id="login_btn" class="buttons pointer">LOGIN</button>
+             <button type="button" id="facebook_btn" class="pointer">FACEBOOK LOGIN</button>
+             <hr>
+             <a href="#" class="forgot">Forgot Password?</a>
+           </form>
+          
+           <form class="signup_form" style="display:none">
+             <input type="email" id="new_email" class="text" name="new_eamail" placeholder="email">
+             <button type="button" id="confirm_emailbtn">중복확인</button>
+             <br>
+             <input type="password" id="new_password" class="text" name="new_password" placeholder="password">
+             <br>
+             <input type="password" id="confirm_password" class="text" name="new_password" placeholder="confirm password">
+             <br>
+             <input type="text" id="new_nickname" class="text" name="new_nickname" placeholder="nickname">
+             <button type="button" id="confirm_nickbtn">중복확인</button>
+             <br>
+            
+             <button type="button" id="signup_btn" class="buttons pointer">SIGN UP</button>
+             <button type="button" id="cancel_btn" class="buttons pointer">CANCEL</button>
+           </form>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+  </header>
   
-  <button id="addbtn">Add</button>
-  <button id="defaultbtn">default</button>
+  <span class="cityname">
+    <select name="city" id="city_form">
+    <option value="고양시">고양시</option>
+    <option value="서울특별시">서울특별시</option>
+    </select>
+  </span>
+  
+  <span class="districtname">
+    <select name="district" id="district_form1">
+    <option value="일산동구">일산동구</option>
+    <option value="일산서구">일산서구</option>
+    <option value="덕양구">덕양구</option>
+    </select>
+    
+    <select name="district" id="district_form2">
+    <option value="은평구">은평구</option>
+    <option value="강남구">강남구</option>
+    <option value="서초구">서초구</option>
+    </select>
+    <button type="button" class="filter_btn">검색</button>
+  </span>
+  <div id="calendar"></div>
+  
   
   <script src="../node_modules/jquery/dist/jquery.min.js"></script>
   <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <!--blueimp-file-upload 사용시 jquery-ui 필요 -->
-  <script src="../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
-  <script src="../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+  <script src="../node_modules/moment/min/moment.min.js"></script>
+  <script src="../node_modules/fullcalendar/dist/fullcalendar.min.js"></script>
   <script src="../js/common.js"></script>
   <script src="../js/test.js"></script>
+  <script src="../js/login.js"></script>
   
   <script>
+    ajaxLoginUser();
   </script>
+  
 </body>
 </html>

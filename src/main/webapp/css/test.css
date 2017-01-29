@@ -1,0 +1,289 @@
+*{
+	margin:0;
+	padding:0;
+} 
+body{
+	width:100%;
+	height: 100%;
+}
+header{
+	width:100%;
+	height: 70px;
+	background: black;
+}
+header h3 {
+	color: white;
+	position: absolute;
+	left:100px;
+	top:3px;
+	font-size: 25px;
+	font-family: Brush Script MT;
+}
+header #logoimage {
+	position:absolute;
+	left: 30px;
+	top: 5px;
+	width:60px;
+	height: 60px;
+	border-radius: 100%;
+}
+
+header ul{
+	float: right;
+	position: relative;
+	right: 100px;
+}
+header li  {
+	list-style: none;
+	float: left;
+	padding: 20px 30px 20px 20px;
+	pointer: cursor;
+	text-decoration: none;
+}
+header li a{
+	color: #ffa500;
+	text-decoration: none;
+}
+
+header li a:hover {
+	color: white;
+	text-decoration: none;
+	
+}
+
+
+#icon{
+  width:50px;
+  height:50px;
+  position: absolute;
+  right: 45px;
+  top:10px;
+}
+.loginUser_form{
+    width: 134px;
+    height: 108px;
+    background: #e09115;
+    position: absolute;
+    right: 7px;
+    top: 70px;
+    line-height: 23px;
+    text-align: center;
+}
+.loginUser_form span{
+  display: inline-block;
+  margin-top: 10px;
+}
+ .mypage_btn,.logout_btn{
+  border:none;
+  font-size: 8px;
+  font-weight: bold;
+  width:50px;
+  height: 30px;
+  color: white;
+}
+
+ .mypage_btn{
+  background: #91692c;
+}
+.logout_btn{
+  background: #704c15;
+}
+.login_btn{
+  position: absolute;
+  top:0;
+  right:130px;
+  margin-top:20px;
+  background: none;
+  width:50px;
+  height:30px;
+  border:none;
+  
+}
+.login_btn a,.signup_btn a{
+  color: white;
+  font-size: 13px;
+  font-weight: bold;
+  border-bottom: 3px solid #ffa500;
+  border-top: 3px solid #ffa500;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  font-family:play;
+  text-decoration: none;
+  
+}
+.signup_btn{
+  position: absolute;
+  top:0;
+  right:50px;
+  margin-top:20px;
+  background: none;
+  width:60px;
+  height:30px;
+  border:none;
+}
+
+
+
+.modal-content {
+  position: relative;
+  height: 600px;
+  width: 405px;
+  margin: auto;
+  padding: 10px 10px; 
+  /* background: url('../images/names.jpg') no-repeat center center; */
+  background-color: #353535;
+  background-size: cover;
+  /* box-shadow: 0px 30px 60px -5px #000; */
+}
+.active {
+  border-bottom: 2px solid #ffa500;
+}
+.nonactive {
+  color: rgba(255, 255, 255, 0.2); 
+}
+
+header h2 {
+  font-size: 22px;
+  padding-bottom: 5px;
+  letter-spacing: 2px;
+  display: inline-block;
+  margin-left: 20px;
+  color: white;
+}
+
+.text {
+  border: none;
+  width: 80%;
+  padding: 10px 20px;
+  display: block;
+  height: 30px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0);
+  overflow: hidden;
+  margin-top: 15px;
+  transition: all 0.5s ease-in-out;
+  color: white;
+}
+
+.text:focus {
+  outline: 0;
+  border: 2px solid #ffa500;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0);
+}
+
+input {
+  display: inline-block;
+  padding-top: 20px;
+  font-size: 14px;
+}
+
+#saveEmail {
+  -webkit-appearance: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 8px;
+  border-radius: 2px;
+  display: inline-block;
+  position: relative;
+  top: 6px;
+  margin-left: 20px;
+}
+
+#saveEmail:checked:after {
+  content: '\2714';
+  font-size: 10px;
+  position: absolute;
+  top: 1px;
+  left: 4px;
+  color: #fff;
+}
+#saveEmail:focus {
+  outline-color: #ffa500;
+}
+
+label {
+  display: inline-block;
+  padding-top: 10px;
+  padding-left: 5px;
+  color: white;
+}
+
+#facebook_btn {
+  background-color: blue;
+  color: #FFF;
+  width: 100%;
+  padding: 10px 20px;
+  display: block;
+  height: 39px;
+  border-radius: 20px;
+  margin-top: 30px;
+  transition: all 0.5s ease-in-out;
+  border: none;
+  font-size: 16px;
+  letter-spacing: 3px;
+}
+
+.buttons {
+  background-color: #ffa500;
+  color: #FFF;
+  width: 100%;
+  padding: 10px 20px;
+  display: block;
+  height: 39px;
+  border-radius: 20px;
+  margin-top: 30px;
+  transition: all 0.5s ease-in-out;
+  border: none;
+  font-size: 16px;
+  letter-spacing: 3px;
+}
+
+
+hr {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  top: 65px;
+  position: relative;
+}
+
+.forgot {
+  text-align: center;
+  display: block;
+  top: 100px;
+  position: relative;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+
+#confirm_emailbtn {
+  position: absolute;
+  top: 135px;
+  right: 20px;
+  background-color: #E66944;
+  color: #FFF;
+  width: 60px;
+  height: 20px;
+  border-radius: 20px;
+  font-size: 12px;
+  border: none;
+}
+
+#confirm_nickbtn {
+  position: absolute;
+  top: 330px;
+  right: 20px;
+  background-color: #E66944;
+  color: #FFF;
+  width: 60px;
+  height: 20px;
+  border-radius: 20px;
+  font-size: 12px;
+  border: none;
+}
+
+

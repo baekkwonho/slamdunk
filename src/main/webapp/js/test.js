@@ -1,58 +1,122 @@
 $(function() {
 	
-	$("#selectFileBtn").on('click', function() {
-		$("#fileupload").click()
+	var date = new Date();
+	var y = date.getFullYear();
+	var m = date.getMonth() + 1;
+	var d  = date.getDate();
+	$("#district_form2").hide();
+	
+	$("#city_form").change(function() {
+		
+		if ($("#city_form").val() === "고양시") {
+			$("#district_form1").show();
+			$("#district_form2").hide();
+		} else {
+			$("#district_form1").hide();
+			$("#district_form2").show();
+		}
 	})
-
-	$("#fileupload").fileupload({
-		url : serverAddr + "/photo/add.json",
-		dataType: "json",
-		add: function(e, data) {
-			data.submit()
+	
+	
+	$("#calendar").fullCalendar({
+		height: 600,
+		header : {
+			left : 'prev, next, today',
+			center : 'title',
+			right :''
 		},
-		done: function(e, data) {
-			$("#newFileName").text(data.result.filename)
-			$("#originFileName").text(data.result.originFilename)
-			$("#uploadImage").attr({src: "/slamdunk/upload/"+data.result.filename, height:"150px"})
-		}
-	})
-	
-	$("#addbtn").click(function() {
-		var user = {
-				no : 1,
-				nickname: "test",
-				gender: true,
-				height: 180,
-				weight: 90,
-				photo_path : $("#newFileName").text()
-		}
-		console.log("user",user);
-		ajaxCommit(user);
-	})
-	
-	function ajaxCommit(user){
-		console.log(user);
-		$.ajax({
-			url:serverAddr+"/photo/update.json",
-			method:"POST",
-			dataType:"json",
-			data:user,
-			success:function(obj){
-				var result = obj.jsonResult;
-				if(result.state !== "success"){
-					alert("변경이 실패되었습니다.");
-					return;
+		timeFormat: 'H(:mm)', //14:30
+		 events : [
+		              {
+		            	  title : "aaa",
+		            	  start : "2017-01-26T14:30:00",
+		            	  end : "2017-01-26 17:00:00"
+		            	 // url : "http://google.com"
+		              }
+		             ],
+		dayClick : function(date) {
+			$.getJSON(serverAddr + "/auth/loginuser.json", function(obj) {
+				var result = obj.jsonResult
+				if (result.state !== "success") {
+					alert("로그인이 필요 합니다.")
+					return
 				}
-				console.log("ok");
-				//window.location.reload();
-			}
-		})
-	}//서버에 변경된 값을 보내주는것.서버에 변경된것을 저장시켜달라고 요청.
-	
-	
-	$("#defaultbtn").click(function() {
-		$("#uploadImage").attr({src: "/slamdunk/images/dog1.jpg", height:"150px"})
-		$("#newFileName").text("default Image");
+				var currDate =date.format();
+				if ($("#city_form").val() === "고양시") {
+					var loc = $("#district_form1").val();
+				} else {
+					var loc = $("#district_form2").val();
+				}
+				
+				var today = y+ "-"+m + "-" + d;
+				var todayarr = today.split("-");
+				var clickday = currDate.split("-");
+				if (todayarr[0] - clickday[0] > 0 ) {
+					console.log("prev");
+				} else if (todayarr[1] - clickday[1] > 0) {
+					console.log("prev day");
+				} else if (todayarr[1] - clickday[1] === 0 && todayarr[2] - clickday[2] > 0) {
+					console.log("prev day2");
+				} else {
+					window.location.href="test2.html?date="+currDate+"&loc="+loc;
+				}
+				
+			})
+		}
 	})
+	
+	/*
+	var team1 = "slamdunk";
+	var team2 = "rebound";
+	
+	$("#calendar").fullCalendar({
+		height : 500,
+		header : {
+			left:   'prevYear, title, nextYear',
+			center: '',
+			right:  'prev,today,next'
+		},
+	    editable : true,
+	    events : [
+	              {
+	            	  title : team1 + " vs " + team2,
+	            	  start : "2017-01-26 14:30:00",
+	            	  end : "2017-01-26 17:00:00"
+	            	 // url : "http://google.com"
+	              }
+	             ],
+	   //timeFormat: 'h:mm' // 2:30
+	   timeFormat: 'H(:mm)', //14:30
+	   columnFormat : 'dddd',
+	   buttonText : {today : '오늘'},
+	   eventClick: function(event) {
+		   
+		   if (event.url) {
+	            window.open(event.url);
+	            return false;
+	        }
+	    },
+	   dayClick: function(date, jsEvent, view) {
+	        console.log('day', date.format()); // date is a moment
+	        $(this).css('background-color', 'red');
+	        var start = date.format();
+	        console.log(start);
+	        $("#calendar").fullCalendar('addEventSource', [{
+	        	title : "aaaa",
+	        	start : date.format()
+	        }]);
+	    },
+	    eventDrop: function(event, delta, revertFunc) {
 
+	        alert(event.title + " was dropped on " + event.start.format());
+
+	        if (!confirm("Are you sure about this change?")) {
+	            revertFunc();
+	        }
+
+	    },
+	});
+	
+	*/
+	
 })
