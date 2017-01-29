@@ -143,7 +143,7 @@ header li a:hover {
   color: rgba(255, 255, 255, 0.2); 
 }
 
-h2 {
+header h2 {
   font-size: 22px;
   padding-bottom: 5px;
   letter-spacing: 2px;
@@ -290,7 +290,7 @@ hr {
 
 .cityname{
 	position: absolute;
-	right:420px;
+	right:430px;
 	top:85px;
 }
 .districtname{
@@ -313,3 +313,7 @@ hr {
 .fc-center h2{
 	top: 10px;
 }
+ .fc-day-top.fc-sat.fc-past { color:#0000FF; }     /* 토요일 */
+ .fc-day-top.fc-sat.fc-future{ color:#0000FF; }
+ .fc-day-top.fc-sun.fc-past { color:#FF0000; }    /* 일요일 */
+.fc-day-top.fc-sun.fc-future{ color:#FF0000; }

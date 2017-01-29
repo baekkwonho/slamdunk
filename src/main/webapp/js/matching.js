@@ -1,59 +1,63 @@
-
 $(document).ready(function() {
+       
+        var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
+  
+    $('#calendar').fullCalendar({
+         dayClick: function(date){
+            $.ajax({
+                        url : serverAddr+"/auth/loginuser.json",
+                        method : "GET",
+                        dataType : "json",
+                        success : function(obj){
+                            var result = obj.jsonResult;
+                            if(result.state !== "success"){
+                                alert("로그인을 해주세요.")
+                                return;
+                            }
+                            var today = y+"-"+(m+1)+"-"+d;
+                            var clickday = date.format();
+                            console.log(today);
+                            console.log(clickday);
+                            var spltoday =today.split("-");
+                            var splclickday=clickday.split("-");
 
+                            console.log(spltoday);
+                            console.log(splclickday);
+                            
+                            if(spltoday[0]-splclickday[0] > 0){
+                                alert("지난 시기 입니다.");
+                            }else if(spltoday[1]-splclickday[1] > 0){
+                                alert("지난 시기 입니다.");
+                            }else if(spltoday[1]-splclickday[1] === 0 && spltoday[2]-splclickday[2] > 0){
+                                alert("지난 시기 입니다.");
+                            }else{
+                               window.location.href="resister.html"
+                            }        
+                }
+                    });
+            },
+            header: {
+                left: 'prev,next ,today ',
+                center: 'title',
+                right: ''
+            },
+            editable : true,
+            eventLimit : true
+             });
+              
+              $("#district_form2").hide();
 
-$('#calendar').fullCalendar({
-    header: {
-        left: 'prev,next today',
-        center: 'title',
-        right: ''
-    },
-    defaultDate: '2016-12-14',
-    editable: true,
-    
-    eventDrop: function(event){
-        event.start._i = event.start.format();
-    },
-    eventResize: function(event) {
-        event.end._i = event.end.format();
-    },
-    
-    eventLimit: true, // allow "more" link when too many events
-    events: [{
-        id: 'All Day Event',
-        title: 'All Day Event',
-        start: '2016-12-14'
-    }, {
-        id: 'popo',
-        title: 'popo',
-        start: '2016-12-14T04:16:50',
-        end:   '2016-12-15T04:17:50',
-        description: 'This is a cool event',
-        color: 'rgb(142, 67, 163)',
-        textColor: 'white'
-    }, {
-        id: 'popo2',
-        title: 'popo2',
-        start: '2016-12-14'
-    }]
-});
+              $("#city_form").change(function(){
+                if($("#city_form").val()==="고양시"){
+                    $("#district_form").show();
+                     $("#district_form2").hide();
+                }else{
+                     $("#district_form").hide();
+                     $("#district_form2").show();
+                }
+              });
 
-
-$('#calendar').on('click','.fc-day',function(){
-    var myPrompt = prompt('스케줄을 입력해주세요.','팀명,지역,시간');
-    if(myPrompt != null && myPrompt != ''){
-        $('#calendar').fullCalendar('addEventSource', [{
-            id: myPrompt,
-            title: myPrompt,
-            start: $(this).attr('data-date')
-        }]);
-    }
-});
-
-$('#calendar').on('click','.fc-content',function(){
-    var gugu = $(this).children('.fc-title').html();
-    $('#calendar').fullCalendar('removeEvents', gugu);
-});
-
-
-});
+        });
