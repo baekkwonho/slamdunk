@@ -17,15 +17,19 @@ $(document).ready(function() {
                                 alert("로그인을 해주세요.")
                                 return;
                             }
+                            if(result.data.tno === 0){
+                                alert("팀이 필요합니다.");
+                                return;
+                            }
                             var today = y+"-"+(m+1)+"-"+d;
                             var clickday = date.format();
-                            console.log(today);
-                            console.log(clickday);
                             var spltoday =today.split("-");
                             var splclickday=clickday.split("-");
-
-                            console.log(spltoday);
-                            console.log(splclickday);
+                            if($("#city_form").val() === "고양시"){
+                                 var location = $("#district_form").val();
+                            }else{
+                                var location = $("#district_form2").val();
+                            }
                             
                             if(spltoday[0]-splclickday[0] > 0){
                                 alert("지난 시기 입니다.");
@@ -34,7 +38,8 @@ $(document).ready(function() {
                             }else if(spltoday[1]-splclickday[1] === 0 && spltoday[2]-splclickday[2] > 0){
                                 alert("지난 시기 입니다.");
                             }else{
-                               window.location.href="resister.html"
+                               window.location.href="resister.html?date="+clickday+"&loc="+location;
+
                             }        
                 }
                     });
