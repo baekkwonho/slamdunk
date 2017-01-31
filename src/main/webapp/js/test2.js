@@ -11,7 +11,6 @@ $(function() {
 					alert("팀 조회를 실패했습니다.");
 					return;
 				}
-				console.log(result);
 				$(".team_name1").text(result.data.teamName);
 			}
 		})
@@ -21,13 +20,14 @@ $(function() {
 	$(".addmatch_btn").click(function() {
 		
 		var match = {
-				region : "일산동구",
-				match_date : "2017-02-02",
-				location : "불광중",
-				rule : "3vs3",
-				match_desc : "3:3 같이 하실분!"
+				region : $(".region").text(),
+				match_date : $(".match_date").text(),
+				location : $(".place").val(),
+				rule : $("#team_number").val(),
+				match_desc : $("#memo_area").val()
 		}
 		
+		console.log(match);
 		ajaxAddMatch(match);
 		
 	})
