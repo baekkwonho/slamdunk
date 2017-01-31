@@ -25,6 +25,11 @@
     where TNO=#{no}
   </select>
   
+  <select id="selectTeamName" resultType="string" parameterType="int">
+    select TNAME from TEAMS
+    where TNO = #{no}
+  </select>
+  
   <update id="update" parameterType="map">
     update TEAMS set
     TDESC = #{teamDesc}

@@ -26,21 +26,21 @@ $(function() {
 			right :''
 		},
 		timeFormat: 'H(:mm)', //14:30
-		 events : [
-		              {
-		            	  title : "aaa",
-		            	  start : "2017-01-26T14:30:00",
-		            	  end : "2017-01-26 17:00:00"
-		            	 // url : "http://google.com"
-		              }
-		             ],
 		dayClick : function(date) {
 			$.getJSON(serverAddr + "/auth/loginuser.json", function(obj) {
 				var result = obj.jsonResult
 				if (result.state !== "success") {
-					alert("로그인이 필요 합니다.")
-					return
+					alert("로그인이 필요 합니다.");
+					return;
 				}
+				
+				// 팀이 있어야 등록 가능
+				if (result.data.tno === 0) {
+					alert("팀이 있어야 등록이 가능합니다.");
+					return;
+				}
+				
+				
 				var currDate =date.format();
 				if ($("#city_form").val() === "고양시") {
 					var loc = $("#district_form1").val();
@@ -60,10 +60,64 @@ $(function() {
 				} else {
 					window.location.href="test2.html?date="+currDate+"&loc="+loc;
 				}
-				
 			})
-		}
+		},
+		eventClick: function(event) {
+//			   if (event.url) {
+//		            window.open(event.url);
+//		            return false;
+//		        }
+		    }
 	})
+	
+	
+	$(".filter_btn").click(function() {
+		if ($("#city_form").val() === "고양시") {
+			var region = $("#district_form1").val();
+		} else {
+			var region = $("#district_form2").val();
+		}
+		$("#calendar").fullCalendar('removeEvents');
+		ajaxLoadMatch(region);
+	})
+	
+	function ajaxLoadMatch(region) {
+		console.log(region);
+		
+		$.ajax({
+			url : serverAddr + "/match/list.json",
+			method : "POST",
+			dataType : "json",
+			data : {"region" : region},
+			success : function(obj) {
+				var result = obj.jsonResult;
+				if (result.state !== "success") {
+					alert("match list 조회 실패");
+					return;
+				}
+				console.log(result);
+				
+				
+				for (var i = 0; i < result.data.length; i++) {
+					if (result.data[i].team_no2 === 0) { // 상대팀이 없는 경우
+						$("#calendar").fullCalendar('addEventSource', [{
+							title : result.data[i].team_name1 + " vs ",
+							start : result.data[i].match_date,
+							url : "test2.html?no="+result.data[i].match_no
+						}]);
+					} else { // 상대팀이 결정된 경우
+						$("#calendar").fullCalendar('addEventSource', [{
+							title : result.data[i].team_name1 + " vs " + result.data[i].team_name2,
+							start : result.data[i].match_date,
+							url : "test2.html?no="+result.data[i].match_no
+						}]);
+					}
+				}
+				
+			}
+		})
+		
+	}
 	
 	/*
 	var team1 = "slamdunk";

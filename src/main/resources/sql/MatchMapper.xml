@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.MatchDao">
+  <resultMap type="match" id="matchMap">
+    <id column="MATCH_NO" property="match_no"/> 
+    <result column="REGION_RNO" property="region_no"/>
+    <result column="MATCH_DATE" property="match_date"/>
+    <result column="TEAMS_TNO1" property="team_no1"/>
+    <result column="TEAMS_TNO2" property="team_no2"/> 
+    <result column="LOCATION" property="location"/> 
+    <result column="RULE" property="rule"/> 
+    <result column="MATCH_DESC" property="match_desc"/> 
+    
+  </resultMap>
+
+  <insert id="insertMatch" parameterType="match">
+    insert into MATCHES(REGION_RNO, MATCH_DATE, TEAMS_TNO1, LOCATION, RULE, MATCH_DESC)
+    values (#{region_no}, #{match_date}, #{team_no1}, #{location}, #{rule}, #{match_desc})
+  </insert>
+  
+  <select id="selectListMatch" resultMap="matchMap" parameterType="int">
+    select * from MATCHES
+    inner join TEAMS
+    on MATCHES.TEAMS_TNO1 = TEAMS.TNO
+    where REGION_RNO = #{no}
+  </select>
+
+
+</mapper>
