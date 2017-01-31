@@ -49,10 +49,10 @@ public class MatchController {
   
   
   @RequestMapping(path="list")
-  public Object listMatch(String region) throws Exception {
+  public Object listMatch(int region) throws Exception {
     try {
       
-      List<Match> list = matchDao.selectListMatch(regionDao.selectRegion(region));
+      List<Match> list = matchDao.selectListMatch(region);
       
       for (int i = 0; i < list.size(); i++) {
         list.get(i).setTeam_name1(teamDao.selectTeamName(list.get(i).getTeam_no1()));
@@ -63,6 +63,8 @@ public class MatchController {
       return JsonResult.error(e.getMessage());
     }
   }
+  
+  
   
   
 }

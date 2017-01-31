@@ -50,8 +50,48 @@ $(function() {
 		})
 	}
 	
+	//loadtest2
+	
+	
+	
+	
 	ajaxTeamLoginUser();
 	
+	if (location.search.startsWith("?")) {
+		  if (location.search.split("?")[1].split("=")[0] === "matchno") {
+			  var matchno = location.search.split("?")[1].split("=")[1];
+			  
+		  } else {
+			  var date = location.search.split("?")[1].split("&")[0].split("=")[1];
+			    var loc = location.search.split("?")[1].split("&")[1].split("=")[1];
+			    var region = "";
+			    switch(loc) {
+			    case 1 : 
+			      region = "고양시 일산동구";
+			      break;
+			    case 2 :
+			      region = "고양시 일산서구";
+			      break;
+			    case 3 :
+			      region = "고양시 덕양구";
+			      break;
+			    case 4 :
+			      region = "서울시 은평구";
+			      break;
+			    case 5 :
+			      region = "서울시 강남구";
+			      break;
+			    case 6 : 
+			      region = "서울시 서초구";
+			      break;
+			    default : 
+			      region = "고양시 일산동구";
+			    }
+			    $(".region").text(region);
+			    $(".match_date").text(date);
+		  }
+		  
+	  }
 	
 	
 })

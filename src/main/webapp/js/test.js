@@ -85,10 +85,9 @@ $(function() {
 		console.log(region);
 		
 		$.ajax({
-			url : serverAddr + "/match/list.json",
-			method : "POST",
+			url : serverAddr + "/match/list.json?region="+region,
+			method : "GET",
 			dataType : "json",
-			data : {"region" : region},
 			success : function(obj) {
 				var result = obj.jsonResult;
 				if (result.state !== "success") {
@@ -103,13 +102,13 @@ $(function() {
 						$("#calendar").fullCalendar('addEventSource', [{
 							title : result.data[i].team_name1 + " vs ",
 							start : result.data[i].match_date,
-							url : "test2.html?no="+result.data[i].match_no
+							url : "test2.html?matchno="+result.data[i].match_no
 						}]);
 					} else { // 상대팀이 결정된 경우
 						$("#calendar").fullCalendar('addEventSource', [{
 							title : result.data[i].team_name1 + " vs " + result.data[i].team_name2,
 							start : result.data[i].match_date,
-							url : "test2.html?no="+result.data[i].match_no
+							url : "test2.html?matchno="+result.data[i].match_no
 						}]);
 					}
 				}
@@ -172,5 +171,9 @@ $(function() {
 	});
 	
 	*/
+	
+	
+	
+	ajaxLoadMatch(1);
 	
 })

@@ -26,6 +26,11 @@
     on MATCHES.TEAMS_TNO1 = TEAMS.TNO
     where REGION_RNO = #{no}
   </select>
+  
+  <select id="selectMatch" resultType="match" parameterType="int">
+    select * from MATCHES
+    where MATCH_NO = #{no}
+  </select>
 
 
 </mapper>
