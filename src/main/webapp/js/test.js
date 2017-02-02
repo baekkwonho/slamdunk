@@ -4,6 +4,7 @@ $(function() {
 	var y = date.getFullYear();
 	var m = date.getMonth() + 1;
 	var d  = date.getDate();
+	
 	$("#district_form2").hide();
 	
 	$("#city_form").change(function() {
