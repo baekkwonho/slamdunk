@@ -64,7 +64,61 @@ public class MatchController {
     }
   }
   
+  @RequestMapping(path="detail")
+  public Object detailMatch(int matchno) throws Exception {
+    try {
+      
+      List<Match> match = matchDao.selectMatch(matchno);
+      match.get(0).setRegion(regionDao.selectRegionName(match.get(0).getRegion_no()));
+      match.get(0).setTeam_name1(teamDao.selectTeamName(match.get(0).getTeam_no1()));
+      
+      if (match.get(0).getTeam_no2() != 0) {
+        match.get(0).setTeam_name2(teamDao.selectTeamName(match.get(0).getTeam_no2()));
+      }
+
+//      System.out.println(match.get(0).getRegion_no());
+//      System.out.println(match.get(0).getRegion());
+//      System.out.println(match.get(0).getMatch_date());
+//      System.out.println(match.get(0).getTeam_no1());
+//      System.out.println(match.get(0).getTeam_name1());
+//      System.out.println(match.get(0).getLocation());
+//      System.out.println(match.get(0).getRule());
+//      System.out.println(match.get(0).getMatch_desc());
+      
+      
+      return JsonResult.success(match);
+    } catch (Exception e) {
+      return JsonResult.error(e.getMessage());
+    }
+  }
   
+  @RequestMapping(path="update")
+  public Object updateMatch(Match match) throws Exception {
+    try {
+      
+//      System.out.println(match.getMatch_no());
+//      System.out.println(match.getLocation());
+//      System.out.println(match.getRule());
+//      System.out.println(match.getMatch_desc());
+      
+      matchDao.updateMatch(match);
+      
+      return JsonResult.success();
+    } catch (Exception e) {
+      return JsonResult.error(e.getMessage());
+    }
+  }
+  
+  @RequestMapping(path="delete")
+  public Object deleteMatch(int matchno) throws Exception {
+    try {
+      matchDao.deleteMatch(matchno);
+      return JsonResult.success();
+    } catch (Exception e) {
+      return JsonResult.error(e.getMessage());
+    }
+    
+  }
   
   
 }

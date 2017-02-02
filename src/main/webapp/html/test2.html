@@ -78,33 +78,66 @@
   </div>
   </header>
   
-  <div id="left_team">
-    <h3>팀명: </h3> <p class="team_name1"></p>
+  <div class="left_team">
+   <h2 class="team_name1">SlamDunk</h2>
+    <div class="members_list">
+      <div class='members'>
+        <img src="../images/ball.jpg">
+        <span class="left_nickname">nickName</span>
+        <span class="left_position">Position</span>
+      </div>
+    </div>
+    <!-- <div class="members_btn">
+      <button type="button" class="left_prev_btn"><</button>
+      <span class="left_pageno"></span>
+      <button type="button" class="left_nect_btn">></button>
+    </div> -->
   </div>
   
-  <div class=resister_wrap>
-		<h3>지역:</h3>
-		<p class="region"></p>
-		<h3>장소:</h3>
-		<input type="text" name="place" class="place">
-		<h3>날짜:</h3>
-		<p class="match_date"></p>
-		<h3>? vs ?</h3>
+  <div class="resister_wrap">
+    <h2 class="match_date">2017-02-01</h2>
+    <h3 class="region">고양시 일산동구</h3>
+     <h3 class="place_p">아람누리</h3>
+    <!-- <input type="text" name="plcae" class="place" placeholder="**자세한 장소와 시간을 입력해주세요.**"> -->
+     <h3 class="rule">3:3</h3>
+   <!--  <select name="team_number" id="team_number" class="">
+      <option value="3:3">3:3</option>
+      <option value="4:4">4:4</option>
+      <option value="5:5">5:5</option>
+    </select> -->
+     <p class="match_info">3:3같이 해요!</p>
+    <textarea name="memo" id="memo_area" cols="30" rows="10" placeholder="**간단한 팀소개와 재미있는 매칭이 되기위해 한마디 해주세요.**"></textarea> 
+    <button type="button" class="addmatch_btn">Add</button>
+    <button type="button" class="vs_btn">VS</button>
+    <button type="button" class="update_btn">update</button>
+    <button type="button" class="delete_btn">delete</button>
+  </div>
+  
+  
+  
+  <!-- 
+  <div class="resister_wrap">
+    <p class="match_date">2017-02-01</p>
+    <p class="region">고양시 일산동구</p>
+		<input type="text" name="place" class="place" placeholder="**자세한 장소를 입력 해주세요.**">
+		<p class="place_p">아람누리 3시</p>
+		<p class="rule"></p>
 		<select name="team_number" id="team_number">
 			<option value="3:3">3:3</option>
 			<option value="4:4">4:4</option>
 			<option value="5:5">5:5</option>
 		</select>
-	
-		<div class="memo_wrap">
-			<h3>Introduce:</h3>
-			
-			<textarea name="memo" id="memo_area" cols="30" rows="10"" placeholder="**간단한 팀소개와 재미있는 매칭이 되기위해 한마디 해주세요.**"></textarea>
 		
+		<div class="memo_wrap">
+			<textarea name="memo" id="memo_area" cols="30" rows="10"" placeholder="**간단한 팀소개와 재미있는 매칭이 되기위해 한마디 해주세요.**"></textarea>
+		  <p class="match_info"></p>
 		<button type="button" class="addmatch_btn">Add</button>
+		<button type="button" class="vs_btn">VS</button>
+		<button type="button" class="update_btn">update</button>
+		<button type="button" class="delete_btn">delete</button>
 		</div>
 	</div>
-
+ -->
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
   <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="../js/common.js"></script>

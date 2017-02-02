@@ -11,7 +11,11 @@
   <select id="selectRegion" resultType="int" parameterType="string">
     select RNO from REGION
     where REGION_NAME= #{region_name}
+  </select>
   
+  <select id="selectRegionName" resultType="string" parameterType="int">
+    select REGION_NAME from REGION
+    where RNO = #{no}
   </select>
 
 

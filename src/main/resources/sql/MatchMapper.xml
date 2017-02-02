@@ -27,10 +27,23 @@
     where REGION_RNO = #{no}
   </select>
   
-  <select id="selectMatch" resultType="match" parameterType="int">
+  <select id="selectMatch" resultMap="matchMap" parameterType="int">
     select * from MATCHES
     where MATCH_NO = #{no}
   </select>
+  
+  <update id="updateMatch" parameterType="match">
+    update MATCHES set
+    LOCATION = #{location},
+    RULE = #{rule},
+    MATCH_DESC = #{match_desc}
+    where MATCH_NO = #{match_no}
+  </update>
+  
+  <delete id="deleteMatch" parameterType="int">
+    delete from MATCHES
+    where MATCH_NO = #{no}
+  </delete>
 
 
 </mapper>
