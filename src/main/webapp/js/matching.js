@@ -72,4 +72,59 @@ $(document).ready(function() {
             })
         }
     }); 
+        // 검색버튼을 누르면 그것에 대한 값을 서버에 보낸다.
+        $(".filter_btn").click(function(){
+            if($("#city_form").val()==="고양시"){
+                var region = $("#district_form").val();
+            }else{
+                var region = $("#district_form2").val();
+            }
+            // 이벤트를 뿌려주기전에 먼저 이벤트를 삭제해서 기존에 있던 스케줄을 초기화.
+            $("#calendar").fullCalendar('removeEvents');
+        //함수실행. 스케줄에 뿌려주기위한 함수실행.
+            ajaxLoadMatch(region);
+        });
+
+        function ajaxLoadMatch(region){
+            $.ajax({
+                url : serverAddr+"/match/list.json?region="+region,
+                method : "GET",
+                dataType : "json",
+                success : function(obj){
+                    var result = obj.jsonResult;
+                    if(result.state !== "success"){
+                        alert("스케줄 로드를 실패했습니다.");
+                        return;
+                    }
+                    console.log(result);
+                    // 데이터마다 체크를 해야되기때문에 반복문을 사용.
+                    for(var i =0; i<result.data.length;i++){
+                        if(result.data[i].team_no2 === 0){
+                            $("#calendar").fullCalendar('addEventSource',[{
+                                title : result.data[i].team_name1+" / "+result.data[i].rule+" / "+result.data[i].location,
+                                start : result.data[i].match_date,
+                                url : "resister.html?match_no="+result.data[i].match_no
+                            }])
+                        }else{
+                            $("#calendar").fullCalendar('addEventSource',[{
+                                title : result.data[i].team_name1+"VS"+result.data[i].team_name2,
+                                start : result.data[i].match_date,
+                                url : "resister.html?match_no="+result.data[i].match_no
+                            }])
+                        }
+                    }
+                }
+            })
+        }
+
+        // 이 부분은 페이지가 열릴때마다 실행되는 부분.
+        // 지역이 어딘지를 인식.
+        if($("#city_form").val()==="고양시"){
+                var region = $("#district_form").val();
+            }else{
+                var region = $("#district_form2").val();
+            }
+        ajaxLoadMatch(region);
+
+
 });
