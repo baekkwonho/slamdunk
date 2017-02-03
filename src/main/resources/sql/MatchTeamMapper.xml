@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.MatchTeamDao">
+  <resultMap type="matchteam" id="matchteamMap">
+    <id column="MTNO" property="mtno"/> 
+    <result column="MATCHES_MATCH_NO" property="match_no"/>
+    <result column="RESTEAMNO" property="resTeamNo"/>
+    <result column="REQTEAMNO" property="reqTeamNo"/>
+  </resultMap>
+  
+  <insert id="insert" parameterType="matchteam">
+    insert into MATCH_TEAM(MATCHES_MATCH_NO, RESTEAMNO, REQTEAMNO)
+    values (#{match_no}, #{resTeamNo}, #{reqTeamNo})
+  </insert>
+  
+  <select id="selectOnebyReqTeamNo" resultType="int" parameterType="int">
+    select count(*) from MATCH_TEAM
+    where REQTEAMNO = #{no}
+  </select>
+  
+  <select id="selectList" resultMap = "matchteamMap" parameterType="int">
+    select * from MATCH_TEAM
+    where RESTEAMNO = #{no}
+  </select>
+  
+  <select id="selectMatchTeam" resultMap ="matchteamMap" parameterType="int">
+    select * from MATCH_TEAM
+    where MTNO = #{no}
+  </select>
+  
+  <delete id="deletebyMatchNo" parameterType="int">
+    delete from MATCH_TEAM
+    where MATCHES_MATCH_NO = #{no}
+  </delete>
+  
+  <delete id="deletebyMatchTeamNo" parameterType="int">
+    delete from MATCH_TEAM
+    where MTNO = #{no}
+  </delete>
+  
+</mapper>

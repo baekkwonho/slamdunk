@@ -87,7 +87,7 @@ $(function() {
 	}
 	
 	$(".delete_btn").click(function() {
-		var matchno = location.search.split("?")[1].split("=")[1]
+		var matchno = location.search.split("?")[1].split("=")[1];
 		ajaxDeleteMatch(matchno)
 	})
 	
@@ -107,6 +107,32 @@ $(function() {
 			}
 		})
 	}
+	
+	
+	$(".vs_btn").click(function() {
+		console.log("Vs!")
+		var matchno = location.search.split("?")[1].split("=")[1];
+		ajaxBattle(matchno);
+	})
+	
+	function ajaxBattle(matchno) {
+		$.ajax({
+			url : serverAddr + "/matchteam/battle.json?matchno=" + matchno,
+			method : "GET",
+			dataType : "json",
+			success : function(obj) {
+				var result = obj.jsonResult;
+				if (result.state !== "success") {
+					alert( "대결 신청 실패 or 신청중");
+					return;
+				}
+				console.log("battle success");
+			}
+		})
+	}
+	
+	
+	
 	
 	//loadtest2
 	
@@ -241,12 +267,33 @@ $(function() {
 	}
 	
 	
+	//요청온 리스트 확인
+	
+	function ajaxMatchRequest() {
+		$.ajax({
+			url : serverAddr +"/matchteam/list.json",
+			method : "GET",
+			dataType : "json",
+			success : function(obj) {
+				var result = obj.jsonResult;
+				if (result.state !== "success") {
+					alert ("리스트 조회 실패");
+					return;
+				}
+				console.log(result);
+			}
+		})
+	}
+	
+	
+	
 	
 	
 	if (location.search.startsWith("?")) {
 		  if (location.search.split("?")[1].split("=")[0] === "matchno") {
 			  var matchno = location.search.split("?")[1].split("=")[1];
 			  ajaxDetailMatch(matchno);
+			  ajaxMatchRequest();
 			  
 		  } else {
 			  var date = location.search.split("?")[1].split("&")[0].split("=")[1];
