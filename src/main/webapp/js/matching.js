@@ -4,17 +4,7 @@ $(document).ready(function() {
     var month = date.getMonth()+1;
     var day = date.getDate(); // 오늘의 날짜를 받아올수 있다.(전역변수)
 
-    $("#district_form2").hide();
-    $("#city_form").change(function(){
-        if($("#city_form").val()==="고양시"){
-            $("#district_form").show();
-            $("#district_form2").hide();
-        }else{
-             $("#district_form").hide();
-            $("#district_form2").show();
-        }
-
-    });
+  
 
     $("#calendar").fullCalendar({
         
@@ -79,9 +69,11 @@ $(document).ready(function() {
             }else{
                 var region = $("#district_form2").val();
             }
+           
             // 이벤트를 뿌려주기전에 먼저 이벤트를 삭제해서 기존에 있던 스케줄을 초기화.
             $("#calendar").fullCalendar('removeEvents');
-        //함수실행. 스케줄에 뿌려주기위한 함수실행.
+            
+            //함수실행. 스케줄에 뿌려주기위한 함수실행.
             ajaxLoadMatch(region);
         });
 
@@ -117,12 +109,25 @@ $(document).ready(function() {
             })
         }
 
-        // 이 부분은 페이지가 열릴때마다 실행되는 부분.
+        // 이 부분은 페이지가 열릴때마다 실행되는 부분.    
+          $("#city_form").change(function(){
+            if($("#city_form").val()==="고양시"){
+                $("#district_form").show();
+                $("#district_form2").hide();
+            }else{
+                 $("#district_form").hide();
+                $("#district_form2").show();
+            }
+        });
         // 지역이 어딘지를 인식.
         if($("#city_form").val()==="고양시"){
                 var region = $("#district_form").val();
+                $("#district_form").show();
+                $("#district_form2").hide();
             }else{
                 var region = $("#district_form2").val();
+                $("#district_form").hide();
+                $("#district_form2").show();
             }
         ajaxLoadMatch(region);
 
