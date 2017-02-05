@@ -109,7 +109,7 @@ $(document).ready(function() {
             })
         }
 
-        // 이 부분은 페이지가 열릴때마다 실행되는 부분.    
+       // select 값이 바뀔떄마다 적용.
           $("#city_form").change(function(){
             if($("#city_form").val()==="고양시"){
                 $("#district_form").show();
@@ -119,7 +119,7 @@ $(document).ready(function() {
                 $("#district_form2").show();
             }
         });
-        // 지역이 어딘지를 인식.
+        // 지역이 어딘지를 인식. // 이 부분은 페이지가 열릴때마다 실행되는 부분.    
         if($("#city_form").val()==="고양시"){
                 var region = $("#district_form").val();
                 $("#district_form").show();
@@ -129,7 +129,7 @@ $(document).ready(function() {
                 $("#district_form").hide();
                 $("#district_form2").show();
             }
+        
         ajaxLoadMatch(region);
-
 
 });

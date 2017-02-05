@@ -265,11 +265,72 @@ function ajaxLoginUser(){
 	 		$(".login_btn").hide();
 	 		$(".signup_btn").hide();
 	 		$(".nickname strong").text(result.data.nickname);
-	 	
+
+	 		ajaxMatchRequest();
 	 	}
 	})
 };
+	function ajaxMatchRequest(){
+		$.ajax({
+			url : serverAddr+"/matchteam/list.json",
+			method : "GET",
+			dataType : "json",
+			success : function(obj){
+				var result = obj.jsonResult;
+				if(result.state !== "success"){
+					alert("요청을 불러오지 못했습니다.");
+					return;
+				}
+				console.log(result);
+				var str = "";
+				for(var i=0;i<result.data.length;i++){
+					str+="<span class='date'>"+result.data[i].match_date+"</span><span class='teamname'>"+result.data[i].reqTeamname+"</span><span class='request'>베틀 신청</span><button type='button' class='ok_btn' data-no='"+result.data[i].mtno+"'>수락</button><button type='button' class='no_btn' data-no='"+result.data[i].mtno+"'>거절</button>"
+				}
+				$(".match_request").html(str);
+				$(".match_request").css("background","#e09115");
 
+				$(".ok_btn").click(function(){
+					ajaxOkrequest($(this).attr("data-no"));
+				});
+				$(".no_btn").click(function(){
+					ajaxNorequest($(this).attr("data-no"));
+				});
+			}
+
+		})
+	}
+			function ajaxOkrequest(datano){
+			$.ajax({
+				url : serverAddr+"/matchteam/ok.json",
+				method : "GET",
+				dataType : "json",
+				data: {mtno : datano},
+				success : function(obj){
+					var result = obj.jsonResult;
+					if(result.state !== "success"){
+						alert("수락이 실패 했습니다.");
+						return;
+					}
+					window.location.reload();
+				}
+			})
+		}
+		function ajaxNorequest(datano){
+			$.ajax({
+				url : serverAddr+"/matchteam/no.json",
+				method : "GET",
+				dataType : "json",
+				data: {mtno : datano},
+				success : function(obj){
+					var result = obj.jsonResult;
+					if(result.state !== "success"){
+						alert("거절이 실패 했습니다.");
+						return;
+					}
+					window.location.reload();
+				}
+			})
+		}
 
 // <!--save email-->
 //쿠키를 이용해서 로그인 정보가 있는지 확인
