@@ -56,6 +56,9 @@ public class MatchController {
       
       for (int i = 0; i < list.size(); i++) {
         list.get(i).setTeam_name1(teamDao.selectTeamName(list.get(i).getTeam_no1()));
+        if (list.get(i).getTeam_no2() != 0) {
+          list.get(i).setTeam_name2(teamDao.selectTeamName(list.get(i).getTeam_no2()));
+        }
       }
       
       return JsonResult.success(list);

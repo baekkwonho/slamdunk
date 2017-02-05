@@ -95,13 +95,12 @@ $(function() {
 					alert("match list 조회 실패");
 					return;
 				}
-				console.log(result);
 				
 				
 				for (var i = 0; i < result.data.length; i++) {
 					if (result.data[i].team_no2 === 0) { // 상대팀이 없는 경우
 						$("#calendar").fullCalendar('addEventSource', [{
-							title : result.data[i].team_name1 + " vs ",
+							title : result.data[i].team_name1 +"/ " + result.data[i].rule + "/ " +result.data[i].location,
 							start : result.data[i].match_date,
 							url : "test2.html?matchno="+result.data[i].match_no
 						}]);

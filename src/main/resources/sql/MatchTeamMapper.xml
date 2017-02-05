@@ -15,9 +15,9 @@
     values (#{match_no}, #{resTeamNo}, #{reqTeamNo})
   </insert>
   
-  <select id="selectOnebyReqTeamNo" resultType="int" parameterType="int">
+  <select id="selectOnebyReqTeamNo" resultType="int" parameterType="matchteam">
     select count(*) from MATCH_TEAM
-    where REQTEAMNO = #{no}
+    where REQTEAMNO = #{reqTeamNo} and MATCHES_MATCH_NO = #{match_no}
   </select>
   
   <select id="selectList" resultMap = "matchteamMap" parameterType="int">

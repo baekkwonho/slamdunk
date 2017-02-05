@@ -159,7 +159,8 @@ $(function(){
         $(".battle_btn").click(function(){
        var match_no = location.search.split("?")[1].split("=")[1];
        ajaxTeamBattle(match_no);
-    });
+        });
+        
         function ajaxTeamBattle(match_no){
           $.ajax({
         url: serverAddr+"/matchteam/battle.json?matchno="+match_no,

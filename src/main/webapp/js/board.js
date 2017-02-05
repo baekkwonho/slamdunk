@@ -29,10 +29,12 @@ function ajaxBoardList() {
 			alert("조회실패입니다.");
 			return;
 		}
-		
+		console.log(result);
 		var writeList = ""; // table body에 넣어줄 html 태그를 작성할 변수
 		
+		
 		// 공지사항 부분 넣어주기.
+		if (result.data.noticeList.length !== 0) {
 			writeList += "<tr class='noticeLink' href='#' data-no="+result.data.noticeList[0].no+">"+
 			"<td>[공지사항]</td>"+
 			"<td>"+result.data.noticeList[0].title+"</td>"+
@@ -40,6 +42,8 @@ function ajaxBoardList() {
 			"<td>"+result.data.noticeList[0].cre_dt+"</td>"+
 			"<td>"+result.data.noticeList[0].vw_cnt+"</td>" +
 			"</tr>";
+		}
+			
 		
 		// 게시판 부분 추가하기.
 		for (var i = 0; i < result.data.list.length; i++) {

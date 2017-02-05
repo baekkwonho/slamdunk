@@ -31,18 +31,19 @@ public class MatchTeamController {
       
       Member reqMember = (Member)session.getAttribute("member");
       
-      int count = matchTeamDao.selectOnebyReqTeamNo(reqMember.getTno());
+      MatchTeam matchTeam = new MatchTeam();
+      matchTeam.setMatch_no(matchno);
+      matchTeam.setReqTeamNo(reqMember.getTno());
+      
+      System.out.println(matchTeam.getMatch_no());
+      System.out.println(matchTeam.getReqTeamNo());
+      int count = matchTeamDao.selectOnebyReqTeamNo(matchTeam);
+      System.out.println(count);
       
       if (count != 0) {
         return JsonResult.fail();
       }
       
-      MatchTeam matchTeam = new MatchTeam();
-      
-      // 매칭 번호 설정
-      matchTeam.setMatch_no(matchno);
-      // 요청자 설정
-      matchTeam.setReqTeamNo(reqMember.getTno());
       // 응답자 설정
       List<Match> match = matchDao.selectMatch(matchno);
       matchTeam.setResTeamNo(match.get(0).getTeam_no1());
@@ -85,9 +86,20 @@ public class MatchTeamController {
       List<MatchTeam> list = matchTeamDao.selectMatchTeam(mtno);
       // 해당 매치 가져오기
       List<Match> match = matchDao.selectMatch(list.get(0).getMatch_no());
+      System.out.println(match.get(0).getMatch_no());
       // 매치에 요청 팀번호, 팀이름 저장
       match.get(0).setTeam_no2(list.get(0).getReqTeamNo());
       match.get(0).setTeam_name2(teamDao.selectTeamName(list.get(0).getReqTeamNo()));
+      
+      System.out.println(match.get(0).getTeam_no2());
+      System.out.println(match.get(0).getTeam_name2());
+      
+      Match updateMatch = new Match();
+      updateMatch.setMatch_no(match.get(0).getMatch_no());
+      updateMatch.setTeam_no2(match.get(0).getTeam_no2());
+      
+      matchDao.updateBattleMatch(updateMatch);
+      
       
       // matchteam table에서 해당 매칭에 대해 모두 삭제
       matchTeamDao.deletebyMatchNo(list.get(0).getMatch_no());

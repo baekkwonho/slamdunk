@@ -57,8 +57,6 @@ $(function() {
 		
 		var match = {
 				match_no : location.search.split("?")[1].split("=")[1],
-				region : $(".region").text(),
-				match_date : $(".match_date").text(),
 				location : $(".place").val(),
 				rule : $("#team_number").val(),
 				match_desc : $("#memo_area").val()
@@ -137,7 +135,6 @@ $(function() {
 	//loadtest2
 	
 	function ajaxDetailMatch(matchno) {
-		console.log(matchno);
 		$.ajax ({
 			url : serverAddr + "/match/detail.json?matchno="+matchno,
 			method : "GET",

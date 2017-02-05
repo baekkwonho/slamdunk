@@ -58,7 +58,6 @@ $("#ok_btn").click(function() {
 			contents : $("#contents").val(),
 			cre_dt : $(".createDate_form label").text()
 	};
-	
 	ajaxAddBoard(newBoard);
 });
 

@@ -10,5 +10,6 @@ public interface MatchDao {
   List<Match> selectListMatch(int no) throws Exception;
   List<Match> selectMatch(int no) throws Exception;
   int updateMatch(Match match) throws Exception;
+  int updateBattleMatch(Match match) throws Exception;
   int deleteMatch(int no) throws Exception;
 }
