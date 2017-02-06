@@ -291,8 +291,9 @@ hr {
     width: 500px;
     height: 500px;
     background: pink;
-    position: relative;
-    top:50px;
+    position: absolute;
+    top: 90px;
+    left: 510px;
     margin: 0 auto;
     text-align: center;
     line-height: 27px;
@@ -306,4 +307,21 @@ hr {
 	position: absolute;
     bottom: 5px;
     right: 90px;
+}
+
+.myteam{
+    width: 500px;
+    height: 1000px;
+    background: yellow;
+    position: absolute;
+    top: 90px;
+    left: 7px;
+}
+.otherteam{
+    width: 500px;
+    height: 1000px;
+    background: aqua;
+    position: absolute;
+    top: 90px;
+    right:7px;
 }

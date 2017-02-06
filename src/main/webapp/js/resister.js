@@ -14,8 +14,44 @@ $(function(){
           return;
         }
         $(".teamname").text(result.data.teamName);
+        
+        if(result.data.tphoto_path !== null && result.data.tphoto_path !== ""){
+          $(".teamimage").attr("src","/slamdunk/upload/"+result.data.tphoto_path);
+        }
+        ajaxTeamMemberList(result.data.no);
       }
     });
+   }
+
+   
+   function ajaxTeamMemberList(teamno){
+    $.ajax({
+      url : serverAddr+"/team/teammemberlist.json?no="+teamno+"&length=15",
+      method : "GET",
+      dataType : "json",
+      success : function(obj){
+        var result = obj.jsonResult;
+        if(result.state !== "success"){
+          alert("본인팀원을 불러오지 못했습니다.");
+          return;
+        }
+        console.log(result)
+        var str = "<h3>Member's List</h3>";
+        for(var i=0;i<result.data.list.length;i++){
+          //변경될 사항.초기값을 만들어줘야함.
+          var position = "미지정";
+          if(result.data.list[i].position !== null){
+            position = result.data.list[i].position;
+          }
+          var photo = "/slamdunk/images/bg05.jpg"
+          if(result.data.list[i].photo_path !== null && result.data.list[i].photo_path !== ""){
+            photo = "/slamdunk/upload/"+result.data.list[i].photo_path;
+          }
+          str += "<img class='myteamimage' src='"+photo+"'><h3>닉네임 :</h3><p class='mynickname'>"+result.data.list[i].nickname+"</p><h3>포지션 :</h3><p class='myposition'>"+position+"</p>"
+        }
+        $(".myinfo").html(str);
+      }
+    })
    }
 
    function ajaxAddMatch(match){ //스케줄버튼 누르면 서버에 값전달해서 서버에 저장시키기.
@@ -72,7 +108,7 @@ $(function(){
               }
                 console.log(result2);
                 if(result.data[0].team_no1 === result2.data.tno){
-                  $(".teamname").text(result.data[0].team_name1);
+                  ajaxLoadTeam();
                   $(".location").text(result.data[0].region);
                   $(".place").val(result.data[0].location);
                   $(".date").text(result.data[0].match_date);
@@ -81,7 +117,7 @@ $(function(){
                   $(".resister_btn").hide();
                   $(".battle_btn").hide();
                 }else{
-                  $(".teamname").text(result.data[0].team_name1);
+
                   $(".location").text(result.data[0].region);
                   $(".place_p").text(result.data[0].location);
                   $(".place").hide();
