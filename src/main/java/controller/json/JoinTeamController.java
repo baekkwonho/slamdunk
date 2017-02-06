@@ -34,7 +34,9 @@ public class JoinTeamController {
       
       //3 reqNo로 join_team에 있는지 확인
       int count =  joinTeamDao.selectOnebyReqno(reqMember.getNo());
-      if (count != 0) {
+      int member_cnt = memberDao.countTno(resMember.getTno());
+      System.out.println(member_cnt);
+      if (count != 0 || member_cnt >= 15) {
         return JsonResult.fail();
       }
       //4 jointeam DB에 추가하기

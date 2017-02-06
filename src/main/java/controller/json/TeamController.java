@@ -185,7 +185,6 @@ public class TeamController {
         return JsonResult.success();
       }
       Team team = teamDao.selectOne(member.getTno());
-      team.settAuth(member.isTauth());
       List<TeamPhoto> teamPhoto = teamPhotoDao.selectOnePhoto(team.getNo());
       
       if (teamPhoto.size() != 0) {
@@ -194,6 +193,24 @@ public class TeamController {
       
       return JsonResult.success(team);
     } catch (Exception e) {
+      return JsonResult.error(e.getMessage());
+    }
+  }
+  
+  @RequestMapping(path="otherteam")
+  public Object otherTeam(int teamno) throws Exception {
+    try {
+      
+      Team team = teamDao.selectOne(teamno);
+      
+      List<TeamPhoto> teamPhoto = teamPhotoDao.selectOnePhoto(team.getNo());
+      
+      if (teamPhoto.size() != 0) {
+        team.setTphoto_path(teamPhoto.get(0).getTphoto_path());
+      }
+      
+      return JsonResult.success(team);
+    } catch(Exception e) {
       return JsonResult.error(e.getMessage());
     }
   }
