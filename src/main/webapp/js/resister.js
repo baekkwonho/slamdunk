@@ -1,7 +1,7 @@
 
 $(function(){
 
-   function ajaxLoadTeam(){   //팀명받아와서 뿌려주는 함수.
+   function ajaxLoadTeam(){   //팀 인포 받아와서 뿌려주는 함수.
       
       $.ajax({
       url : serverAddr+"/team/myteam.json",
@@ -23,7 +23,28 @@ $(function(){
     });
    }
 
-   
+   function ajaxLoadOtherTeam(teamno){
+    $.ajax({
+      url : serverAddr+"/team/otherteam.json?teamno="+teamno,
+      method : "GET",
+      dataType : "json",
+      success : function(obj){
+        var result = obj.jsonResult;
+        if(result.state !== "success"){
+          alert("다른 팀원들을 불러오지 못했습니다.");
+          return;
+        }
+          $(".teamname").text(result.data.teamName);
+        
+        if(result.data.tphoto_path !== null && result.data.tphoto_path !== ""){
+          $(".teamimage").attr("src","/slamdunk/upload/"+result.data.tphoto_path);
+        }
+        ajaxTeamMemberList(result.data.no);
+      }
+
+    })
+   }
+
    function ajaxTeamMemberList(teamno){
     $.ajax({
       url : serverAddr+"/team/teammemberlist.json?no="+teamno+"&length=15",
@@ -54,6 +75,57 @@ $(function(){
     })
    }
 
+    function ajaxRightTeam(teamno){
+    $.ajax({
+      url : serverAddr+"/team/otherteam.json?teamno="+teamno,
+      method : "GET",
+      dataType : "json",
+      success : function(obj){
+        var result = obj.jsonResult;
+        if(result.state !== "success"){
+          alert("다른 팀원들을 불러오지 못했습니다.");
+          return;
+        }
+          $(".other_teamname").text(result.data.teamName);
+        
+        if(result.data.tphoto_path !== null && result.data.tphoto_path !== ""){
+          $(".other_teamimage").attr("src","/slamdunk/upload/"+result.data.tphoto_path);
+        }
+        ajaxRightTeamMemberList(result.data.no);
+      }
+
+    })
+   }
+
+   function ajaxRightTeamMemberList(teamno){
+    $.ajax({
+      url : serverAddr+"/team/teammemberlist.json?no="+teamno+"&length=15",
+      method : "GET",
+      dataType : "json",
+      success : function(obj){
+        var result = obj.jsonResult;
+        if(result.state !== "success"){
+          alert("본인팀원을 불러오지 못했습니다.");
+          return;
+        }
+        console.log(result)
+        var str = "<h3>Member's List</h3>";
+        for(var i=0;i<result.data.list.length;i++){
+          //변경될 사항.초기값을 만들어줘야함.
+          var position = "미지정";
+          if(result.data.list[i].position !== null){
+            position = result.data.list[i].position;
+          }
+          var photo = "/slamdunk/images/bg05.jpg"
+          if(result.data.list[i].photo_path !== null && result.data.list[i].photo_path !== ""){
+            photo = "/slamdunk/upload/"+result.data.list[i].photo_path;
+          }
+          str += "<img class='other_image' src='"+photo+"'><h3>닉네임 :</h3><p class='other_nickname'>"+result.data.list[i].nickname+"</p><h3>포지션 :</h3><p class='other_position'>"+position+"</p>"
+        }
+        $(".other_info").html(str);
+      }
+    })
+   }
    function ajaxAddMatch(match){ //스케줄버튼 누르면 서버에 값전달해서 서버에 저장시키기.
     $.ajax({
         url : serverAddr+"/match/add.json",
@@ -116,8 +188,9 @@ $(function(){
                   $("#memo_area").val(result.data[0].match_desc);
                   $(".resister_btn").hide();
                   $(".battle_btn").hide();
-                }else{
-
+                  $(".otherteam h3").hide();
+                }else if(result.data[0].team_no2 !== 0){
+                   ajaxLoadOtherTeam(result.data[0].team_no1);
                   $(".location").text(result.data[0].region);
                   $(".place_p").text(result.data[0].location);
                   $(".place").hide();
@@ -129,6 +202,23 @@ $(function(){
                   $(".resister_btn").hide();
                   $(".update_btn").hide();
                   $(".delete_btn").hide();
+                  $(".battle_btn").hide();
+                  ajaxRightTeam(result.data[0].team_no2);
+                }
+                else{
+                  ajaxLoadOtherTeam(result.data[0].team_no1);
+                  $(".location").text(result.data[0].region);
+                  $(".place_p").text(result.data[0].location);
+                  $(".place").hide();
+                  $(".date").text(result.data[0].match_date);
+                  $(".team_rule").text(result.data[0].rule);
+                  $("#team_number").hide();
+                  $(".team_intro").text(result.data[0].match_desc);
+                  $("#memo_area").hide(); 
+                  $(".resister_btn").hide();
+                  $(".update_btn").hide();
+                  $(".delete_btn").hide();
+                  $(".otherteam h3").hide();
                 }
             }
           })
@@ -256,6 +346,7 @@ $(function(){
         $(".battle_btn").hide();
         $(".update_btn").hide();
         $(".delete_btn").hide();
+        $(".otherteam h3").hide();
 
         ajaxLoadTeam(); // 팀이름 뿌려주는 함수 실행.
     } //매칭에서 url로 넘겨준 날짜와 지역을 찾기위해.
