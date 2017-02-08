@@ -5,6 +5,8 @@ padding:0;
 body{
 width:100%;
 height: 100%;
+background: black;
+color:white;
 }
 header{
 width:100%;
@@ -284,17 +286,24 @@ hr {
 }
 
 .month_nba_wrap {
-  float: left;
-  width: 550px;
-  margin-left: 100px;
   text-align: center;
 }
-
+.month_nba_schedule{
+  width:1000px;
+  margin: 0 auto;
+  position: relative;
+  top: 50px;
+  background: darkred;
+}
 .nbalogo {
     width: 80px;
     height: 80px;
     position: relative;
-    right: 20px;
+    font-size: 40px;
+    font-weight: bold;
+    position: relative;
+    right: 17px;
+    top: 35px;
 }
 
 .nba {
@@ -302,31 +311,38 @@ hr {
     font-weight: bold;
     position: relative;
     right: 40px;
-    top: 10px;
+    top: 44px;
 }
 
 .month_kbl_wrap {
-float: right;
-width: 550px;
-margin-right: 100px;
 text-align: center;
 }
 
 .kbllogo {
-width: 80px;
-height: 80px;
+    width: 80px;
+    height: 80px;
+    position: relative;
+    font-size: 40px;
+    font-weight: bold;
+    position: relative;
+    right: 17px;
+    top: 35px;
 }
 
 .kbl {
     font-size: 40px;
     font-weight: bold;
     position: relative;
-    left: 5px;
-    top: 10px;
+    right: 17px;
+    top: 44px;
 }
 
 .month_kbl_schedule {
-width: 100%;
+  width:1000px;
+  margin: 0 auto;
+  position: relative;
+  top: 50px;
+  background: darkred;
 }
 
 .month_nba_game, .month_game{
@@ -336,9 +352,49 @@ th {
 text-align: center;
 }
 tr {
-border: 1px solid black;
+border: 3px solid black;
 }
 
 .teamimg {
 width: 50px;
+}
+
+.glyphicon-chevron-left:before {
+    display: none;
+}
+
+.glyphicon-chevron-right:before {
+    display: none;
+}
+.preve{
+    position: absolute;
+    top: 55px;
+    left: 400px;
+    width: 50px;
+    height: 30px;
+    border: none;
+    background: darkred;
+}
+.next{
+    position: absolute;
+    top: 55px;
+    right: 400px;
+    width: 50px;
+    height: 30px;
+    border: none;
+    background: darkred;
+}
+
+.carousel-control {
+  display: none;
+}
+ol{
+  display: none;
+}
+.title_schedule{
+  height:40px;
+}
+
+.carousel-inner .active {
+  border:none;
 }

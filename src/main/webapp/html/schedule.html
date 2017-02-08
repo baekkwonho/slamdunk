@@ -79,32 +79,79 @@
   </div>
 </header>
 
-<div class="month_nba_wrap">
-  <img src="../images/nbaLogo.jpg" class="nbalogo"><span class="nba">NBA</span>
-  <table class="month_nba_schedule">
-    <tr>
-      <th>날짜</th>
-      <th>시간</th>
-      <th>경기</th>
-      <th>장소</th>
-    </tr>
-  </table>
+
+
+
+
+
+
+
+
+
+
+<!-- 캐러셀 -->
+
+
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+ <ol class="carousel-indicators" >
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active" id="myCarousel_1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1" id="myCarousel_2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    
+    <div class="item active">
+      <div class="month_nba_wrap">
+        <img src="../images/nbaLogo.png" class="nbalogo"><span class="nba">NBA</span>
+        <table class="month_nba_schedule">
+          <tr class = title_schedule>
+            <th>날짜</th>
+            <th>시간</th>
+            <th>경기</th>
+            <th>장소</th>
+          </tr>
+        </table>
+      </div>
+    </div>
+      
+      <div class="item">
+        <div class="month_kbl_wrap">
+          <img src="../images/kblLogo.png" class="kbllogo"><span class="kbl">KBL</span>
+          <table class="month_kbl_schedule">
+            <tr class = title_schedule>
+              <th>날짜</th>
+              <th>시간</th>
+              <th>경기</th>
+              <th>장소</th>
+            </tr>
+          </table>
+        </div>
+    </div>
+    
+  </div>   
+
+ 
+<button type="button" class="preve">NBA</button>
+<button type="button" class="next">KBL</button>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>  
+  </a>
+  
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+  </a>
+  
 </div>
 
-<div class="month_kbl_wrap">
-    <img src="../images/kblLogo.jpg" class="kbllogo"><span class="kbl">KBL</span>
-    <table class="month_kbl_schedule">
-      <tr>
-        <th>날짜</th>
-        <th>시간</th>
-        <th>경기</th>
-        <th>장소</th>
-      </tr>
-    </table>
-  </div>
+
 
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="../js/common.js"></script>
 <script src="../js/schedule.js"></script>
 <script src="../js/login.js"></script>

@@ -64,11 +64,36 @@ $(document).ready(function () {
 		})
 
 	}
+	$('.carousel').carousel({
+		interval : 0
+	})
 
 
-	ajaxNbaMonth();
-	ajaxKblMonth();
+	$(".preve").click(function(){
+		$("#myCarousel_1").click();
+	});
+	$(".next").click(function(){
+		$("#myCarousel_2").click();
+	});
+
+
+
+
+
+
+
+
+
+
+
+
+
+ajaxNbaMonth();
+ajaxKblMonth();
 	
+
+
+
 });
 
 

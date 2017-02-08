@@ -114,23 +114,13 @@ header li a{
 	color:#3A3A3A;
 	font-weight: bold;
 }
-
-
-
 .mypage_bg{
-	height: 1050px;
-	background: url(../images/slamdunk2.jpg);
-	background-repeat: no-repeat;
-	background-size: cover;
-	overflow: hidden;
+	
 }
-
 .mypage{
-	border: 5px solid white;
 	position:relative;
 	width:1000px;
 	height: 600px;
-	border-radius: 20%;
 	left:300px;
 	margin-top: 30px;
 	}
@@ -138,7 +128,7 @@ header li a{
 	position: absolute;
 	left: 130px;
 	top:40px;
-	color: white;
+	color: black;
 	font-size: 18px;
 }
 .photo_form h3{
@@ -146,11 +136,11 @@ header li a{
 	margin-bottom: 10px;
 }
 .photo_form img{
-	position: relative;
-    border-radius: 100%;
-    width: 235px;
-    height: 235px;
+     position: relative;
+    width: 250px;
+    height: 250px;
     top: 35px;
+    border: 3px double greenyellow;
     right: 15px;
 }
 .photo_form input{
@@ -191,14 +181,11 @@ header li a{
 	color: white;
 	font-size: 18px;
 }
-.email_form h3,.name_form h3,.pwd_form h3{
-	margin-top: 15px;
-}
 .right_form{
 	position: absolute;
 	left: 430px;
 	top:150px;
-	color: white;
+	color: black;
 	font-size: 18px;
 	line-height: 30px;
 }
@@ -208,10 +195,9 @@ header li a{
 .height_form p,.weight_form p{
 	display: inline-block;
 }
-.gender_form h3,.height_form h3,
-.weight_form h3,.position_form h3,
-.skill_form h3{
-margin-top: 15px;
+#id_email,#nickname,.password,.height,.weight,#position,.skill{
+    background: greenyellow;
+    border: 3px double greenyellow;
 }
 .cancel_btn,.commit_btn{
 	width:100px;
