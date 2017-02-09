@@ -5,32 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="../css/resister.css">
-	<title>Document</title>
+<link rel="stylesheet" href="../css/resister2.css">
+  <title>Document</title>
 </head>
 <body>
 <header>
-		<a href="mainpage.html"><h3>SlamDunk</h3></a>
-		<a href="mainpage.html"><img src="../images/mainlogo4.png" alt="메인로고" id="logoimage"></a></a>
-		<ul>
-			<li><a href="about.html">About Rule</a></li>
-			<li><a href="schedule.html">Schedule</a></li>
-			<li><a href="matching.html">Matching</a></li>
-			<li id="list_board"><a href="board.html">Board</a></li>
-			<li><a href="#">Who</a></li>
-		</ul>
+    <a href="mainpage.html"><h3>SlamDunk</h3></a>
+    <a href="mainpage.html"><img src="../images/mainlogo4.png" alt="메인로고" id="logoimage"></a></a>
+    <ul>
+      <li><a href="about.html">About Rule</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="matching.html">Matching</a></li>
+      <li id="list_board"><a href="board.html">Board</a></li>
+      <li><a href="#">Who</a></li>
+    </ul>
 
-	    <button type="button" class="login_btn" data-toggle="modal" data-target="#loginModal"><a href="#">LOG IN</a></button>
-	    <button type="button" class="signup_btn" data-toggle="modal" data-target="#loginModal"><a href="#">SIGN UP</a></button>
+      <button type="button" class="login_btn" data-toggle="modal" data-target="#loginModal"><a href="#">LOG IN</a></button>
+      <button type="button" class="signup_btn" data-toggle="modal" data-target="#loginModal"><a href="#">SIGN UP</a></button>
     
-    		<img src="../images/Sport-basketball-icon.png" alt="아이콘 사진" id="icon">
+        <img src="../images/Sport-basketball-icon.png" alt="아이콘 사진" id="icon">
     
     <div class="loginUser_form">
-	      <span class="nickname"><strong>nickname</strong></span>
-	        <span>님</span>
-	        <p>환영합니다.</p>
-	        <button type="button" class="mypage_btn" >MY PAGE</button>
-	        <button type="button" class="logout_btn" >LOG OUT</button>
+        <span class="nickname"><strong>nickname</strong></span>
+          <span>님</span>
+          <p>환영합니다.</p>
+          <button type="button" class="mypage_btn" >MY PAGE</button>
+          <button type="button" class="logout_btn" >LOG OUT</button>
     </div>
 
 <!-- Login modal -->
@@ -76,60 +76,67 @@
       </div>
     </div>
   </div>
-	</header>
+  </header>
+  
 
   <div class="myteam">
-     <img class="teamimage" src="../images/teamimg.jpg">
-     <h3>팀명:</h3>
-     <p class="teamname"></p>
-
-    <div class="myinfo"></div>
+    <h1>Home</h1>
+    <img class="teamimage" src="../images/teamimg.jpg">
+    <p class="teamname"></p>
+    
+    <div class="myinfo">
+      <table class="team_member">
+      </table>
+      </div>
   </div>
-
-    <div class="otherteam">
-      <img class="other_teamimage" src="../images/teamimg.jpg">
-     <h3>팀명:</h3>
-     <p class="other_teamname"></p>
-
-    <div class="other_info"> </div>
-  </div>
-
-<div class=resister_wrap>
-
-	<h3>지역:</h3>
-	<p class="location"></p>
-	<h3>장소:</h3>
-	<input type="text" name="place" class="place">
-      <p class="place_p"></p>
-	<h3>날짜:</h3>
-	<p class="date"></p>
-	<h3>? vs ?</h3>
-	<select name="team_number" id="team_number">
-		<option value="3:3">3:3</option>
-		<option value="4:4">4:4</option>
-		<option value="5:5">5:5</option>
-	</select>
-      <p class="team_rule"></p>
-
-<div class="memo_wrap">
-	<h3>Introduce:</h3>
-	
-	<textarea name="memo" id="memo_area" cols="60" rows="10" placeholder="**간단한 팀소개와 재미있는 매칭이 되기위해 한마디 해주세요.**"></textarea>
+  
+  
+  
+  <div class=resister_wrap>
+    <h1>Matching</h1>
+    <p class="date"></p>
+    <p class="location"></p>
+    <input type="text" name="place" class="place" placeholder=" 자세한 장소를 입력해주세요.">
+    
+    <select name="team_number" id="team_number">
+      <option value="">Rule</option>
+      <option value="3 on 3">3 on 3</option>
+      <option value="4 on 4">4 on 4</option>
+      <option value="5 on 5">5 on 5</option>
+    </select>
+  
+    <div class="memo_wrap">
+      <textarea name="memo" id="memo_area" cols="60" rows="10" placeholder=" **간단한 팀소개와 재미있는 매칭이 되기위해 한마디 해주세요.**"></textarea>
       <p class="team_intro"></p>
-
-	<button type = "button" class="resister_btn">스케줄 신청</button>
-	<button type = "button" class="battle_btn">베틀 신청</button>
+    </div>
+    
+    <div class="btn_wrap">
+      <button type = "button" class="resister_btn">스케줄 신청</button>
+      <button type = "button" class="battle_btn">배틀 신청</button>
       <button type ="button" class="update_btn">수정</button>
       <button type ="button" class="delete_btn">삭제</button>
-	</div>
-</div>
+    </div>
+    
+  </div>
+  
+  <div class="otherteam">
+    <h1>Away</h1>
+    <img class="other_teamimage" src="../images/teamimg.jpg">
+    <p class="other_teamname"></p>
+    
+    <div class="other_info">
+      <table class="other_team_member">
+      </table>
+      </div>
+  </div>
+
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="../js/common.js"></script>
 <script src="../js/login.js"></script>
-<script src="../js/resister.js"></script>
+<script src="../js/resister2.js"></script>
 <script>
-	 ajaxLoginUser();
+   ajaxLoginUser();
 </script>
 </body>
 </html>

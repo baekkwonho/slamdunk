@@ -1,57 +1,58 @@
 *{
-  margin:0;
-  padding:0;
-  text-decoration: none;
+	margin:0;
+	padding:0;
+	text-decoration: none;
 }
 
 body{
-  width:100%;
-  height: 100%;
+	width:100%;
+	height: 100%;
+	background: black;
 }
 header{
-  width:100%;
-  height: 70px;
-  background: black;
+	width:100%;
+	height: 70px;
+	background: black;
 }
 header h3 {
-  /* float: left; */
-  color: white;
-  position: absolute;
-  left:100px;
-  top:3px;
-  font-size: 25px;
-  font-family: Brush Script MT;
+	/* float: left; */
+	color: white;
+	position: absolute;
+	left:100px;
+	top:3px;
+	font-size: 25px;
+	font-family: Brush Script MT;
 }
 header #logoimage {
-  position:absolute;
-  left: 30px;
-  top: 5px;
-  width:60px;
-  height: 60px;
-  border-radius: 100%;
+	position:absolute;
+	left: 30px;
+	top: 5px;
+	width:60px;
+	height: 60px;
+	border-radius: 100%;
 }
 
 header ul{
-  float: right;
-  position: relative;
-  right: 100px;
+	float: right;
+	position: relative;
+	right: 100px;
 }
 header li  {
-  list-style: none;
-  float: left;
-  padding: 20px 30px 20px 20px;
-  pointer: cursor;
-  text-decoration: none;
+	list-style: none;
+	float: left;
+	padding: 20px 30px 20px 20px;
+	pointer: cursor;
+	text-decoration: none;
 }
 header li a{
-  color: #ffa500;
-  text-decoration: none;
+	color: #ffa500;
+	text-decoration: none;
 }
 
 header li a:hover {
-  color: white;
-  text-decoration: none;
-  
+	color: white;
+	text-decoration: none;
+	
 }
 
 #icon{
@@ -293,31 +294,32 @@ input:focus, textarea:focus, select:focus{
 
 .resister_wrap{
     width: 500px;
-    height: 500px;
+    height: 650px;
     margin: 0 auto;
     text-align: center;
+    background: black;
 }
 
 .resister_wrap h1 {
-    font-size: 36px;
+	  font-size: 36px;
     margin-top: 0;
     padding: 20px 0 0 0;
 }
 
 .date {
-  font-size: 35px;
+	font-size: 35px;
   display: inline;
   text-shadow: 2px 2px 5px #0019ff;
 }
 
 .location {
-  font-size: 35px;
-  display: inline;
+	font-size: 35px;
+	display: inline;
   text-shadow: 2px 2px 5px #0019ff;
 }
 
 .place {
-  width: 300px;
+	width: 300px;
   padding: 10px;
   border-style: solid;
   border-color: coral;
@@ -342,7 +344,7 @@ input:focus, textarea:focus, select:focus{
 }
 
 #memo_area {
-  padding: 10px;
+	padding: 10px;
   border-style: solid;
   border-color: coral;
   border-width: 2px;
@@ -350,7 +352,7 @@ input:focus, textarea:focus, select:focus{
 }
 
 .btn_wrap {
-  padding: 0 25px;
+	padding: 0 25px;
 }
 .resister_btn {
   display: block;
@@ -360,26 +362,26 @@ input:focus, textarea:focus, select:focus{
 }
 
 .resister_btn:hover {
-  animation-duration: 3s;
+	animation-duration: 3s;
   animation-name: slidein;
 }
 
 .battle_btn {
-  display: block;
+	display: block;
   width: 100%;
   height: 30px;
   margin-bottom: 10px;
 }
 
 .update_btn {
-  display: block;
+	display: block;
   width: 100%;
   height: 30px;
   margin-bottom: 10px;
 }
 
 .delete_btn {
-  display: block;
+	display: block;
   width: 100%;
   height: 30px;
   margin-bottom: 10px;
@@ -399,19 +401,19 @@ input:focus, textarea:focus, select:focus{
 .myteam{
     width: 470px;
     height: 650px;
-    background: yellow;
+    background: linear-gradient(to right, rgba(19, 7, 7, 0.78) , black);
     position: absolute;
     padding: 20px;
 }
 
 .myteam h1 {
-  margin: 0;
+	margin: 0;
   text-align: right;
-  //background: linear-gradient(left to right, #000000, rgb(130, 0, 0) );
+	//background: linear-gradient(left to right, #000000, rgb(130, 0, 0) );
 }
 
 .teamimage {
-  width: 200px;
+	width: 200px;
   height: 200px;
   position: relative;
   left: 112px;
@@ -431,7 +433,7 @@ input:focus, textarea:focus, select:focus{
 }
 
 .team_member tr {
-  height: 65px;
+	height: 65px;
 }
 
 .team_member td {
@@ -439,7 +441,7 @@ input:focus, textarea:focus, select:focus{
 }
 
 .myteamimage {
-  width: 50px;
+	width: 50px;
   height: 50px;
   border-radius: 100%;
 }
@@ -454,10 +456,10 @@ input:focus, textarea:focus, select:focus{
 
 
 .otherteam{
-  width: 470px;
-  height: 650px;
+	width: 470px;
+	height: 650px;
   padding: 20px;
-  background: aqua;
+  background: linear-gradient(to right, black, rgba(19, 7, 7, 0.78));
   position: absolute;
   right: 0;
 }

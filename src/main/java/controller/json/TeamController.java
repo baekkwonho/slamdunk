@@ -111,7 +111,7 @@ public class TeamController {
   @RequestMapping(path="teamlist")
   public Object teamList(
       @RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="8") int length) throws Exception {
+      @RequestParam(defaultValue="4") int length) throws Exception {
     try {
       
       HashMap<String, Object> map = new HashMap<>();
@@ -142,7 +142,7 @@ public class TeamController {
   @RequestMapping(path="teammemberlist")
   public Object teamMemberList(
       @RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="8") int length,
+      @RequestParam(defaultValue="4") int length,
       int no) throws Exception {
     try {
       
