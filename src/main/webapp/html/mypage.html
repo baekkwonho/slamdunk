@@ -4,6 +4,8 @@
 	<meta charset="UTF-8">
 	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
  	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+ 	<link rel="stylesheet" href="../node_modules/icheck/skins/flat/blue.css">
+   <link href="https://fonts.googleapis.com/css?family=Jura" rel="stylesheet">
  	<link rel="stylesheet" href="../css/mypage01.css">
 	<title></title>
 </head>
@@ -44,8 +46,8 @@
 	<div class="left_form">
 		<div class="photo_form">
 		<img src="../images/shoot.jpg" alt="defaultimage">
-		<button type = "button" class="photoBtn">첨부</button>
-		<button type = "button" class="defaultBtn">삭제</button>
+		<button type = "button" class="photoBtn">Add</button>
+		<button type = "button" class="defaultBtn">Del</button>
 		<p class="originFileName"></p>
 		<p class="dataFileName"></p>
 		<input type="file" name="file" class="file">
@@ -57,21 +59,21 @@
 			<input type="text" disabled="" id="id_email" placeholder="My Email ">
 		</div>
 		<div class="name_form">
-			<input type="text" name="nickname" id="nickname" placeholder="NickName">
+			<input type="text" id="nickname" placeholder="NickName">
 		</div>
 		<div class="pwd_form">
-			<input type="password" name="password" class="password" placeholder="PassWord">
+			<input type="password"class="password" placeholder="PassWord">
 		</div>
 		</div>
 	
 	<div class="right_form">
 		<div class="gender_form">
 			<p>Male</p>
-			<input type="radio" name="gender" value="male">
+			<input type="radio" name="iCheck">
 			<p>Female</p>
-			<input type="radio" name="gender" value="female">
-			
+			<input type="radio" name="iCheck">
 		</div>
+
 		<div class="height_form">
 			<input type="text" name="height" class='height' placeholder="Height ">
 			<p>cm</p>
@@ -82,7 +84,7 @@
 		</div>
 		<div class="position_form">
 			<select name="position" id="position">
-				<option value="position">포지션 선택</option>
+				<option value="position">Your Position</option>
 				<option value="center">Center</option>
 				<option value="power foward">Power Foward</option>
 				<option value="small foward" >Small Foward</option>
@@ -91,8 +93,7 @@
 			</select>
 		</div>
 		<div class="skill_form">
-			<input type="text" name="skill" class="skill" placeholder="Your's Skill"> 
-			<p>*자유롭게 입력해주세요.</p>
+			<textarea name="skill" class="skill" cols="30" rows="10" placeholder="*자신의 농구 실력을 자유롭게 입력해주세요."></textarea>
 		</div>
 	</div>
 </main>
@@ -142,6 +143,7 @@
 <script src='../node_modules/jquery/dist/jquery.min.js'></script>
 <script src="../node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
   <script src="../node_modules/blueimp-file-upload/js/jquery.fileupload.js"></script>
+  <script src="../node_modules/icheck/icheck.js"></script>
 <script src="../js/common.js"></script>
  <script src="../js/mypage.js"></script>
  <script src="../js/teampage.js"></script>
