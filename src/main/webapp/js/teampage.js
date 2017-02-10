@@ -90,6 +90,7 @@ $(".teamdefaultBtn").click(function(){
 					$("#memo_area").text(result.data.teamDesc);
 					$(".team_members1").hide();
 					$(".team_members2").hide();
+					$(".update_btn").show();
 					ajaxTeammemberList(result.data.no);
 				}else{
 					if (result.data.tphoto_path !== null && result.data.tphoto_path !== "") {
@@ -150,12 +151,11 @@ $(".teamdefaultBtn").click(function(){
 					alert("팀 리스트 조회 실패입니다.");
 					return;
 				}
-				console.log(result);
-	
+			
 				var str = "<h3>Team List</h3>";//문자 초기화
 				
 				for(var i=0;i<result.data.list.length;i++){
-					str+="<div class='team_member'><span class='team_member_p'>Team Name : </span><span>"+result.data.list[i].teamName+"</span><br><span class='captain'>Captain : "+result.data.list[i].captain+"</span><br><span>인원수 : </span><span class='Nteam'>"+result.data.list[i].count+" / 15</span><p class='teams'>"+result.data.list[i].teamDesc+"</p><button type ='button' class='team_btn'  data-no='"+result.data.list[i].no+"'>Join</button></div>"
+					str+="<div class='team_member'><span class='team_member_p'>Team Name </span><span class='TN'>"+result.data.list[i].teamName+"</span><br><span class='captain'>Captain </span><span class='CP'>"+result.data.list[i].captain+"</span><br><span class='people'>Numbers </span><span class='Nteam'>"+result.data.list[i].count+" / 15</span><p class='teams'>"+result.data.list[i].teamDesc+"</p><button type ='button' class='team_btn'  data-no='"+result.data.list[i].no+"'>Join</button></div>"
 				}
 				$(".team_members1").html(str);
 				

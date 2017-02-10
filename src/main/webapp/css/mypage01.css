@@ -3,7 +3,7 @@
 	padding:0;
 	text-decoration: none;
 }
-
+button{cursor: pointer;}
 body{
 	width:100%;
 	height: 100%;
@@ -250,7 +250,7 @@ header li a{
 }
 
 .teampage_bg{
-	background: black;
+	background: cornflowerblue;
 	height: 770px;
 }
 
@@ -269,23 +269,26 @@ article{
 .teampage article{
 	width:1150px;
 	height: 250px;
-	background: #3A3A3A;
+	background: cornflowerblue;
 	color: white;
 	position:relative;
 	left: 240px;
+	border-bottom: 1px solid white;
 }
 #memo_area{
     position: absolute;
     bottom: 28px;
     left: 419px;
+    background: lavenderblush;
 }
 .teamfile{
 	display: none;
 }
 .teamname{
-      position: absolute;
+    position: absolute;
     top: 43px;
     left: 419px;
+    background: lavenderblush;
 }
 #team_name{
     position: absolute;
@@ -299,18 +302,38 @@ article{
 }
 .resister_btn{
     position: absolute;
-    bottom: 12px;
+    bottom: 28px;
     right: 11px;
+    width: 70px;
+    height: 35px;
+    background: white;
+    border: 3px solid lightcoral;
+    border-radius: 10px;
+    color: lightcoral;
+    font-weight: bold;
+    font-family: 'Jura', sans-serif;
+}
+.resister_btn:hover{
+	color: white;
+	background: lightcoral;
 }
 .teamphotoBtn{
-    position: absolute;
-    bottom: 40px;
-    left: 278px;
+     left: 235px;  
 }
 .teamdefaultBtn{
+   	left: 305px;
+}
+.teamphotoBtn,.teamdefaultBtn{
     position: absolute;
-    left: 315px;
-    bottom: 40px;
+    bottom: 30px;
+    width: 60px;
+    height: 30px;
+    background: white;
+    border: 3px solid lightcoral;
+    border-radius: 10px;
+    color: lightcoral;
+    font-weight: bold;
+    font-family: 'Jura', sans-serif;
 }
 .teamdataFileName{
 	display: none;
@@ -321,14 +344,39 @@ article{
     top: 38px;
 }
 .update_btn{
-    position: absolute;
-    right: 63px;
-    bottom: 12px;
+    right: 90px;
 }
 .delete_btn{
-    position: absolute;
     right: 11px;
-    bottom: 12px;
+}
+.update_btn,.delete_btn{
+    position: absolute;
+    width: 70px;
+    height: 35px;
+    bottom: 28px;
+    background: white;
+    border: 3px solid lightcoral;
+    border-radius: 10px;
+    color: lightcoral;
+    font-weight: bold;
+    font-family: 'Jura', sans-serif;
+}
+.pre_btn,.next_btn{
+    width: 60px;
+    height: 30px;
+    position: relative;
+    top: 20px;
+    background: white;
+    border: 3px solid lightcoral;
+    border-radius: 10px;
+    color:lightcoral;
+    font-weight: bold;
+    font-family: 'Jura', sans-serif;
+}
+.pre_btn:hover,.next_btn:hover,.update_btn:hover,.delete_btn:hover,.teamphotoBtn:hover,.teamdefaultBtn:hover{
+	background: lightcoral;
+	color:white;
+	font-weight: bold;
 }
 .teamoriginFileName{
     position: absolute;
@@ -391,35 +439,43 @@ article{
 .team_member{
     width: 250px;
     height: 300px;
-    background: gray;
+    background: lightcoral;
+    font-family: 'Jura', sans-serif;
     margin: 25px;
     text-align: center;
     float: left;
 }
 
 .teams{
-	width:150px;
-	height:100px;
-	border:1px solid black;
-	margin:10px auto;
-	overflow: scroll;
-	text-overflow: ellipsis;
+    width: 200px;
+    height: 100px;
+    margin: 10px auto;
+    overflow: scroll;
+    text-overflow: ellipsis;
+    background: white;
+    color: black;
+    font-size: 11px;
 }
 .team_members1 h3{
 	position: relative;
 	top:10px;
 	left: 20px;
 }
+article p {
+	font-weight: bold;
+	font-family: 'Jura', sans-serif;
+}
 .num{
 	color:white;
+	position: relative;
+	 top: 21px;
 }
 .num_btn{
      text-align: center;
     position: relative;
-    bottom: 37px;
 }
 .curr_num{
-	color:yellow;
+	color: peachpuff;
 	font-size: 20px;
 }
 .tauth{
@@ -428,7 +484,7 @@ article{
     top: 69px;
 }
 .team_member span{
-     line-height: 50px;
+     line-height: 45px;
 }
 .members1{
     color: white;
@@ -455,6 +511,28 @@ article{
 #position option{
      font-weight: bold;
      color: cornflowerblue;
+}
+.team_member_p,.captain,.people{
+	font-weight: bold;
+	font-size: 12px;
+}
+.TN,.CP,.Nteam{
+    font-size: 18px;
+    font-weight: bold;
+}
+.team_btn{
+    width: 55px;
+    height: 30px;
+    border-radius: 20px;
+    background: white;
+    border: 3px solid cornflowerblue;
+    color: cornflowerblue;
+    font-weight: bold;
+    font-family: 'Jura', sans-serif;
+}
+.team_btn:hover{
+	color: white;
+	background: cornflowerblue;
 }
 /*checkbox*/
 

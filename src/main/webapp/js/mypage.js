@@ -8,7 +8,7 @@ $(function(){
 		$("#teampage").removeClass("active");
 		$("#teampage").addClass("nonactive");
 		$('body').stop().animate({scrollTop : '0'},1500);
-
+		
  	})
 	
 	$("#teampage").click(function(){
@@ -16,7 +16,7 @@ $(function(){
 		$("#teampage").removeClass("nonactive");
 		$("#mypage").removeClass("active");
 		$("#mypage").addClass("nonactive");
-		$('body').stop().animate({scrollTop : '1100'},1500);
+		$('body').stop().animate({scrollTop : '835'},1500);
 	})
 	//사진 부분
 	$(".photoBtn").click(function(){
@@ -199,7 +199,7 @@ $(function(){
 
 	$(window).scroll(function(){
 		var value = $('body').scrollTop();
-		if(value >= 1100){
+		if(value >= 835){
 			$("#teampage").addClass("active");
 			$("#teampage").removeClass("nonactive");
 			$("#mypage").removeClass("active");
