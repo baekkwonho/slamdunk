@@ -191,6 +191,8 @@ public class TeamController {
         team.setTphoto_path(teamPhoto.get(0).getTphoto_path());
       }
       
+      team.settAuth(member.isTauth());
+      
       return JsonResult.success(team);
     } catch (Exception e) {
       return JsonResult.error(e.getMessage());

@@ -11,7 +11,7 @@ public class Team implements Serializable {
   String tphoto_path;
   int count;
   String captain;
-  
+  Boolean tAuth;
   
   public int getNo() {
     return no;
@@ -48,6 +48,12 @@ public class Team implements Serializable {
   }
   public void setCaptain(String captain) {
     this.captain = captain;
+  }
+  public Boolean gettAuth() {
+    return tAuth;
+  }
+  public void settAuth(Boolean tAuth) {
+    this.tAuth = tAuth;
   }
   
   

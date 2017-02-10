@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "hover.css": "^2.0.2",
     "jquery": "^1.12.4",
     "jquery.ajax-cross-origin": "^1.1.0"
   }

@@ -203,7 +203,7 @@ $(function(){
                 	  ajaxRightTeam(result.data[0].team_no2);
                   } else {
                 	  $(".other_teamname").hide();
-                	  $(".other_teamimage").hide();
+                	  $(".otherteamimage_border").hide();
                   }
                   
                 }else if(result.data[0].team_no2 !== 0){ //상대 결정 후
@@ -368,7 +368,7 @@ $(function(){
         $(".delete_btn").hide();
         //상대팀
         $(".other_teamname").hide();
-        $(".other_teamimage").hide();
+        $(".otherteamimage_border").hide();
         ajaxLoadTeam(); // 팀이름 뿌려주는 함수 실행.
     } //매칭에서 url로 넘겨준 날짜와 지역을 찾기위해.
 

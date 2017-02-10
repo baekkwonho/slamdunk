@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../node_modules/hover.css/css/hover.css">
 <link rel="stylesheet" href="../css/resister2.css">
+
   <title>Document</title>
 </head>
 <body>
@@ -78,56 +80,61 @@
   </div>
   </header>
   
-
-  <div class="myteam">
-    <h1>Home</h1>
-    <img class="teamimage" src="../images/teamimg.jpg">
-    <p class="teamname"></p>
-    
-    <div class="myinfo">
-      <table class="team_member">
-      </table>
+  <div class="form_wrap">
+  
+    <div class="myteam">
+      <h1>Home</h1>
+      <span class="teamimage_border">
+        <img class="teamimage" src="../images/shoot.jpg">
+      </span>
+      <p class="teamname">SlamDunk</p>
+      
+      <div class="myinfo">
+        <table class="team_member">
+        </table>
       </div>
-  </div>
-  
-  
-  
-  <div class=resister_wrap>
-    <h1>Matching</h1>
-    <p class="date"></p>
-    <p class="location"></p>
-    <input type="text" name="place" class="place" placeholder=" 자세한 장소를 입력해주세요.">
-    
-    <select name="team_number" id="team_number">
-      <option value="">Rule</option>
-      <option value="3 on 3">3 on 3</option>
-      <option value="4 on 4">4 on 4</option>
-      <option value="5 on 5">5 on 5</option>
-    </select>
-  
-    <div class="memo_wrap">
-      <textarea name="memo" id="memo_area" cols="60" rows="10" placeholder=" **간단한 팀소개와 재미있는 매칭이 되기위해 한마디 해주세요.**"></textarea>
-      <p class="team_intro"></p>
     </div>
     
-    <div class="btn_wrap">
-      <button type = "button" class="resister_btn">스케줄 신청</button>
-      <button type = "button" class="battle_btn">배틀 신청</button>
-      <button type ="button" class="update_btn">수정</button>
-      <button type ="button" class="delete_btn">삭제</button>
+    <div class=resister_wrap>
+      <h1>Matching</h1>
+      <p class="date"></p>
+      <p class="location"></p>
+      <input type="text" name="place" class="place" placeholder=" 자세한 장소를 입력해주세요.">
+      
+      <select name="team_number" id="team_number">
+        <option value="">Rule</option>
+        <option value="3 on 3">3 on 3</option>
+        <option value="4 on 4">4 on 4</option>
+        <option value="5 on 5">5 on 5</option>
+      </select>
+    
+      <div class="memo_wrap">
+        <textarea name="memo" id="memo_area" cols="45" rows="10" placeholder=" **간단한 팀소개와 재미있는 매칭이 되기위해 한마디 해주세요.**"></textarea>
+        <p class="team_intro"></p>
+      </div>
+      
+      <div class="btn_wrap">
+        <button type = "button" class="resister_btn hvr-sweep-to-right">Add Schedule</button>
+        <button type = "button" class="battle_btn hvr-sweep-to-right">Apply Battle</button>
+        <button type ="button" class="update_btn hvr-sweep-to-right">Update</button>
+        <button type ="button" class="delete_btn hvr-shutter-in-vertical">Delete</button>
+      </div>
+      
     </div>
     
-  </div>
-  
-  <div class="otherteam">
-    <h1>Away</h1>
-    <img class="other_teamimage" src="../images/teamimg.jpg">
-    <p class="other_teamname"></p>
-    
-    <div class="other_info">
-      <table class="other_team_member">
-      </table>
+    <div class="otherteam">
+      <h1>Away</h1>
+      <span class="otherteamimage_border">
+        <img class="other_teamimage" src="../images/shoot.jpg">
+      </span>
+      <p class="other_teamname">우리팀</p>
+      
+      <div class="other_info">
+        <table class="other_team_member">
+        </table>
       </div>
+    </div>
+    
   </div>
 
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
