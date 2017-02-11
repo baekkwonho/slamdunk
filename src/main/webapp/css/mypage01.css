@@ -400,16 +400,16 @@ article{
 	right:250px;
 }
 .member_p{
-	width: 150px;
+    width: 150px;
     height: 150px;
     border-radius: 100%;
     top: 10px;
-    position: relative;	
+    position: relative;
 }
 .member_info{
-    position: relative;
-    top: 30px;
-    border-top: 2px solid #4e5854;
+     position: relative;
+    right: 35px;
+    top: 19px;
 }
 .members1 h3{
 	position: relative;
@@ -419,16 +419,14 @@ article{
 .member1{
 	width:250px;
 	height: 300px;
-	background: gray;
+	background: lightcoral;
 	margin:25px;
 	float: left;
 	text-align: center;
+	font-family: 'Jura', sans-serif;
+       font-weight: bold;
+       line-height: 55px;
 	}
-.member1:hover{
-	background: gray;
-	opacity:0.6;
-	transition: all 1s;
-}
 .team_members1{
     color: white;
     display: inline-block;
@@ -494,9 +492,9 @@ article p {
     width: 1220px;
 }
 .team_nick{
-    position: relative;
-    top: 16px;
-    right: 5px;
+  position: relative;
+   top: 39px;
+   right: 39px;
 }
 .skill{
     position: relative;
@@ -534,5 +532,25 @@ article p {
 	color: white;
 	background: cornflowerblue;
 }
-/*checkbox*/
-
+.all{
+    position: relative;
+    bottom: 60px;
+    left: 40px;
+}
+.team_nick, .member_info, .Tpo, .Thei, .Tsk {
+    font-size: 16px;
+}
+.team_nick {
+    position: relative;
+    top: 39px;
+    right: 39px;
+}
+.Thei{
+    position: relative;
+    bottom: 19px;
+    right: 39px;
+}
+.Tpo{
+	position: relative;
+    right: 35px;
+}

@@ -213,23 +213,23 @@ $(".teamdefaultBtn").click(function(){
 				console.log(result);
 				var str = "<h3>Member's Introduce</h3>";
 				for(var i=0;i<result.data.list.length;i++){
-					var gender = "남자";
+					var gender = "Male";
 					if(result.data.list[i].gender === false){
-						gender = "여자";
+						gender = "Female";
 					}
-					var position = "미지정"
+					var position = "-"
 					if(result.data.list[i].position !== null){
 						position = result.data.list[i].position;
 					}
-					var skill = "미지정";
+					var skill = "-";
 					if(result.data.list[i].skill !== null){
 						skill = result.data.list[i].skill;
 					}
-					var photo = "/slamdunk/images/bg05.jpg"
+					var photo = "/slamdunk/images/uniform.jpg"
 					if(result.data.list[i].photo_path !== null && result.data.list[i].photo_path !== ""){
 						photo = "/slamdunk/upload/"+result.data.list[i].photo_path;
 					}
-					str += "<div class='member1'><img class='member_p' src=' "+photo+" ' ><span class='team_nick'>NickName:"+result.data.list[i].nickname+"</span><p class='member_info'>Gender : "+gender+"<br>Position : "+position+"<br>Height : "+result.data.list[i].height+"<br>Skill : "+skill+"</p></div>"
+					str += "<div class='member1'><img class='member_p' src=' "+photo+" ' ><div class='all'><p class='team_nick'>NickName : "+result.data.list[i].nickname+"</p><p class='member_info'>Gender : "+gender+"</p><p class='Tpo'>Position : "+position+"</p><p class='Thei'>Height : "+result.data.list[i].height+"</p></div></div>"
 				}
 				$(".members1").html(str);
 				currpageno = result.data.pageNo;
