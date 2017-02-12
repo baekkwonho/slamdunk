@@ -284,7 +284,7 @@ function ajaxLoginUser(){
 				console.log(result);
 				var str = "";
 				for(var i=0;i<result.data.length;i++){
-					str+="<span class='date'>"+result.data[i].match_date+"</span><span class='teamname'>"+result.data[i].reqTeamname+"</span><span class='request'>베틀 신청</span><button type='button' class='ok_btn' data-no='"+result.data[i].mtno+"'>수락</button><button type='button' class='no_btn' data-no='"+result.data[i].mtno+"'>거절</button>"
+					str+="<div class='add'><p class='date'>"+result.data[i].match_date+"</p><p class='teamname'>"+result.data[i].reqTeamname+"</p><span class='request'>Try Battle Now?</span><div class='add_btn'><button type='button' class='ok_btn' data-no='"+result.data[i].mtno+"'>Ok</button><button type='button' class='no_btn' data-no='"+result.data[i].mtno+"'>No</button></div></div>"
 				}
 				$(".match_request").html(str);
 				$(".match_request").css("background","#e09115");

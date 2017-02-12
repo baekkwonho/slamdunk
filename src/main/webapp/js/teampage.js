@@ -178,26 +178,26 @@ $(".teamdefaultBtn").click(function(){
 					//console.log($(this).attr("data-no")); //자신(버튼)안에 있는 속성(data-no)가져오기.
 					ajaxJoinTeam($(this).attr("data-no"));
 				});
+				$(".pre_btn").click(function(){
+					if(currpageno === 1){
+						return;
+					}
+					currpageno--;
+					ajaxTeamList();
+				});
+
+				$(".next_btn").click(function(){
+					if(currpageno === totalpage){
+						return;
+					}
+					currpageno++;
+					ajaxTeamList();
+				});
 
 			}
 		})
 	}
 
-	$(".pre_btn").click(function(){
-		if(currpageno === 1){
-			return;
-		}
-		currpageno--;
-		ajaxTeamList();
-	});
-
-	$(".next_btn").click(function(){
-		if(currpageno === totalpage){
-			return;
-		}
-		currpageno++;
-		ajaxTeamList();
-	});
 
 	function ajaxTeammemberList(no){
 		$.ajax({
@@ -247,6 +247,22 @@ $(".teamdefaultBtn").click(function(){
 					numPageno+=numTemp;
 				}
 				$(".num").html(numPageno);
+
+				$(".pre_btn").click(function(){
+					if(currpageno === 1){
+						return;
+					}
+					currpageno--;
+					ajaxTeammemberList(result.data.list[0].tno);
+				});
+
+				$(".next_btn").click(function(){
+					if(currpageno === totalpage){
+						return;
+					}
+					currpageno++;
+					ajaxTeammemberList(result.data.list[0].tno);
+				});
 			}
 		})
 	}

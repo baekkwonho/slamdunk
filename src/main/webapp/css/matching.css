@@ -14,7 +14,6 @@ header{
 	background: black;
 }
 header h3 {
-	/* float: left; */
 	color: white;
 	position: absolute;
 	left:100px;
@@ -40,7 +39,7 @@ header li  {
 	list-style: none;
 	float: left;
 	padding: 20px 30px 20px 20px;
-	pointer: cursor;
+	cursor: pointer;
 	text-decoration: none;
 }
 header li a{
@@ -61,7 +60,6 @@ header li a:hover {
   right: 45px;
   top:10px;
 }
-
 .loginUser_form{
     width: 134px;
     height: 108px;
@@ -71,10 +69,11 @@ header li a:hover {
     top: 70px;
     line-height: 23px;
     text-align: center;
+    color: navy;
 }
 .loginUser_form span{
   display: inline-block;
-  margin-top: 10px;
+  margin-top: 10px; 
 }
  .mypage_btn,.logout_btn{
   border:none;
@@ -82,15 +81,16 @@ header li a:hover {
   font-weight: bold;
   width:50px;
   height: 30px;
-  color: white;
+  border: 3px solid navy;
+  background: white;
+  border-radius: 10px;
+      margin-top: 5px;
 }
-
-.mypage_btn{
-  background: #91692c;
-}
-.logout_btn{
-  background: #704c15;
-}
+ .mypage_btn:hover,.logout_btn:hover{
+    background: navy;
+    color: white;
+    font-weight: bold;
+ }
 .login_btn{
   position: absolute;
   top:0;
@@ -131,10 +131,8 @@ header li a:hover {
   width: 405px;
   margin: auto;
   padding: 10px 10px; 
-  /* background: url('../images/names.jpg') no-repeat center center; */
   background-color: #353535;
   background-size: cover;
-  /* box-shadow: 0px 30px 60px -5px #000; */
 }
 .active {
   border-bottom: 2px solid #ffa500;
@@ -317,3 +315,39 @@ hr {
  .fc-day-top.fc-sat.fc-future{ color:#0000FF; }
  .fc-day-top.fc-sun.fc-past { color:#FF0000; }    /* 일요일 */
 .fc-day-top.fc-sun.fc-future{ color:#FF0000; }
+
+.add{
+  text-align: center;
+  font-size: 12px;
+}
+.teamname{
+  font-weight: bold;
+}
+.date{
+      position: relative;
+    top: 10px;
+}
+.ok_btn,.no_btn{
+      position: relative;
+    bottom: 15px;
+}
+.request{
+    position: relative;
+    bottom: 18px;
+}
+.ok_btn,.no_btn{
+    width: 30px;
+    height: 25px;
+    border: 3px solid navy;
+    background: white;
+    color: navy;
+    margin: 1px;
+    border-radius: 7px;
+    font-size: 8px;
+    font-weight: bold;
+}
+.ok_btn:hover,.no_btn:hover{
+  background: navy;
+  color: white;
+  font-weight: bold;
+}

@@ -30,7 +30,6 @@ width:60px;
 height: 60px;
 border-radius: 100%;
 }
-
 header ul{
 float: right;
 position: relative;
@@ -40,20 +39,17 @@ header li  {
 list-style: none;
 float: left;
 padding: 20px 30px 20px 20px;
-pointer: cursor;
+cursor: pointer;
 text-decoration: none;
 }
 header li a{
 color: #ffa500;
 text-decoration: none;
 }
-
 header li a:hover {
 color: white;
 text-decoration: none;
-
 }
-
 #icon{
   width:50px;
   height:50px;
@@ -70,10 +66,11 @@ text-decoration: none;
     top: 70px;
     line-height: 23px;
     text-align: center;
+    color: navy;
 }
 .loginUser_form span{
   display: inline-block;
-  margin-top: 10px;
+  margin-top: 10px; 
 }
  .mypage_btn,.logout_btn{
   border:none;
@@ -81,16 +78,16 @@ text-decoration: none;
   font-weight: bold;
   width:50px;
   height: 30px;
-  color: white;
+  border: 3px solid navy;
+  background: white;
+  border-radius: 10px;
 }
-
-.mypage_btn{
-  background: #91692c;
-}
-.logout_btn{
-  background: #704c15;
-}
-
+ .mypage_btn:hover,.logout_btn:hover{
+    background: navy;
+    color: white;
+    border: 3px solid white;
+    font-weight: bold;
+ }
 .login_btn{
   position: absolute;
   top:0;
@@ -100,7 +97,6 @@ text-decoration: none;
   width:50px;
   height:30px;
   border:none;
-
 }
 .login_btn a,.signup_btn a{
   color: white;
@@ -112,7 +108,6 @@ text-decoration: none;
   padding-top: 5px;
   font-family:play;
   text-decoration: none;
-
 }
 .signup_btn{
   position: absolute;
@@ -124,17 +119,14 @@ text-decoration: none;
   height:30px;
   border:none;
 }
-
 .modal-content {
   position: relative;
   height: 600px;
   width: 405px;
   margin: auto;
   padding: 10px 10px;
-  /* background: url('../images/names.jpg') no-repeat center center; */
   background-color: #353535;
   background-size: cover;
-  /* box-shadow: 0px 30px 60px -5px #000; */
 }
 .active {
   border-bottom: 2px solid #ffa500;
@@ -142,7 +134,6 @@ text-decoration: none;
 .nonactive {
   color: rgba(255, 255, 255, 0.2);
 }
-
 h2 {
   font-size: 22px;
   padding-bottom: 5px;
@@ -151,7 +142,6 @@ h2 {
   margin-left: 20px;
   color: white;
 }
-
 .text {
   border: none;
   width: 80%;
@@ -166,20 +156,17 @@ h2 {
   transition: all 0.5s ease-in-out;
   color: white;
 }
-
 .text:focus {
   outline: 0;
   border: 2px solid #ffa500;
   border-radius: 20px;
   background: rgba(0, 0, 0, 0);
 }
-
 input {
   display: inline-block;
   padding-top: 20px;
   font-size: 14px;
 }
-
 #saveEmail {
   -webkit-appearance: none;
   background-color: rgba(255, 255, 255, 0.1);
@@ -190,7 +177,6 @@ input {
   top: 6px;
   margin-left: 20px;
 }
-
 #saveEmail:checked:after {
   content: '\2714';
   font-size: 10px;
@@ -202,14 +188,12 @@ input {
 #saveEmail:focus {
   outline-color: #ffa500;
 }
-
 label {
   display: inline-block;
   padding-top: 10px;
   padding-left: 5px;
   color: white;
 }
-
 #facebook_btn {
   background-color: blue;
   color: #FFF;
@@ -224,7 +208,6 @@ label {
   font-size: 16px;
   letter-spacing: 3px;
 }
-
 .buttons {
   background-color: #ffa500;
   color: #FFF;
@@ -239,13 +222,11 @@ label {
   font-size: 16px;
   letter-spacing: 3px;
 }
-
 hr {
   border: 1px solid rgba(255, 255, 255, 0.1);
   top: 65px;
   position: relative;
 }
-
 .forgot {
   text-align: center;
   display: block;
@@ -254,11 +235,9 @@ hr {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.2);
 }
-
 .pointer {
   cursor: pointer;
 }
-
 #confirm_emailbtn {
   position: absolute;
   top: 135px;
@@ -271,7 +250,6 @@ hr {
   font-size: 12px;
   border: none;
 }
-
 #confirm_nickbtn {
   position: absolute;
   top: 330px;
@@ -284,7 +262,6 @@ hr {
   font-size: 12px;
   border: none;
 }
-
 .month_nba_wrap {
   text-align: center;
 }
@@ -305,7 +282,6 @@ hr {
     right: 17px;
     top: 35px;
 }
-
 .nba {
     font-size: 40px;
     font-weight: bold;
@@ -313,11 +289,9 @@ hr {
     right: 40px;
     top: 44px;
 }
-
 .month_kbl_wrap {
 text-align: center;
 }
-
 .kbllogo {
     width: 80px;
     height: 80px;
@@ -328,7 +302,6 @@ text-align: center;
     right: 17px;
     top: 35px;
 }
-
 .kbl {
     font-size: 40px;
     font-weight: bold;
@@ -336,7 +309,6 @@ text-align: center;
     right: 17px;
     top: 44px;
 }
-
 .month_kbl_schedule {
   width:1000px;
   margin: 0 auto;
@@ -344,7 +316,6 @@ text-align: center;
   top: 50px;
   background: darkred;
 }
-
 .month_nba_game, .month_game{
   font-weight: bold;
 }
@@ -354,37 +325,43 @@ text-align: center;
 tr {
 border: 3px solid black;
 }
-
 .teamimg {
 width: 50px;
 }
-
 .glyphicon-chevron-left:before {
     display: none;
 }
-
 .glyphicon-chevron-right:before {
     display: none;
 }
 .preve{
     position: absolute;
     top: 55px;
-    left: 400px;
+    left: 100px;
     width: 50px;
     height: 30px;
     border: none;
-    background: darkred;
+    color: darkred;
+    font-weight: bold;
 }
 .next{
     position: absolute;
     top: 55px;
-    right: 400px;
+    right: 100px;
     width: 50px;
     height: 30px;
     border: none;
-    background: darkred;
+    color: darkred;
+    font-weight: bold;
 }
-
+.preve:hover,.next:hover{
+  background: darkred;
+  color: white;
+  font-weight: bold;
+}
+.preve:focus,.next:focus{
+  outline: none;
+}
 .carousel-control {
   display: none;
 }
@@ -394,7 +371,11 @@ ol{
 .title_schedule{
   height:40px;
 }
-
 .carousel-inner .active {
   border:none;
+}
+.carousel {
+    position: relative;
+    width: 1000px;
+    margin: 0 auto;
 }

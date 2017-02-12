@@ -273,7 +273,7 @@ $(function(){
 	}
 	//checkbox
 		$('.gender_form input').iCheck({
-    		radioClass: 'iradio_flat-blue'
+    		radioClass: 'iradio_flat-red'
   });
 
 

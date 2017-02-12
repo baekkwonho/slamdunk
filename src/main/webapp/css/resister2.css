@@ -61,7 +61,6 @@ header li a:hover {
   right: 45px;
   top:10px;
 }
-
 .loginUser_form{
     width: 134px;
     height: 108px;
@@ -71,10 +70,11 @@ header li a:hover {
     top: 70px;
     line-height: 23px;
     text-align: center;
+    color: navy;
 }
 .loginUser_form span{
   display: inline-block;
-  margin-top: 10px;
+  margin-top: 10px; 
 }
  .mypage_btn,.logout_btn{
   border:none;
@@ -82,15 +82,16 @@ header li a:hover {
   font-weight: bold;
   width:50px;
   height: 30px;
-  color: white;
+  border: 3px solid navy;
+  background: white;
+  border-radius: 10px;
 }
-
-.mypage_btn{
-  background: #91692c;
-}
-.logout_btn{
-  background: #704c15;
-}
+ .mypage_btn:hover,.logout_btn:hover{
+    background: navy;
+    color: white;
+    border: 3px solid white;
+    font-weight: bold;
+ }
 .login_btn{
   position: absolute;
   top:0;
