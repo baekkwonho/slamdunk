@@ -225,10 +225,14 @@ $(function(){
 					console.log(result);
 					var str = "";
 					for(var i=0;i<result.data.length;i++){
-						str+="<span class='request_p'>"+result.data[i].reqNickname+"님에게 가입신청이 왔습니다.</span><button type='button' class='ok_btn' data-no ='"+result.data[i].reqno+"'>승인</button><button type ='button' class='no_btn' data-no ='"+result.data[i].reqno+"'>거절</button>"
+						str+="<span class='request_p'>"+result.data[i].reqNickname+"님에게 가입신청이 왔습니다.</span><button type='button' class='ok_btn' data-no ='"+result.data[i].reqno+"'>Ok</button><button type ='button' class='no_btn' data-no ='"+result.data[i].reqno+"'>No</button>"
 					}
 					$(".request").html(str);
-					$(".request").css("background","#e09115");
+					$(".request").css({
+						"background" : "#e09115",
+						'border-bottom-right-radius': 10,
+						'border-bottom-left-radius': 10
+					});
 					$(".ok_btn").click(function(){
 						ajaxOkrequest($(this).attr("data-no"));
 					});

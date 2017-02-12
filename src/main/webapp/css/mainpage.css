@@ -128,6 +128,7 @@ img#logoimage{
     line-height: 23px;
     text-align: center;
     color: navy;
+   border-radius: 10px;
 }
 .loginUser_form span{
   display: inline-block;

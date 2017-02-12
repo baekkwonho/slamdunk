@@ -287,7 +287,11 @@ function ajaxLoginUser(){
 					str+="<div class='add'><p class='date'>"+result.data[i].match_date+"</p><p class='teamname'>"+result.data[i].reqTeamname+"</p><span class='request'>Try Battle Now?</span><div class='add_btn'><button type='button' class='ok_btn' data-no='"+result.data[i].mtno+"'>Ok</button><button type='button' class='no_btn' data-no='"+result.data[i].mtno+"'>No</button></div></div>"
 				}
 				$(".match_request").html(str);
-				$(".match_request").css("background","#e09115");
+				$(".match_request").css({
+					"background" : "#e09115",
+					'border-bottom-right-radius': 10,
+					'border-bottom-left-radius': 10
+				});
 
 				$(".ok_btn").click(function(){
 					ajaxOkrequest($(this).attr("data-no"));

@@ -70,6 +70,7 @@ header li a:hover {
     line-height: 23px;
     text-align: center;
     color: navy;
+    border-radius: 10px;
 }
 .loginUser_form span{
   display: inline-block;
@@ -284,8 +285,23 @@ hr {
   font-size: 12px;
   border: none;
 }
-
-
+#city_form,#district_form,#district_form2{
+    height: 25px;
+    border: 2px solid #ffa500;
+}
+#city_form:focus,#district_form:focus,#district_form2:focus,.filter_btn:focus,.fc-left button:focus{
+  outline: none;
+}
+.filter_btn{
+    height: 25px;
+    background: white;
+    border: 2px solid #ffa500;
+}
+.fc-left button{
+   height: 30px;
+    background: white;
+    border: 2px solid #ffa500;
+}
 .cityname{
 	position: absolute;
 	right:430px;
