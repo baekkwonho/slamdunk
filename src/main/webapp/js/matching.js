@@ -43,9 +43,6 @@ $(document).ready(function() {
                     var splclickday = clickday.split("-");
                     var spltoday = today.split("-");
 
-                    console.log(splclickday);
-                    console.log(spltoday);
-
                     if( spltoday[0] - splclickday[0] > 0 ){
                         alert("지난 시기 입니다.");
                         return;
@@ -88,7 +85,6 @@ $(document).ready(function() {
                         alert("스케줄 로드를 실패했습니다.");
                         return;
                     }
-                    console.log(result);
                     // 데이터마다 체크를 해야되기때문에 반복문을 사용.
                     for(var i =0; i<result.data.length;i++){
                         if(result.data[i].team_no2 === 0){

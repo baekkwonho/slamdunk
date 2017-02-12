@@ -56,7 +56,7 @@ $(function(){
           alert("본인팀원을 불러오지 못했습니다.");
           return;
         }
-        console.log(result)
+
         var str = "";
         for(var i=0;i<result.data.list.length;i++){
           //변경될 사항.초기값을 만들어줘야함.
@@ -108,7 +108,7 @@ $(function(){
           alert("본인팀원을 불러오지 못했습니다.");
           return;
         }
-        console.log(result)
+
         var str = "";
         for(var i=0;i<result.data.list.length;i++){
           //변경될 사항.초기값을 만들어줘야함.
@@ -177,7 +177,7 @@ $(function(){
             alert("상세 페이지 로드 실패입니다.");
             return;
           }
-          console.log(result);
+
           $.ajax({
             url : serverAddr+"/auth/loginuser.json",
             method : "GET",
@@ -188,7 +188,7 @@ $(function(){
                 alert("로그인이 실패입니다.");
                 return;
               }
-                console.log(result2);
+
                 if(result.data[0].team_no1 === result2.data.tno){
                   ajaxLoadTeam();
                   $(".location").text(result.data[0].region);

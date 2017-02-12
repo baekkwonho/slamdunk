@@ -31,7 +31,7 @@ $(".resister_btn").click(function(){
 		teamDesc : document.querySelector("#memo_area").value,
 		tphoto_path:document.querySelector(".teamdataFileName").textContent
 	}
-	console.log(team);
+
 	ajaxInserTeam(team);
 
 });
@@ -57,7 +57,7 @@ $(".teamdefaultBtn").click(function(){
 				}
 				window.location.reload();
 				//함수 호출 후
-				console.log("aaaa");
+
 			}
 		})
 
@@ -73,7 +73,7 @@ $(".teamdefaultBtn").click(function(){
 					alert("팀 조회를 실패했습니다.");
 					return;
 				}
-				console.log(result);
+
 				if(result.data === null){
 					$(".update_btn").hide();
 					$(".delete_btn").hide();
@@ -210,7 +210,7 @@ $(".teamdefaultBtn").click(function(){
 					alert("팀원 조회를 실패했습니다.");
 					return;
 				}
-				console.log(result);
+			
 				var str = "<h3>Member's Introduce</h3>";
 				for(var i=0;i<result.data.list.length;i++){
 					var gender = "Male";
@@ -225,7 +225,7 @@ $(".teamdefaultBtn").click(function(){
 					if(result.data.list[i].skill !== null){
 						skill = result.data.list[i].skill;
 					}
-					var photo = "/slamdunk/images/uniform.jpg"
+					var photo = "/slamdunk/images/shoot.jpg"
 					if(result.data.list[i].photo_path !== null && result.data.list[i].photo_path !== ""){
 						photo = "/slamdunk/upload/"+result.data.list[i].photo_path;
 					}

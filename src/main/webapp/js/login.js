@@ -101,7 +101,6 @@ function ajaxSignup(user){
 		dataType : "json",
 		success : function(obj){
 			var result = obj.jsonResult;
-			console.log(result);
 			if(result.state !== "success"){
 				alert("회원가입 실패 입니다.");
 				return;
@@ -281,7 +280,6 @@ function ajaxLoginUser(){
 					alert("요청을 불러오지 못했습니다.");
 					return;
 				}
-				console.log(result);
 				var str = "";
 				for(var i=0;i<result.data.length;i++){
 					str+="<div class='add'><p class='date'>"+result.data[i].match_date+"</p><p class='teamname'>"+result.data[i].reqTeamname+"</p><span class='request'>Try Battle Now?</span><div class='add_btn'><button type='button' class='ok_btn' data-no='"+result.data[i].mtno+"'>Ok</button><button type='button' class='no_btn' data-no='"+result.data[i].mtno+"'>No</button></div></div>"

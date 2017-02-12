@@ -90,7 +90,6 @@ $(function(){
 			photo_path:document.querySelector(".dataFileName").textContent
 		}
 		}
-		console.log(user);
 		ajaxCommit(user);
 		
 	})
@@ -129,7 +128,6 @@ $(function(){
 	 		$("#icon").click(function(){
 	 			$(".loginUser_form").toggle();	
 	 		});
-	 		console.log(result);
 	 		
 	 		if (result.data.photo_path !== null && result.data.photo_path !== "") {
 	 			$(".photo_form img").attr("src","/slamdunk/upload/"+result.data.photo_path);
@@ -222,7 +220,6 @@ $(function(){
 						alert("가입 요청 리스트 조회 실패입니다.");
 						return;
 					}
-					console.log(result);
 					var str = "";
 					for(var i=0;i<result.data.length;i++){
 						str+="<span class='request_p'>"+result.data[i].reqNickname+"님에게 가입신청이 왔습니다.</span><button type='button' class='ok_btn' data-no ='"+result.data[i].reqno+"'>Ok</button><button type ='button' class='no_btn' data-no ='"+result.data[i].reqno+"'>No</button>"

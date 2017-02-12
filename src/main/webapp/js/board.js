@@ -29,7 +29,6 @@ function ajaxBoardList() {
 			alert("조회실패입니다.");
 			return;
 		}
-		console.log(result);
 		var writeList = ""; // table body에 넣어줄 html 태그를 작성할 변수
 		
 		
