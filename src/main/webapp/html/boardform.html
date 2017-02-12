@@ -1,88 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	 <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
- 	<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
- 	<link rel="stylesheet" href="../css/boardform.css">
-	<title></title>
+  <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/boardform.css">
+  <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+  <title></title>
 </head>
 <body>
 
-	<header>
-		<a href="mainpage.html"><h3>SlamDunk</h3></a>
-		<a href="mainpage.html"><img src="../images/mainlogo4.png" alt="메인로고"></a>
-		<ul>
-			<li><a href="about.html">About Rule</a></li>
-			<li><a href="schedule.html">Schedule</a></li>
-			<li><a href="matching.html">Matching</a></li>
-			<li id="list_board"><a href="board.html">Board</a></li>
-			<li><a href="#">Who</a></li>
-		</ul>
-	</header>
-	
-	<div class="wrap">
-		
-			<div class="board_form">
-			  <h1>Board Form</h1>
-				<div class="form_row1">
-				  <div class="title_form">
-					  <label class="title_label">TITLE</label>
-			 	    <input type="text" id="title" class="textbox">
-		  		</div>
-		  		<div class="createDate_form">
-		  		  <!-- <label>등록일</label> -->
-		  		  <label></label>
-		  		</div>
-		  		<div class="viewCount_form">
-		  		  <label>Hits</label>
-		  		  <span>1</span>
-		  		</div>
-				</div>
-				<hr><br>
-	  		<div class="contents_form">
-				<!--   <label class="left_label">내용</label> -->
-				  <textarea id="contents" class="textbox" cols="90" rows="15"></textarea>
-	  		</div>
-	  		
-	  		<div class="buttons_form">
-	  		  <button type="button" id="ok_btn" class="btn_group">OK</button>
-	  		  <button type="button" id="update_btn" class="btn_group">Update</button>
-	  		  <button type="button" id="delete_btn" class="btn_group">Delete</button>
-	  		  <button type="button" id="cancel_btn" class="btn_group">Cancel</button>
-	  		</div>
-			  
-	    </div>		
-		
-		
-	</div>
-	
-	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <header>
+    <a href="mainpage.html"><h3>SlamDunk</h3></a>
+    <a href="mainpage.html"><img src="../images/mainlogo4.png" alt="메인로고"></a>
+    <ul>
+      <li><a href="about.html">About Rule</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="matching.html">Matching</a></li>
+      <li id="list_board"><a href="board.html">Board</a></li>
+      <li><a href="#">Who</a></li>
+    </ul>
+  </header>
+  
+  <div class="wrap">
+    
+      <div class="board_form">
+        <h1>Board Form</h1>
+        <div class="form_row1">
+          <div class="title_form">
+            <label class="title_label">TITLE</label>
+            <input type="text" id="title" class="textbox">
+          </div>
+          <div class="createDate_form">
+            <label></label>
+          </div>
+          <div class="viewCount_form">
+            <label>Hits</label>
+            <span>1</span>
+          </div>
+        </div>
+        <br>
+        <div class="contents_form">
+          <textarea id="contents" class="textbox" cols="90" rows="15"></textarea>
+        </div>
+        
+        <div class="buttons_form">
+          <button type="button" id="ok_btn" class="btn_group">OK</button>
+          <button type="button" id="update_btn" class="btn_group">Update</button>
+          <button type="button" id="delete_btn" class="btn_group">Delete</button>
+          <button type="button" id="cancel_btn" class="btn_group">Cancel</button>
+        </div>
+        
+      </div>    
+    
+    
+  </div>
+  
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
   <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="../js/common.js"></script>
-	<script src="../js/boardform.js"></script>
-	<script src="../js/notice.js"></script>
-	
-	<script>
-	
-	if (location.search.startsWith("?")) {
-		if (location.search.split("?")[1].split("=")[0] == "no") {
-	    var no = location.search.split("=")[1];
-	    ajaxLoadBoard(no)
-	    $("#ok_btn").css("display","none")
-		} else {
-			var noticeno = location.search.split("?")[1].split("=")[1];
-			ajaxLoadNotice(noticeno);
-		  $("#ok_btn").css("display","none")
-		}
-	} else {
-	  loadBoard()
-	  $("#update_btn").css("display","none")
-	  $("#delete_btn").css("display","none")
+  <script src="../js/common.js"></script>
+  <script src="../js/boardform.js"></script>
+  <script src="../js/notice.js"></script>
+  
+  <script>
+   
+  if (location.search.startsWith("?")) {
+    if (location.search.split("?")[1].split("=")[0] == "no") {
+      var no = location.search.split("=")[1];
+      ajaxLoadBoard(no)
+      $("#ok_btn").css("display","none")
+    } else {
+      var noticeno = location.search.split("?")[1].split("=")[1];
+      ajaxLoadNotice(noticeno);
+      $("#ok_btn").css("display","none")
+    }
+  } else {
+    loadBoard()
+    $("#update_btn").css("display","none")
+    $("#delete_btn").css("display","none")
   }
-
-	</script>
-	
+ 
+  </script>
+  
 </body>
 </html>

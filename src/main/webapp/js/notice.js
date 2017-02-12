@@ -11,12 +11,12 @@ function ajaxLoadNotice(noticeno) {
 		$.getJSON(serverAddr + "/auth/loginuser.json", function(obj2) {
 			var memberResult = obj2.jsonResult;
 			if (memberResult.state !== "success" || memberResult.data.nickname !== result.data.writer) {
-				$("#title").css("display","none");
-				$(".title_form").append("<span class='view_title'>"+result.data.title+"</span>");
+				$("#title").attr("disabled","true");
+				$("#title").val(result.data.title);
 				$(".createDate_form label").text(result.data.cre_dt);
 				$(".viewCount_form span").text(result.data.vw_cnt);
-				$("#contents").css("display","none");
-				$(".contents_form").append("<p class='view_contents'>"+result.data.contents+"</p>");
+				$("#contents").attr("disabled","true");
+				$("#contents").val(result.data.contents);
 				$("#update_btn, #delete_btn").css("display","none");
 				return;
 			}

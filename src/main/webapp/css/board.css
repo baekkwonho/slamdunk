@@ -286,45 +286,121 @@ hr {
   border: none;
 }
 
-.wrap {
 
-	width: 100%;
-	height: 100%;
+.wrap {
+  width: 100%;
+  height: 100%;
+  font-family: 'Acme', sans-serif;
+  font-weight: bold;
 }
 
 .bg_wrap {
-	
-	background-image : url(../images/bg04.jpeg);
-	background-size: cover;
-	background-position: center center;
-	height: 250px;
+  
+  background-image : url(../images/bg04.jpeg);
+  background-size: cover;
+  background-position: center center;
+  height: 250px;
 }
 
 .bg_wrap h1{
-	position: relative;
-	top: 100px;
-	margin: 0;
-	font-size: 80px;
-	color: white;
-	text-align: center;
+  position: relative;
+  top: 100px;
+  margin: 0;
+  font-size: 80px;
+  color: white;
+  text-align: center;
 }
 
 .board_wrap {
-	position: relative;
-	width: 70%;
-	margin: 0 auto;
+  position: relative;
+  width: 70%;
+  margin: 0 auto;
 }
+
+#boardTable {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#boardTable th {
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+#boardTable tbody {
+  text-align: center;
+}
+
+#boardTable tbody tr:hover {
+   background: #fff9d3; 
+}
+
+.table>thead>tr>th {
+  border-color: orange;
+}
+
+.table>tbody>tr>td {
+  border: none;
+}
+
+.noticeLink {
+  color: darkorange;
+}
+
+
 .board_btn_wrap{
-    text-align: center;
+  text-align: center;
 }
 
 #pageNo span{
-	margin: 0 3px;
+  margin: 0 3px;
 }
 
 .currPage {
-	font-size : 20px;
-	color : red;
-	font-weight: bold;
+  font-size : 20px;
+  color: orange;
+  font-weight: bold;
 }
 
+#prev_btn {
+  background: white;
+  color: orange;
+  border: 2px solid orange;
+  font-weight: bold;
+  width: 60px;
+  height: 30px;
+  border-radius:20px;
+}
+
+#next_btn {
+  background: white;
+  color: orange;
+  border: 2px solid orange;
+  font-weight: bold;
+  width: 60px;
+  height: 30px;
+  border-radius:20px;
+}
+
+#newboard_btn {
+  background: white;
+  color: orange;
+  border: 2px solid orange;
+  font-weight: bold;
+  width: 60px;
+  height: 30px;
+  border-radius:20px;
+}
+
+#prev_btn:hover, #next_btn:hover, #newboard_btn:hover {
+  background: orange;
+  border: 2px solid white;
+  color: white;
+  outline: 0;
+}
+
+#prev_btn:focus, #next_btn:focus, #newboard_btn:focus {
+  outline: 0;
+}

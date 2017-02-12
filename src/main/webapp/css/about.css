@@ -285,10 +285,10 @@ hr {
   font-size: 12px;
   border: none;
 }
-
 .position_wrap{
   margin : 0 auto;
   width: 80em;
+  font-family: 'Acme', sans-serif;
 }
 
 .position_title {
@@ -392,6 +392,7 @@ h3.pos_sg {
 .terms_wrap{
   margin : 0 auto;
   width: 80em;
+  font-family: 'Acme', sans-serif;
 }
 
 .terms_title {
@@ -450,7 +451,7 @@ h3.pos_sg {
   display: none;
   position: absolute;
   left : 33%;
-  background-color : dodgerblue;
+  background-color : white;
 }
 
 .terms_modal_close {
@@ -464,12 +465,12 @@ h3.pos_sg {
   right: 20px;
   top: 0;
   cursor : pointer;
-  color : white;
-  text-shadow: 1px 2px 3px black;
+  color : black;
+  text-shadow: 1px 2px 3px grey;
 }
 
 .terms_modal hr {
-  border : 1px solid rgba(255,255,255, 0.8);
+  border : 1px solid black;
   position : relative;
   top : 0;
   margin-top: 0;
@@ -488,6 +489,7 @@ h3.pos_sg {
   margin : 0 auto;
   width: 80em;
   margin-bottom: 150px;
+  font-family: 'Acme', sans-serif;
 }
 
 .rules_title {
@@ -530,6 +532,8 @@ h3.pos_sg {
   display: none;
   position: relative;
   top: -176px;
+  border: 1px solid black;
+  box-shadow: 5px 5px 10px #6f6e6f;
 }
 
 .rules_modal_close {
@@ -538,16 +542,17 @@ h3.pos_sg {
 
 .rules_modal_close span {
   font-size: 30px;
-  color: white;
+  color: black;
   right: 80px;
   position: relative;
   cursor: pointer;
+  text-shadow: 1px 2px 3px grey;
 }
 
 
 .carousel {
-  background: linear-gradient(#000000, rgb(130, 0, 0) );
-  color : white;
+  background: white;
+  color : black;
 }
 
 .carousel-inner {
@@ -561,19 +566,24 @@ h3.pos_sg {
 }
 
 .item h3{
-  border-bottom-style: double;
-  border-bottom-width: 4px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
   margin-bottom: 30px;
   padding-bottom: 10px;
-  border-color: tomato;
-  color: tomato;
+  border-color: black;
+  color: black;
   font-weight: bold;
   text-align: center;
 }
 
 .item p {
-  border-bottom-style: double;
-  border-bottom-width: 4px;
   padding-bottom: 30px;
-  border-color: tomato;
 }
+
+
+
+.carousel-control.left, .carousel-control.right {
+	background: none;
+	color: black;
+}
+

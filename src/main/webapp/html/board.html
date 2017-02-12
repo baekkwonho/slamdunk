@@ -1,26 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
- 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
- 	<link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
- 	<link rel="stylesheet" href="../css/board.css">
-	<title></title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/board.css">
+  <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+  <title></title>
 </head>
 <body>
 
-	<header>
-		<a href="mainpage.html"><h3>SlamDunk</h3></a>
-		<a href="mainpage.html"><img src="../images/mainlogo4.png" alt="메인로고" id="logoimage"></a>
-		<ul>
-			<li><a href="about.html">About Rule</a></li>
-			<li><a href="schedule.html">Schedule</a></li>
-			<li><a href="matching.html">Matching</a></li>
-			<li id="list_board"><a href="board.html">Board</a></li>
-			<li><a href="#">Who</a></li>
-		</ul>
-		<div class="btn_form">
+  <header>
+    <a href="mainpage.html"><h3>SlamDunk</h3></a>
+    <a href="mainpage.html"><img src="../images/mainlogo4.png" alt="메인로고" id="logoimage"></a>
+    <ul>
+      <li><a href="about.html">About Rule</a></li>
+      <li><a href="schedule.html">Schedule</a></li>
+      <li><a href="matching.html">Matching</a></li>
+      <li id="list_board"><a href="board.html">Board</a></li>
+      <li><a href="#">Who</a></li>
+    </ul>
+    <div class="btn_form">
     <button type="button" class="login_btn" data-toggle="modal" data-target="#loginModal"><a href="#">LOG IN</a></button>
     <button type="button" class="signup_btn" data-toggle="modal" data-target="#loginModal"><a href="#">SIGN UP</a></button>
     <img src="../images/Sport-basketball-icon.png" alt="아이콘 사진" id="icon">
@@ -79,46 +80,47 @@
   </div>
 
 
-	</header>
-	
-	<div class="wrap">
-	  <div class="bg_wrap">
-			 <h1>Board</h1>
-	  </div>
-		<div class="board_wrap">
-		  <table id="boardTable" class="table table-hover">
-		    <thead>
-		      <tr>
-		        <th>번호</th>
-		        <th>제목</th>
-		        <th>작성자</th>
-		        <th>등록일</th>
-		        <th>조회수</th>
-		      </tr>
-		    </thead>
-		    <tbody>
-		    </tbody>
-			</table>
-			
-			<div class="board_btn_wrap">
-			  <button type="button" id="prev_btn" class="btn btn-sm">Prev</button>
-			  <span id="pageNo"></span>
-			  <button type="button" id="next_btn" class="btn btn-sm">Next</button>
-		    <button type="button" id="newboard_btn" class="btn btn-sm btn-primary">새 글</button>
-			</div>
-		</div>
-	</div>
-	
-	<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+  </header>
+  
+  <div class="wrap">
+    <div class="bg_wrap">
+       <h1>Board</h1>
+    </div>
+    <div class="board_wrap">
+      <table id="boardTable" class="table table-hover">
+        <thead>
+          <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>등록일</th>
+            <th>조회수</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+      
+      <div class="board_btn_wrap">
+        <button type="button" id="prev_btn" class="btn btn-sm">Prev</button>
+        <span id="pageNo">
+        </span>
+        <button type="button" id="next_btn" class="btn btn-sm">Next</button>
+        <button type="button" id="newboard_btn" class="btn btn-sm btn-primary">새 글</button>
+      </div>
+    </div>
+  </div>
+  
+  <script src="../node_modules/jquery/dist/jquery.min.js"></script>
   <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="../js/common.js"></script>
-	<script src="../js/board.js"></script>
-	<script src="../js/login.js"></script>
-	
-	<script>
- 	  ajaxBoardList();
- 	  ajaxLoginUser();
-	</script>
-	
+  <script src="../js/common.js"></script>
+  <script src="../js/board.js"></script>
+  <script src="../js/login.js"></script>
+  
+  <script>
+    ajaxBoardList();
+    ajaxLoginUser();
+  </script>
+  
 </body>
 </html>
