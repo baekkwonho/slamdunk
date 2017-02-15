@@ -46,7 +46,7 @@ $(function(){
 
 	$(".commit_btn").click(function(){
 		var gender = true;
-		if(document.querySelector('input[name="gender"]:checked').value==="male"){
+		if(document.querySelector('input[name="iCheck"]:checked').value==="male"){
 			gender = true;
 		}else{
 			gender = false;
@@ -151,11 +151,17 @@ $(function(){
 	 		if(result.data.skill !== 0){
 	 			$(".skill").val(result.data.skill);
 	 		}
+	 		
 	 		if(result.data.gender===false){
-	 		$("input:radio[name='gender']:radio[value='female']").attr("checked",true);
+	 		$("input:radio[name='iCheck']:radio[value='female']").attr("checked",true);
+	 		$(".gender_form div:nth-child(4)").addClass("checked");
+	 		
 	 		}else{
-	 			$("input:radio[name='gender']:radio[value='male']").attr("checked",true);
+	 			$("input:radio[name='iCheck']:radio[value='male']").attr("checked",true);
+	 			$(".gender_form div:nth-child(2)").addClass("checked");
 	 			}
+	 			
+	 			
 
 	 			if(result.data.requestCount !== 0){
 	 				ajaxRequest();
