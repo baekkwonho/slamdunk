@@ -176,8 +176,11 @@ public class AuthController {
       if (memberDao.selectOne(member.getNo()) == null) {
         return JsonResult.fail();
       }
-      
       sessionStatus.setComplete();
+      System.out.println(member.getPosition());
+      if (member.getPosition() == "position") {
+        member.setPosition(null);
+      }
       
       if (member.getPassword() == null) {
         memberDao.update(member);

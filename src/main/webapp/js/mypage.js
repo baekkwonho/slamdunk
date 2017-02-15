@@ -128,7 +128,6 @@ $(function(){
 	 		$("#icon").click(function(){
 	 			$(".loginUser_form").toggle();	
 	 		});
-	 		
 	 		if (result.data.photo_path !== null && result.data.photo_path !== "") {
 	 			$(".photo_form img").attr("src","/slamdunk/upload/"+result.data.photo_path);
 	 		}
@@ -161,7 +160,6 @@ $(function(){
 	 			if(result.data.requestCount !== 0){
 	 				ajaxRequest();
 	 			}
-
 
 		 	}
 		})
