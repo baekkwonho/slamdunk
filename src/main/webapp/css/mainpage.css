@@ -176,7 +176,7 @@ img#logoimage{
 	transition:all 1s;
 }
 .content_box1 h2{
-	position: fixed;
+	position: absolute;
 	top:180px;
 	color: white;
 	font-size: 25px;
@@ -184,30 +184,30 @@ img#logoimage{
 }
 .content_box1 h3{
 	cursor: pointer;
-	position: fixed;
+	position: absolute;
 	top:220px;
 	color: white;
 	font-size: 18px;
 	transform:skewX(40deg);
 }
 .content_box2 h2{
-	position: fixed;
+	position: absolute;
 	top:310px;
 	color: white;
 	transform:skewX(40deg);
 	font-size: 25px;
 }
 .content_box2 h3{
-	position: fixed;
+	position: absolute;
 	top:350px;
 	color: white;
 	transform:skewX(40deg);
 	font-size:18px;
 }
 .content_box2  img{
-	position: fixed;
+	position: absolute;
 	top:410px;
-	left: 180px;
+	left: 140px;
 	width:250px;
 	height: 120px;
 	border: 1px solid white;
@@ -216,18 +216,18 @@ img#logoimage{
 	cursor: pointer;
 }
 .content_box3 h2{
-	position: fixed;
+	position: absolute;
 	top:530px;
-	left: 146px;
+	left: 65px;
 	color: white;
 	font-size: 25px;
 	transform:skewX(40deg);
 }
 .content_box3 h3{
 	font-size:18px;
-	position: fixed;
+	position: absolute;
 	top:570px;
-	left: 195px;
+	left: 90px;
 	color: white;
 	cursor: pointer;
 	transform:skewX(40deg);
