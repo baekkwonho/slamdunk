@@ -168,15 +168,15 @@ header li a{
 	display: none;
 }
 .photoBtn{
-    right: 228px;
+    right: 170px;
 }
 .defaultBtn{
-    right: 200px;   
+    right: 90px;
 }
 .photoBtn,.defaultBtn {
     width: 55px;
-    position: relative;
-    top: 73px;
+    position: absolute;
+    top: 320px;
     height: 30px;
     border-radius: 20px;
     background: white;
@@ -201,9 +201,9 @@ header li a{
 }
 
 .middle_form{
-    position: absolute;
-    left: 278px;
-    bottom: 33px;
+    position: relative;
+    left: 277px;
+    top: 395px;
     font-size: 18px;
     line-height: 55px;
 }

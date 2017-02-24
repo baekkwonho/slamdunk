@@ -12,6 +12,10 @@
 	<context:component-scan base-package="json">
 	  <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
   </context:component-scan>
+  
+  <!-- jdbc 관련 properties 파일 사용 -->
+  <context:property-placeholder location="WEB-INF/jdbc.properties" />
+  <!-- 아래와 같이 properties에 있는 값을 설정 개발,운영 할 때 변경될 수 있어서 properties파일에 따로 두고 관리한다. -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${jdbc.driverClassName}" />
 		<property name="url" value="${jdbc.url}" />
@@ -19,7 +23,7 @@
 		<property name="password" value="${jdbc.password}" />
 	</bean>
 
-	<context:property-placeholder location="WEB-INF/jdbc.properties" />
+	
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
